@@ -14,12 +14,11 @@ public class UserDaoImpl implements UserDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-	
+
 	@Override
 	public User findById(int userId) {
 		// TODO Auto-generated method stub
-		return null;
+		return em.find(User.class, userId);
 	}
 
 	@Override
