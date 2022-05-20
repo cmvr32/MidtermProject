@@ -591,7 +591,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interdistillerydb`;
-INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (1, 'Name, email, phone, address', 'This is an introduction', '5  years experience with java', 1, 1, NULL, 1);
+INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (1, 'hi', 'This is an introduction', '5  years experience with java', 1, 1, NULL, 1);
 
 COMMIT;
 
