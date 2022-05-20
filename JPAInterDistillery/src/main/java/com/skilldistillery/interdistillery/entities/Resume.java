@@ -22,17 +22,18 @@ public class Resume {
 
 	private String experinece;
 
+	// TODO DOES THIS NEED TO BE A BOOLEAN OR A INT
 	@Column(name = "degreed")
 	private int degree;
 
 	@Column(name = "user_id")
-	private int UserId;
+	private int userId;
 
 	@Column(name = "job_listing_id")
-	private int jobListing;
+	private int jobListingId;
 
 	@Column(name = "education_level_id")
-	private int educationLevel;
+	private int educationLevelId;
 
 	public Resume() {
 	}
@@ -78,34 +79,34 @@ public class Resume {
 	}
 
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 
 	public void setUserId(int userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 
-	public int getJobListing() {
-		return jobListing;
+	public int getJobListingId() {
+		return jobListingId;
 	}
 
-	public void setJobListing(int jobListing) {
-		this.jobListing = jobListing;
+	public void setJobListingId(int jobListingId) {
+		this.jobListingId = jobListingId;
 	}
 
-	public int getEducationLevel() {
-		return educationLevel;
+	public int getEducationLevelId() {
+		return educationLevelId;
 	}
 
-	public void setEducationLevel(int educationLevel) {
-		this.educationLevel = educationLevel;
+	public void setEducationLevelId(int educationLevelId) {
+		this.educationLevelId = educationLevelId;
 	}
 
 	@Override
 	public String toString() {
 		return "Resume [id=" + id + ", contactInfo=" + contactInfo + ", introduction=" + introduction + ", experinece="
-				+ experinece + ", degree=" + degree + ", UserId=" + UserId + ", jobListing=" + jobListing
-				+ ", educationLevel=" + educationLevel + "]";
+				+ experinece + ", degree=" + degree + ", userId=" + userId + ", jobListingId=" + jobListingId
+				+ ", educationLevelId=" + educationLevelId + "]";
 	}
 
 	@Override

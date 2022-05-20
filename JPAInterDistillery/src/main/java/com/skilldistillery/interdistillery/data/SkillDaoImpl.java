@@ -1,24 +1,45 @@
 package com.skilldistillery.interdistillery.data;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import com.skilldistillery.interdistillery.entities.Skill;
 
 public class SkillDaoImpl implements SkillDAO {
 
 	@Override
 	public Skill createSkill(Skill skill) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
+		EntityManager em = emf.createEntityManager();
+
+		em.getTransaction().begin();
+		System.out.println("Before persist: " + skill);
+		em.persist(skill);
+		System.out.println("After persist: " + skill);
+		em.flush();
+		em.getTransaction().commit();
+
+		return skill;
 	}
 
 	@Override
 	public Skill updateSkill(int id, Skill skill) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
+		EntityManager em = emf.createEntityManager();
+
+		return skill;
+
 	}
 
 	@Override
 	public boolean destroySkill(int id) {
-		// TODO Auto-generated method stub
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
+		EntityManager em = emf.createEntityManager();
+		
 		return false;
 	}
 

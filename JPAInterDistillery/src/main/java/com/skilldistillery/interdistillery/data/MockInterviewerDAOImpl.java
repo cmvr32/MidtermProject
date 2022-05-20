@@ -6,10 +6,10 @@ import javax.persistence.Persistence;
 
 import com.skilldistillery.interdistillery.entities.User;
 
-public class MockIntreviewerDAOImpl implements MockIntreviewerDAO {
+public class MockInterviewerDAOImpl implements MockInterviewerDAO {
 
 	@Override
-	public User createMockIntreviewer(MockIntreviewerDAO mockIntreviewer) {
+	public User createMockIntreviewer(MockInterviewerDAO mockIntreviewer) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
 		EntityManager em = emf.createEntityManager();
 
@@ -24,7 +24,7 @@ public class MockIntreviewerDAOImpl implements MockIntreviewerDAO {
 	}
 
 	@Override
-	public User updateResume(int id, MockIntreviewerDAO mockIntreviewer) {
+	public User updateResume(int id, MockInterviewerDAO mockIntreviewer) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
 		EntityManager em = emf.createEntityManager();
 
