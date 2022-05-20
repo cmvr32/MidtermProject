@@ -31,7 +31,7 @@ public class User {
 	@Column(name = "date_created")
 	private LocalDateTime dateCreated;
 
-	private int active;
+	private Integer active;
 
 	private String role;
 
@@ -103,11 +103,11 @@ public class User {
 		this.dateCreated = dateCreated;
 	}
 
-	public int getActive() {
+	public Integer getActive() {
 		return active;
 	}
 
-	public void setActive(int active) {
+	public void setActive(Integer active) {
 		this.active = active;
 	}
 
@@ -144,16 +144,16 @@ public class User {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", username=" + username + ", password=" + password + ", dateCreated=" + dateCreated + ", active="
 				+ active + ", role=" + role + ", profileImageUrl=" + profileImageUrl + ", bannerImageUrl="
 				+ bannerImageUrl + ", biography=" + biography + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
 	}
 
 	@Override

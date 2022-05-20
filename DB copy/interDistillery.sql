@@ -84,11 +84,11 @@ CREATE TABLE IF NOT EXISTS `career` (
   `image_url` VARCHAR(2000) NULL,
   `low_salary` DECIMAL(10,2) NULL,
   `high_salary` DECIMAL(10,2) NULL,
-  `career_category_id` INT NOT NULL,
+  `career_catogory_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_career_career_catogory1_idx` (`career_category_id` ASC),
+  INDEX `fk_career_career_catogory1_idx` (`career_catogory_id` ASC),
   CONSTRAINT `fk_career_career_catogory1`
-    FOREIGN KEY (`career_category_id`)
+    FOREIGN KEY (`career_catogory_id`)
     REFERENCES `career_category` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -568,10 +568,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interdistillerydb`;
-INSERT INTO `career` (`id`, `career_title`, `description`, `image_url`, `low_salary`, `high_salary`, `career_category_id`) VALUES (1, 'Java Developer', 'A Java Developer is responsible for the design, development, and management of Java-based applications. Because Java is used so widely, particularly by large organizations, the daily roles vary widely, but can include owning a particular application or working on several at one time', NULL, 70000, 115000, 1);
-INSERT INTO `career` (`id`, `career_title`, `description`, `image_url`, `low_salary`, `high_salary`, `career_category_id`) VALUES (2, 'MySQL Database Administrator', 'A MySQL database administrator, sometimes shortened to DBA, manages databases for a website or company using the MySQL software. Your responsibilities are developing and maintaining the organization\'s information databases, setting up the database host, and ensuring secure storage of company information.', NULL, 71000, 110000, 2);
-INSERT INTO `career` (`id`, `career_title`, `description`, `image_url`, `low_salary`, `high_salary`, `career_category_id`) VALUES (3, 'Python Developer', 'Python developers are computer programmers who specialize in writing server-side web application logic. Their job is to use the Python programming language to develop, debug, and implement application projects.', NULL, 65000, 120000, 1);
-INSERT INTO `career` (`id`, `career_title`, `description`, `image_url`, `low_salary`, `high_salary`, `career_category_id`) VALUES (4, 'Accountant', 'Accountants ensure all financial records and statements are in line with laws, regulations, and generally accepted accounting principles (GAAP). Accountants must also resolve any discrepancies or irregularities they find in records, statements, or documented transactions.', NULL, 57000, 97000, 3);
+INSERT INTO `career` (`id`, `career_title`, `description`, `image_url`, `low_salary`, `high_salary`, `career_catogory_id`) VALUES (1, 'Java Developer', 'A Java Developer is responsible for the design, development, and management of Java-based applications. Because Java is used so widely, particularly by large organizations, the daily roles vary widely, but can include owning a particular application or working on several at one time', NULL, 70000, 115000, 1);
+INSERT INTO `career` (`id`, `career_title`, `description`, `image_url`, `low_salary`, `high_salary`, `career_catogory_id`) VALUES (2, 'MySQL Database Administrator', 'A MySQL database administrator, sometimes shortened to DBA, manages databases for a website or company using the MySQL software. Your responsibilities are developing and maintaining the organization\'s information databases, setting up the database host, and ensuring secure storage of company information.', NULL, 71000, 110000, 2);
+INSERT INTO `career` (`id`, `career_title`, `description`, `image_url`, `low_salary`, `high_salary`, `career_catogory_id`) VALUES (3, 'Python Developer', 'Python developers are computer programmers who specialize in writing server-side web application logic. Their job is to use the Python programming language to develop, debug, and implement application projects.', NULL, 65000, 120000, 1);
+INSERT INTO `career` (`id`, `career_title`, `description`, `image_url`, `low_salary`, `high_salary`, `career_catogory_id`) VALUES (4, 'Accountant', 'Accountants ensure all financial records and statements are in line with laws, regulations, and generally accepted accounting principles (GAAP). Accountants must also resolve any discrepancies or irregularities they find in records, statements, or documented transactions.', NULL, 57000, 97000, 3);
 
 COMMIT;
 
@@ -591,7 +591,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interdistillerydb`;
+<<<<<<< HEAD
 INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (1, 'hi', 'This is an introduction', '5  years experience with java', 1, 1, NULL, 1);
+=======
+INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (1, 'Name, email, phone, address', 'This is an introduction', '5  years experience with java', 1, 1, NULL, 1);
+>>>>>>> ec6a2542722020f57cafd4923c87b4ef48bf08b6
 
 COMMIT;
 

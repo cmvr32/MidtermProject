@@ -11,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
@@ -48,6 +49,17 @@ class UserTest {
 	void test() {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
+	}
+
+	@Test
+	@DisplayName("testing user mappings")
+	void testing_user_mappings() {
+		assertNotNull(user);
+		assertEquals("Nathan", user.getFirstName());
+		assertEquals("Hafley", user.getLastName());
+		assertEquals("nhafley@interDistillery.com", user.getEmail());
+		assertEquals("nhadmin", user.getUsername());
+		assertEquals("admin", user.getPassword());
 	}
 
 }
