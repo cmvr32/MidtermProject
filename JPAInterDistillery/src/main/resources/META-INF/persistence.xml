@@ -8,6 +8,7 @@
 <!-- Begin Entities -->
 
 <class>com.skilldistillery.interdistillery.entities.User</class>
+<class>com.skilldistillery.interdistillery.entities.Career</class>
 
 
 

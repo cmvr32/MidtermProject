@@ -23,11 +23,13 @@ public class Career {
 	@Column(name = "high_salary")
 	private double highSalary;
 	@Column(name = "career_category_id")
-	private int careerCategoryId;
+	private Integer careerCategoryId;
 
 	public Career() {
 		super();
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -37,51 +39,75 @@ public class Career {
 		this.id = id;
 	}
 
+
+
 	public String getCareerTitle() {
 		return careerTitle;
 	}
+
+
 
 	public void setCareerTitle(String careerTitle) {
 		this.careerTitle = careerTitle;
 	}
 
+
+
 	public String getImageUrl() {
 		return imageUrl;
 	}
+
+
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
 
+
+
 	public double getLowSalary() {
 		return lowSalary;
 	}
+
+
 
 	public void setLowSalary(double lowSalary) {
 		this.lowSalary = lowSalary;
 	}
 
+
+
 	public double getHighSalary() {
 		return highSalary;
 	}
+
+
 
 	public void setHighSalary(double highSalary) {
 		this.highSalary = highSalary;
 	}
 
-	public int getCareerCategoryId() {
+
+
+	public Integer getCareerCategoryId() {
 		return careerCategoryId;
 	}
 
-	public void setCareerCategoryId(int careerCategoryId) {
+
+
+	public void setCareerCategoryId(Integer careerCategoryId) {
 		this.careerCategoryId = careerCategoryId;
 	}
+
+
 
 	@Override
 	public String toString() {
 		return "Career [id=" + id + ", careerTitle=" + careerTitle + ", imageUrl=" + imageUrl + ", lowSalary="
 				+ lowSalary + ", highSalary=" + highSalary + ", careerCategoryId=" + careerCategoryId + "]";
 	}
+
+
 
 	@Override
 	public int hashCode() {
