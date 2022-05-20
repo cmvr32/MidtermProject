@@ -556,7 +556,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interdistillerydb`;
-INSERT INTO `career_category` (`id`, `name`, `description`) VALUES (1, 'Software Devlopment', 'Software development refers to a set of computer science activities dedicated to the process of creating, designing, deploying and supporting software. Software itself is the set of instructions or programs that tell a computer what to do. It is independent of hardware and makes computers programmable.');
+INSERT INTO `career_category` (`id`, `name`, `description`) VALUES (1, 'Software Development', 'Software development refers to a set of computer science activities dedicated to the process of creating, designing, deploying and supporting software. Software itself is the set of instructions or programs that tell a computer what to do. It is independent of hardware and makes computers programmable.');
 INSERT INTO `career_category` (`id`, `name`, `description`) VALUES (2, 'Database Adminstration ', 'Database administrators use specialized software to store and organize data. The role may include capacity planning, installation, configuration, database design, migration, performance monitoring, security, troubleshooting, as well as backup and data recovery.');
 INSERT INTO `career_category` (`id`, `name`, `description`) VALUES (3, 'Accounting', 'Accounting is the process of recording financial transactions pertaining to a business. The accounting process includes summarizing, analyzing, and reporting these transactions to oversight agencies, regulators, and tax collection entities.');
 
