@@ -1,7 +1,7 @@
 package com.skilldistillery.interdistillery.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -43,8 +43,8 @@ class MockInterviewerTest {
 	@Test
 	void test() {
 		assertNotNull(mockInterviewer);
-		assertTrue();
-
+		assertEquals(1, mockInterviewer.getMockInterviewId());
+		assertEquals(2, mockInterviewer.getUserId());
 	}
 
 }

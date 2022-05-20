@@ -39,7 +39,7 @@ class SkillTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
-		
+
 		em.close();
 		skill = null;
 	}
@@ -49,7 +49,7 @@ class SkillTest {
 	void test_basic_mappings() {
 		assertNotNull(skill);
 		assertEquals("Java", skill.getName());
-		
+
 	}
 
 }
