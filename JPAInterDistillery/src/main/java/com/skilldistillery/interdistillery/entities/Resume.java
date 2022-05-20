@@ -24,16 +24,16 @@ public class Resume {
 
 	// TODO DOES THIS NEED TO BE A BOOLEAN OR A INT
 	@Column(name = "degreed")
-	private int degree;
+	private Integer degree;
 
 	@Column(name = "user_id")
-	private int userId;
+	private Integer userId;
 
 	@Column(name = "job_listing_id")
-	private int jobListingId;
+	private Integer jobListingId;
 
 	@Column(name = "education_level_id")
-	private int educationLevelId;
+	private Integer educationLevelId;
 
 	public Resume() {
 	}

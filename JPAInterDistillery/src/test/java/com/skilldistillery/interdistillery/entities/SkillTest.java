@@ -9,18 +9,16 @@ import javax.persistence.Persistence;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class SkillTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Skill skill;
 
-	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 
 		emf = Persistence.createEntityManagerFactory("JPAInterDistillery");
@@ -36,30 +34,22 @@ class UserTest {
 	void setUp() throws Exception {
 
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		skill = em.find(Skill.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		
 		em.close();
-		user = null;
+		skill = null;
 	}
 
 	@Test
-	void test() {
-		assertNotNull(user);
-	}
-
-	@Test
-	@DisplayName("testing user mappings")
-	void testing_user_mappings() {
-		assertNotNull(user);
-		assertEquals("Nathan", user.getFirstName());
-		assertEquals("Hafley", user.getLastName());
-		assertEquals("nhafley@interDistillery.com", user.getEmail());
-		assertEquals("nhadmin", user.getUsername());
-		assertEquals("admin", user.getPassword());
+	@DisplayName("testing skill mappings")
+	void test_basic_mappings() {
+		assertNotNull(skill);
+		assertEquals("Java", skill.getName());
+		
 	}
 
 }
