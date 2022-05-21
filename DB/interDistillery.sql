@@ -597,6 +597,26 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `study_guide`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `interdistillerydb`;
+INSERT INTO `study_guide` (`id`, `topic`, `learning_objectives`, `content`, `review`, `career_id`, `resource_url`, `user_id`, `image_url`) VALUES (1, 'Java Study Guide', 'Learn Java', 'Everything about java', 'Java Review', 1, NULL, 1, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `user_has_study_guide`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `interdistillerydb`;
+INSERT INTO `user_has_study_guide` (`user_id`, `study_guide_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `mock_interviewer`
 -- -----------------------------------------------------
 START TRANSACTION;

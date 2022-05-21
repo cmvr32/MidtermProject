@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Resume {
@@ -26,8 +28,13 @@ public class Resume {
 	@Column(name = "degreed")
 	private Integer degree;
 
-	@Column(name = "user_id")
-	private Integer userId;
+//	@Column(name = "user_id")
+//	private int userId;
+
+	// many to one user/resume
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	@Column(name = "job_listing_id")
 	private Integer jobListingId;
@@ -78,12 +85,20 @@ public class Resume {
 		this.degree = degree;
 	}
 
-	public Integer getUserId() {
-		return userId;
+//	public int getUserId() {
+//		return userId;
+//	}
+//
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Integer getJobListingId() {
@@ -105,7 +120,7 @@ public class Resume {
 	@Override
 	public String toString() {
 		return "Resume [id=" + id + ", contactInfo=" + contactInfo + ", introduction=" + introduction + ", experience="
-				+ experience + ", degree=" + degree + ", userId=" + userId + ", jobListingId=" + jobListingId
+				+ experience + ", degree=" + degree + ", jobListingId=" + jobListingId
 				+ ", educationLevelId=" + educationLevelId + "]";
 	}
 
