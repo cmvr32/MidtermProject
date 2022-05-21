@@ -18,6 +18,7 @@ class MockInterviewerTest {
 	private EntityManager em;
 	private MockInterviewer mockInterviewer;
 
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPAInterDistillery");
