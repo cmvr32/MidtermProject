@@ -9,7 +9,7 @@ import com.skilldistillery.interdistillery.entities.JobSkill;
 public class JobSkillClient {
 	public static void main(String[] args) {
 
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VideoStore");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("InterDistillery");
 
 		EntityManager em = emf.createEntityManager();
 
