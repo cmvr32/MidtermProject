@@ -16,8 +16,10 @@ public class EducationLevel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@Column(name = "education_level")
 	private String educationLevel;
+	
 	private String description;
 
 	public EducationLevel() {
