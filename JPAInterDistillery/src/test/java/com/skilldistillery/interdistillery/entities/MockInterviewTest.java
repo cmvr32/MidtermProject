@@ -9,46 +9,44 @@ import javax.persistence.Persistence;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class SkillTest {
-
+class MockInterviewTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Skill skill;
+	private MockInterview mockInterview;
 
+	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-
 		emf = Persistence.createEntityManagerFactory("JPAInterDistillery");
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-
 		emf.close();
 	}
 
 	@BeforeEach
 	void setUp() throws Exception {
-
 		em = emf.createEntityManager();
-		skill = em.find(Skill.class, 1);
+		mockInterview = em.find(MockInterview.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-
 		em.close();
-		skill = null;
+		mockInterview = null;
 	}
 
 	@Test
-	@DisplayName("testing skill mappings")
-	void test_basic_mappings() {
-		assertNotNull(skill);
-		assertEquals("Java", skill.getName());
+	@DisplayName("testing mock interview")
+	void test() {
+		assertNotNull(mockInterview);
+		assertEquals(1, mockInterview.getId());
+		assertEquals("java", mockInterview.getTopic());
 
 	}
 
