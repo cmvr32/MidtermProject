@@ -1,5 +1,7 @@
 package com.skilldistillery.interdistillery.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -28,17 +30,55 @@ public class Career {
 
 	@Column(name = "high_salary")
 	private double highSalary;
-
 	@ManyToOne
 	@JoinColumn(name = "career_category_id")
 	private CareerCategory careerCategory;
 
-	// TODO: one to many study guide/ career id
-//	@OneToMany(mappedBy = "career")
-//	private List<StudyGuide> studyGuides;
-//
-//	@OneToMany(mappedBy = "career")
-//	private List<Project> projects;
+	// one to many career/studyguide
+	@OneToMany(mappedBy = "career")
+	private List<StudyGuide> careerStudyGuides;
+
+	public void addCareerStudyGuides(StudyGuide studyguide) {
+
+		if (careerStudyGuides == null) {
+			careerStudyGuides = new ArrayList<>();
+		}
+
+		if (!careerStudyGuides.contains(studyguide)) {
+			careerStudyGuides.add(studyguide);
+			studyguide.setCareer(this);
+		}
+	}
+
+	public void removeCareerStudyGuides(StudyGuide studyguide) {
+
+		if (careerStudyGuides != null && careerStudyGuides.contains(studyguide)) {
+			careerStudyGuides.remove(studyguide);
+
+		}
+	}
+
+	public List<StudyGuide> getCareerStudyGuides() {
+		return careerStudyGuides;
+	}
+
+	public void setCareerStudyGuides(List<StudyGuide> careerStudyGuides) {
+		this.careerStudyGuides = careerStudyGuides;
+	}
+
+	// many to one career/career_category
+		@ManyToOne
+		@JoinColumn(name = "career_category_id")
+		private CareerCategory careerCatergory;
+
+	
+	public CareerCategory getCareerCatergory() {
+			return careerCatergory;
+		}
+
+		public void setCareerCatergory(CareerCategory careerCatergory) {
+			this.careerCatergory = careerCatergory;
+		}
 
 	public Career() {
 		super();
@@ -91,6 +131,7 @@ public class Career {
 	public void setCareerCategory(CareerCategory careerCategory) {
 		this.careerCategory = careerCategory;
 	}
+
 
 	@Override
 	public String toString() {

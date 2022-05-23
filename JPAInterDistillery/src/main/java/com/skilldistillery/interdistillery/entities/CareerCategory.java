@@ -53,6 +53,28 @@ public class CareerCategory {
 		this.description = description;
 	}
 
+	@OneToMany(mappedBy = "careerCatergory")
+	private List<Career> careers;
+
+	public void addCareer(Career career) {
+
+		if (careers == null) {
+			careers = new ArrayList<>();
+		}
+
+		if (!careers.contains(career)) {
+			careers.add(career);
+			career.setCareerCatergory(this);
+		}
+	}
+
+	public void removeCareer(Career career) {
+
+		if (careers != null && careers.contains(career)) {
+			careers.remove(career);
+		}
+	}
+
 	public List<Career> getCareers() {
 		return careers;
 	}

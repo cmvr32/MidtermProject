@@ -1,5 +1,7 @@
 package com.skilldistillery.interdistillery.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Resume {
@@ -26,14 +31,73 @@ public class Resume {
 	@Column(name = "degreed")
 	private Integer degree;
 
-	@Column(name = "user_id")
-	private Integer userId;
+//	@Column(name = "user_id")
+//	private int userId;
 
-	@Column(name = "job_listing_id")
-	private Integer jobListingId;
+	// many to one user/resume
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
-	@Column(name = "education_level_id")
-	private Integer educationLevelId;
+	@ManyToOne
+	@JoinColumn(name = "job_listing_id")
+	private JobListing jobListing;
+
+	public JobListing getJobListing() {
+		return jobListing;
+	}
+
+	public void setJobListing(JobListing jobListing) {
+		this.jobListing = jobListing;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "education_level_id")
+	private EducationLevel resumeEducationLevel;
+
+	public EducationLevel getResumeEducationLevel() {
+		return resumeEducationLevel;
+	}
+
+	public void setResumeEducationLevel(EducationLevel resumeEducationLevel) {
+		this.resumeEducationLevel = resumeEducationLevel;
+	}
+
+	// TODO JOBSKILL-RESUME
+	// ONE TO MANY RESUME/JobSkill
+	// JOIN TABLE Job_skill
+	// COMPOSITE ID jobSKillID
+	@OneToMany(mappedBy = "resume")
+	private List<JobSkill> jobSkills;
+
+	public void addJobSkill(JobSkill jobSkill) {
+
+		if (jobSkills == null) {
+			jobSkills = new ArrayList<>();
+		}
+
+		if (!jobSkills.contains(jobSkill)) {
+			jobSkills.add(jobSkill);
+			jobSkill.setResume(this);
+		}
+	}
+
+	public void removeJobSkill(JobSkill jobSkill) {
+
+		jobSkill.setSkill(null);
+		if (jobSkills != null && jobSkills.contains(jobSkill)) {
+			jobSkills.remove(jobSkill);
+
+		}
+	}
+
+	public List<JobSkill> getJobSkills() {
+		return jobSkills;
+	}
+
+	public void setJobSkills(List<JobSkill> jobSkills) {
+		this.jobSkills = jobSkills;
+	}
 
 	public Resume() {
 	}
@@ -78,35 +142,43 @@ public class Resume {
 		this.degree = degree;
 	}
 
-	public Integer getUserId() {
-		return userId;
+//	public int getUserId() {
+//		return userId;
+//	}
+//
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Integer getJobListingId() {
-		return jobListingId;
-	}
+//	public Integer getJobListingId() {
+//		return jobListingId;
+//	}
+//
+//	public void setJobListingId(Integer jobListingId) {
+//		this.jobListingId = jobListingId;
+//	}
 
-	public void setJobListingId(Integer jobListingId) {
-		this.jobListingId = jobListingId;
-	}
-
-	public Integer getEducationLevelId() {
-		return educationLevelId;
-	}
-
-	public void setEducationLevelId(Integer educationLevelId) {
-		this.educationLevelId = educationLevelId;
-	}
+//	public Integer getEducationLevelId() {
+//		return educationLevelId;
+//	}
+//
+//	public void setEducationLevelId(Integer educationLevelId) {
+//		this.educationLevelId = educationLevelId;
+//	}
 
 	@Override
 	public String toString() {
 		return "Resume [id=" + id + ", contactInfo=" + contactInfo + ", introduction=" + introduction + ", experience="
-				+ experience + ", degree=" + degree + ", userId=" + userId + ", jobListingId=" + jobListingId
-				+ ", educationLevelId=" + educationLevelId + "]";
+				+ experience + ", degree=" + degree + ", user=" + user + ", resumeEducationLevel="
+				+ resumeEducationLevel + "]";
 	}
 
 	@Override

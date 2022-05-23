@@ -1,6 +1,8 @@
 package com.skilldistillery.interdistillery.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,11 +15,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CareerCategoryTest {
-
+public class JobListingTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private CareerCategory careerCategory;
+	private JobListing jobListing;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -35,31 +36,31 @@ class CareerCategoryTest {
 	void setUp() throws Exception {
 
 		em = emf.createEntityManager();
-		careerCategory = em.find(CareerCategory.class, 1);
+		jobListing = em.find(JobListing.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		careerCategory = null;
+		jobListing = null;
 	}
 
 	@Test
-	@DisplayName("testing basic careerCategory mapping")
-	void test_basic_career_mappings() {
-		assertNotNull(careerCategory);
-		assertEquals(1, careerCategory.getId());
-		assertEquals("Software Development", careerCategory.getName());
+	@DisplayName("testing basic job lsiting mapping")
+	void test_basic_job_listing_mapping() {
+		assertNotNull(jobListing);
+		assertEquals(1, jobListing.getId());
+		assertEquals("Java Developer", jobListing.getTitle());
 	}
 
 	@Test
-	@DisplayName("testing career category to career one to many mapping")
-	void testing_career_category_to_career_mapping() {
-		System.err.println("testing career catergory to career one to many mapping");
-		assertNotNull(careerCategory);
-		assertNotNull(careerCategory.getCareers());
-		assertTrue(careerCategory.getCareers().size() > 0);
-		System.out.println(careerCategory);
-		System.out.println(careerCategory.getCareers());
+	@DisplayName("testing JobListing to resume many to one")
+	void testing_user_to_joblisting_one_to_many() {
+		System.err.println("testing user to joblisting one to many mapping");
+		assertNotNull(jobListing);
+		System.out.println(jobListing);
+		assertNotNull(jobListing.getResumes());
+		assertTrue(jobListing.getResumes().size() > 0);
+
 	}
 }

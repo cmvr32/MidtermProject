@@ -56,5 +56,15 @@ class CareerTest {
 		assertNotNull(career);
 		assertTrue(career.getCareerCategory().getCareers().size() > 0);
 	}
+	@Test
+	@DisplayName("testing career to studyguide one to many mapping")
+	void testing_user_to_resume_mapping() {
+		System.err.println("testing career to studyguide one to many mapping");
+		assertNotNull(career);
+		assertNotNull(career.getCareerStudyGuides());
+		assertTrue(career.getCareerStudyGuides().size() > 0);
+		System.out.println(career);
+		System.out.println(career.getCareerStudyGuides());
+	}
 
 }

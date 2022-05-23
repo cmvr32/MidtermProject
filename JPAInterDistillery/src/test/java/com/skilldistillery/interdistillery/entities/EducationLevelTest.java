@@ -1,6 +1,8 @@
 package com.skilldistillery.interdistillery.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -44,15 +46,23 @@ class EducationLevelTest {
 		educationLevel = null;
 	}
 
-	
-
 	@Test
-	@DisplayName("testing basic careerCategory mapping")
-	void test() {
+	@DisplayName("testing basic Education Level mapping")
+	void test_basic_education_level_mapping() {
 		assertNotNull(educationLevel);
 		assertEquals(1, educationLevel.getId());
 		assertEquals("Bachelors", educationLevel.getEducationLevel());
 	}
 
+	@Test
+	@DisplayName("testing one to many education level to resume mapping")
+	void testing_one_to_many_education_level_to_resume_mapping() {
+		System.err.println("testing one to many education level to resume mapping");
+		assertNotNull(educationLevel);
+		assertNotNull(educationLevel.getResumes());
+		assertTrue(educationLevel.getResumes().size() > 0);
+		System.out.println(educationLevel);
+		System.out.println(educationLevel.getResumes());
+	}
 
 }

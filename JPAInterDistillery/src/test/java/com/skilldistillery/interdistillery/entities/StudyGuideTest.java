@@ -1,6 +1,7 @@
 package com.skilldistillery.interdistillery.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,11 +14,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CareerCategoryTest {
+class StudyGuideTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private CareerCategory careerCategory;
+	private StudyGuide studyGuide;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -35,31 +36,32 @@ class CareerCategoryTest {
 	void setUp() throws Exception {
 
 		em = emf.createEntityManager();
-		careerCategory = em.find(CareerCategory.class, 1);
+		studyGuide = em.find(StudyGuide.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
+
 		em.close();
-		careerCategory = null;
+		studyGuide = null;
 	}
 
 	@Test
-	@DisplayName("testing basic careerCategory mapping")
-	void test_basic_career_mappings() {
-		assertNotNull(careerCategory);
-		assertEquals(1, careerCategory.getId());
-		assertEquals("Software Development", careerCategory.getName());
+	@DisplayName("testing StudyGuide mappings")
+	void test_basic_mappings() {
+		assertNotNull(studyGuide);
+		assertEquals("Java Study Guide", studyGuide.getTopic());
+
 	}
 
 	@Test
-	@DisplayName("testing career category to career one to many mapping")
-	void testing_career_category_to_career_mapping() {
-		System.err.println("testing career catergory to career one to many mapping");
-		assertNotNull(careerCategory);
-		assertNotNull(careerCategory.getCareers());
-		assertTrue(careerCategory.getCareers().size() > 0);
-		System.out.println(careerCategory);
-		System.out.println(careerCategory.getCareers());
+	@DisplayName("testing studyguide to user many to many mapping")
+	void test_studyguide_to_user_many_to_many_mapping() {
+		System.out.println("testing user to studyguide many to many mapping");
+		assertNotNull(studyGuide);
+		System.out.println(studyGuide);
+		assertNotNull(studyGuide.getUsersWithStudyGuides());
+		System.out.println(studyGuide.getUsersWithStudyGuides());
 	}
+
 }

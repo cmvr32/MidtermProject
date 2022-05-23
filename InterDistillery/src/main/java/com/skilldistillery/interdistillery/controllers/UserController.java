@@ -17,6 +17,7 @@ public class UserController {
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
+		
 		model.addAttribute("DEBUG", userDao.findById(1)); // DEBUG REMOVE LATER
 		return "homePage";
 	}

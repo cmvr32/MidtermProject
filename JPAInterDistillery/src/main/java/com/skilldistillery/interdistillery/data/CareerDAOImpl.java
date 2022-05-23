@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 import com.skilldistillery.interdistillery.entities.Career;
 
-public class CareerDaoImpl implements CareerDAO {
+public class CareerDAOImpl implements CareerDAO {
 
 	@Override
 	public Career createCareer(Career career) {

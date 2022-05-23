@@ -9,4 +9,6 @@ public interface ResumeDAO {
 	public User updateResume(int id, Resume resume);
 
 	public boolean destroyResume(int id);
+
+	boolean skillComposite(int skillId, int resumeId);
 }

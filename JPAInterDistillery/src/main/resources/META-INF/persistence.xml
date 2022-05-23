@@ -12,7 +12,15 @@
 		<class>com.skilldistillery.interdistillery.entities.User</class>
 		<class>com.skilldistillery.interdistillery.entities.Career</class>
 		<class>com.skilldistillery.interdistillery.entities.Skill</class>
+		<class>com.skilldistillery.interdistillery.entities.CareerCategory</class>
+		<class>com.skilldistillery.interdistillery.entities.EducationLevel</class>
+		<class>com.skilldistillery.interdistillery.entities.JobSkill</class>
+		<class>com.skilldistillery.interdistillery.entities.MockInterview</class>
+		<class>com.skilldistillery.interdistillery.entities.MockInterviewer</class>
 		<class>com.skilldistillery.interdistillery.entities.Resume</class>
+		<class>com.skilldistillery.interdistillery.entities.StudyGuide</class>
+		<class>com.skilldistillery.interdistillery.entites.JobListing</class>
+		<class>com.skilldistillery.interdistillery.entities.CompositeIdJobSkill</class>
 
 
 		<!-- End Entities -->
