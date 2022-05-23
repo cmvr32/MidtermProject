@@ -14,10 +14,10 @@ import com.skilldistillery.interdistillery.entities.Career;
 import com.skilldistillery.interdistillery.entities.MockInterview;
 
 public class MockInterviewController {
-//
-//	@Autowired
-//	private MockInterviewDAO mockInterviewDao;
-//
+
+	@Autowired
+	private MockInterviewDAO mockInterviewDao;
+
 //	@RequestMapping(path = { "/", "home.do" })
 //	public String home(Model model) {
 //		model.addAttribute("DEBUG", mockInterviewDao.findById(1)); // DEBUG REMOVE LATER
@@ -39,7 +39,7 @@ public class MockInterviewController {
 //		return "";
 //	}
 //
-//	@RequestMapping(path = ".do", method = RequestMethod.POST)
+//	@RequestMapping(path = "CreateRsume.do", method = RequestMethod.POST)
 //	public String addInterview(RedirectAttributes redir, MockInterview interviews) {
 //		interviews = mockInterviewDao.addNewCareer(interviews);
 //		boolean addInterviewFlag = true;
@@ -57,7 +57,7 @@ public class MockInterviewController {
 //	public String addNewInterview() {
 //		return "";
 //	}
-//
+
 //	@RequestMapping(path = ".do", method = RequestMethod.POST)
 //	public String deleteInterview(RedirectAttributes redir, int id) {
 //		boolean containsFlag = mockInterviewDao.deleteInterview(id);

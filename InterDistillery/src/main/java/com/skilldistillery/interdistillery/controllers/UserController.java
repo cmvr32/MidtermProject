@@ -34,17 +34,17 @@ public class UserController {
 			Model model) {
 		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
 		model.addAttribute("user", user);
-		return "";
+		return "login/account";
 	}
 
 	@RequestMapping("getUser.do")
 	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model) {
 		User user = userDao.findByUserNameAndPassword(username, password);
 		model.addAttribute("user", user);
-		return "";
+		return "login/account";
 	}
 
-	@RequestMapping(path = ".do", method = RequestMethod.POST)
+	@RequestMapping(path = "CreateUser.do", method = RequestMethod.POST)
 	public String AddNewUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
 			@RequestParam String userName, @RequestParam String password, RedirectAttributes redir, User user) {
 		User newUser = new User(firstName, lastName, email, userName, password);
@@ -55,14 +55,24 @@ public class UserController {
 		return "redirect:.do";
 	}
 
-	@RequestMapping(path = ".do", method = RequestMethod.GET)
+	@RequestMapping(path = "CreateUser.do", method = RequestMethod.GET)
 	public String addUserGetProcess(User user) {
+		return "account";
+	}
+
+	@RequestMapping(path = "CreateUser.do")
+	public String addNewUser() {
 		return "";
 	}
 
-	@RequestMapping(path = ".do")
-	public String addNewUser() {
-		return "";
+	@RequestMapping("directToLogin.do")
+	public String directToLogin() {
+		return "Login/login";
+	}
+
+	@RequestMapping("directToCreateUser.do")
+	public String directToCreateUser() {
+		return "Login/CreateUser";
 	}
 
 //	@RequestMapping(path = ".do", method = RequestMethod.POST)
