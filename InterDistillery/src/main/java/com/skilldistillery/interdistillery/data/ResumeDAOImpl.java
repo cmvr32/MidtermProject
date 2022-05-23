@@ -31,8 +31,26 @@ public class ResumeDAOImpl implements ResumeDAO {
 	}
 
 	@Override
-	public Resume updateResume() {
-		// TODO Auto-generated method stub
+	public Resume updateResume(Resume resume) {
+		
+
+//			Resume resumeToUpdate = em.find(resume.class, resume.getId());
+//			if (resumeToUpdate != null) {
+//				resumeToUpdate.setContactInfo(resume.getContactInfo());
+//				resumeToUpdate.setIntroduction(resume.getIntroduction());
+//				resumeToUpdate.setExperince(resume.getExperince());
+//				resumeToUpdate.setLocation(resume.getLocation());
+//				resumeToUpdate.setAircraftTailNumber(resume.getAircraftTailNumber());
+//				resumeToUpdate.setPilotInCommandName(resume.getPilotInCommandName());
+//				resumeToUpdate.setPilotName(resume.getPilotName());
+//				resumeToUpdate.setCrewCheifName(resume.getCrewCheifName());
+//				resumeToUpdate.setMedicName(resume.getMedicName());
+//				resumeToUpdate.setMissionEnviroment(resume.getMissionEnviroment());
+//				resumeToUpdate.setMissionType(resume.getMissionType());
+//				resumeToUpdate.setSpecialEquipment(resume.getSpecialEquipment());
+//
+//			}
+		
 		return null;
 	}
 

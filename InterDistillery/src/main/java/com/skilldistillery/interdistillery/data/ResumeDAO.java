@@ -20,7 +20,7 @@ public interface ResumeDAO {
 	public Resume createResume(Resume newResume);
 
 	//update
-	public Resume updateResume();
+	public Resume updateResume(Resume resume);
 	
 	//delete
 	public Boolean deleteResume(int id);

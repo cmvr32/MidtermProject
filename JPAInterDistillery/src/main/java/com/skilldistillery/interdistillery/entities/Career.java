@@ -70,15 +70,15 @@ public class Career {
 	// many to one career/career_category
 		@ManyToOne
 		@JoinColumn(name = "career_category_id")
-		private CareerCategory careerCatergory;
+		private CareerCategory careerCategory;
 
 	
-	public CareerCategory getCareerCatergory() {
-			return careerCatergory;
+	public CareerCategory getCareerCategory() {
+			return careerCategory;
 		}
 
-		public void setCareerCatergory(CareerCategory careerCatergory) {
-			this.careerCatergory = careerCatergory;
+		public void setCareerCategory(CareerCategory careerCategory) {
+			this.careerCategory = careerCategory;
 		}
 
 	public Career() {

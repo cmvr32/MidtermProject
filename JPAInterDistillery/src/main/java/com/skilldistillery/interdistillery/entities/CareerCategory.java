@@ -53,7 +53,7 @@ public class CareerCategory {
 
 	// -------------------------------------------------------------------
 	// one to many career_category/career
-	@OneToMany(mappedBy = "careerCatergory")
+	@OneToMany(mappedBy = "careerCategory")
 	private List<Career> careers;
 
 	public void addCareer(Career career) {
@@ -64,7 +64,7 @@ public class CareerCategory {
 
 		if (!careers.contains(career)) {
 			careers.add(career);
-			career.setCareerCatergory(this);
+			career.setCareerCategory(this);
 		}
 	}
 
