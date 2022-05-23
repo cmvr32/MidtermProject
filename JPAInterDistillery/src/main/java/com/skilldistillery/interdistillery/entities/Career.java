@@ -68,18 +68,6 @@ public class Career {
 		this.careerStudyGuides = careerStudyGuides;
 	}
 
-	// many to one career/career_category
-	@ManyToOne
-	@JoinColumn(name = "career_category_id")
-	private CareerCategory careerCatergory;
-
-	public CareerCategory getCareerCatergory() {
-		return careerCatergory;
-	}
-
-	public void setCareerCatergory(CareerCategory careerCatergory) {
-		this.careerCatergory = careerCatergory;
-	}
 
 	public Career() {
 		super();

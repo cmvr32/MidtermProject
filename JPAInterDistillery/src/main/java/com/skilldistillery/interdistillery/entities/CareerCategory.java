@@ -62,7 +62,7 @@ public class CareerCategory {
 
 		if (!careers.contains(career)) {
 			careers.add(career);
-			career.setCareerCatergory(this);
+			career.setCareerCategory(this);
 		}
 	}
 
