@@ -167,42 +167,23 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	// delete user
-	public Boolean deleteUser(int id, String firstName, String lastName, String userName, String password) {
+	public Boolean deleteUser(int id) {
 
 		boolean successfullyDeleted = false;
 		User deleteUser = em.find(User.class, id);
-		boolean accountInfoVerification = false;
 
 		if (deleteUser != null) {
 			System.err.println("deleteUser not null");
 			System.err.println("Verifying fname, lname, username, and password...");
 
-			accountInfoVerification = (deleteUser.getFirstName() == firstName) && (deleteUser.getLastName() == lastName)
-					&& (deleteUser.getUserName() == userName) && (deleteUser.getPassword() == password);
-
-			if (accountInfoVerification == true) {
-				System.err.println("Delete User ID: " + id);
 
 				em.remove(deleteUser);
 
 				successfullyDeleted = !em.contains(deleteUser);
 
 				System.err.println("Character Deleted ID: " + id);
-
-				// else(){
-				System.err.println("Deletion unsuccesful for User ID " + id);
-				System.err.println("Incorrect account infromation for Account" + id);
-
-			} else if (accountInfoVerification == false) {
-				System.err.println("Could not verify account user information for account Id: " + id);
-				System.err.println("First Name, last name, user name, and password");
-			}
-		} else if (deleteUser == null) {
-
-			System.err.println("Deletion unsuccesful for User ID " + id);
-			System.err.println("Could not find acccount with User ID " + id);
 		}
-
+			
 		em.close();
 		return successfullyDeleted;
 

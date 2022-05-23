@@ -16,7 +16,7 @@ public interface UserDAO {
 
 	// read
 	// user can find their account with name and email
-	public User findUserAccountByNameAndEmail(String firstName, String LastName, String Email);
+	public User findUserAccountByNameAndEmail(String firstName, String lastName, String email);
 
 	// read
 	// log into user account
@@ -52,7 +52,7 @@ public interface UserDAO {
 	// update user as admin
 	public User updateUserAsAdmin(User user);
 
-	// delete
-	public Boolean deleteUser(int userId, String firstName, String lastName, String userName, String password);
+	
+	public Boolean deleteUser(int id);
 
 }

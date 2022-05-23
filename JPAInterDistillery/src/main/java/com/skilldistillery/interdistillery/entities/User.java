@@ -56,16 +56,24 @@ public class User {
 	}
 
 	// create new user constructor
-	public User(String firstName, String lastName, String email, String userName, String password,
-			List<StudyGuide> studyguides, List<JobListing> jobListings) {
+	public User(String firstName, String lastName, String email, String userName, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.userName = userName;
 		this.password = password;
-		this.studyGuidesThatThisUserHas = studyguides;
-		this.jobListings = jobListings;
+	}
+	
+
+	public User(String firstName, String lastName, String email, String userName, String password, String role) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
 	}
 
 	// eventually this will be the new user contructor
@@ -135,8 +143,7 @@ public class User {
 		this.jobListings = jobListings;
 	}
 
-	
-	//GETTERS AND SETTERS
+	// GETTERS AND SETTERS
 	public int getId() {
 		return id;
 	}
@@ -281,9 +288,7 @@ public class User {
 		this.jobListings = jobListings;
 	}
 
-
-
-	//ENTITY RELATIONSHIP MAPPINGS AND ADD/REMOVE METHODS
+	// ENTITY RELATIONSHIP MAPPINGS AND ADD/REMOVE METHODS
 	// ------------------------------------------------------------------------------------
 	// one to many user/mock interview
 	@OneToMany(mappedBy = "interviewee")
@@ -309,8 +314,6 @@ public class User {
 
 		}
 	}
-
-	
 
 	// ----------------------------------------------------------------------------------
 	// many to many user to mock_interview
@@ -364,7 +367,6 @@ public class User {
 
 		}
 	}
-
 
 	// ----------------------------------------------------------------------------------
 	// many to many user to studyguide
@@ -425,9 +427,6 @@ public class User {
 	public void setStudyGuides(List<StudyGuide> studyguides) {
 		this.studyGuidesThatThisUserHas = studyguides;
 	}
-	
-
-	
 
 	// ------------------------------------------------------------------------------------
 
@@ -479,7 +478,5 @@ public class User {
 		User other = (User) obj;
 		return id == other.id;
 	}
-	
-	
 
 }
