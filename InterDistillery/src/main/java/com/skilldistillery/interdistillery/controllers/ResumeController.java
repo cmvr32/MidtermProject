@@ -15,15 +15,20 @@ import com.skilldistillery.interdistillery.entities.Resume;
 
 public class ResumeController {
 
-//	@Autowired
-//	private ResumeDAO resumeDao;
-//
-//	@RequestMapping(path = { "/", "home.do" })
-//	public String home(Model model) {
-//		model.addAttribute("DEBUG", resumeDao.findResumeById(1)); // DEBUG REMOVE LATER
-//		return "homePage";
-//	}
-//
+	@Autowired
+	private ResumeDAO resumeDao;
+
+	@RequestMapping(path = { "/", "home.do" })
+	public String home(Model model) {
+		model.addAttribute("DEBUG", resumeDao.findResumeById(1)); // DEBUG REMOVE LATER
+		return "homePage";
+	}
+
+	@RequestMapping("directToAddResume.do")
+	public String directToAddResume() {
+		return "resume/CreateResume";
+	}
+
 //	@RequestMapping(path = ".do", method = RequestMethod.GET)
 //	public String singleResume(int id, Model model) {
 //		List<Resume> resumes = new ArrayList<>();
