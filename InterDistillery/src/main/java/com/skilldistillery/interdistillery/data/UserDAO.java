@@ -36,7 +36,7 @@ public interface UserDAO {
 
 	// read
 	// find user mock interview
-	public User userFindMockInterview();
+	public List<User> userFindMockInterview(User user);
 
 	// read
 	// find mock interviewer
@@ -54,5 +54,6 @@ public interface UserDAO {
 
 	
 	public Boolean deleteUser(int id);
+
 
 }
