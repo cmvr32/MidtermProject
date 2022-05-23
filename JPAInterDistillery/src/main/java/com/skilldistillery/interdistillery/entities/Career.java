@@ -69,6 +69,17 @@ public class Career {
 	}
 
 
+	// ------------------------------------------------------------------------------------
+
+	
+	public CareerCategory getCareerCategory() {
+			return careerCategory;
+		}
+
+		public void setCareerCategory(CareerCategory careerCategory) {
+			this.careerCategory = careerCategory;
+		}
+
 	public Career() {
 		super();
 	}
@@ -113,13 +124,6 @@ public class Career {
 		this.highSalary = highSalary;
 	}
 
-	public CareerCategory getCareerCategory() {
-		return careerCategory;
-	}
-
-	public void setCareerCategory(CareerCategory careerCategory) {
-		this.careerCategory = careerCategory;
-	}
 
 	@Override
 	public int hashCode() {
