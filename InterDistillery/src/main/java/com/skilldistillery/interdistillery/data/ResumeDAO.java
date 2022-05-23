@@ -19,10 +19,6 @@ public interface ResumeDAO {
 	
 	// read
 	public Resume findByUserIdAndResumeId(int userId, int resumeId);
-
-	//read
-	//find all resumes for user
-	public Resume findAllResumesForUser(int userId);
 	
 	//read
 	//find resume joblisting
@@ -34,7 +30,7 @@ public interface ResumeDAO {
 	
 	//read
 	//find resumeJobSkills
-	public Resume findResumeJobSkills(Resume resume);
+	public List<Resume> findResumeJobSkills(Resume resume);
 	
 	
 	// create
@@ -46,6 +42,8 @@ public interface ResumeDAO {
 
 	// delete
 	public Boolean deleteResume(int resumeId);
-
+	
+	//TODO ADD RESUME TO USER
+	//TODO ADD RESUME TO JOBLISTING
 	
 }

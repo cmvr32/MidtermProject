@@ -14,12 +14,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "job_listing")
 public class JobListing {
 
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String title;
@@ -41,8 +43,8 @@ public class JobListing {
 	@Column(name = "job_posting_url")
 	private String jobPostUrl;
 
-//TODO MAKE A TIME
 	@Column(name = "job_post_date")
+	@CreationTimestamp
 	private String jobPostDate;
 
 	@Column(name = "pay_scale_type")
@@ -184,8 +186,6 @@ public class JobListing {
 	public void setResumes(List<Resume> resumes) {
 		this.resumes = resumes;
 	}
-	
-	
 
 	@Override
 	public String toString() {
