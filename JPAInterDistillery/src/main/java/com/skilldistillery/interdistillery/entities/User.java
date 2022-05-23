@@ -64,7 +64,7 @@ public class User {
 		this.email = email;
 		this.userName = userName;
 		this.password = password;
-		this.studyguides = studyguides;
+		this.studyGuidesThatThisUserHas = studyguides;
 		this.jobListings = jobListings;
 	}
 
@@ -104,7 +104,7 @@ public class User {
 		this.mockInterviewAppointments = mockInterviewAppointments;
 		this.userResumes = userResumes;
 		this.userStudyGuides = userStudyGuides;
-		this.studyguides = studyguides;
+		this.studyGuidesThatThisUserHas = studyguides;
 		this.jobListings = jobListings;
 	}
 
@@ -131,234 +131,12 @@ public class User {
 		this.mockInterviewAppointments = mockInterviewAppointments;
 		this.userResumes = userResumes;
 		this.userStudyGuides = userStudyGuides;
-		this.studyguides = studyguides;
+		this.studyGuidesThatThisUserHas = studyguides;
 		this.jobListings = jobListings;
 	}
 
-	// ------------------------------------------------------------------------------------
-	// one to many user/mock interview
-	@OneToMany(mappedBy = "interviewee")
-	private List<MockInterview> userMockInterviews;
-
-	public void addMockInterview(MockInterview mockInterview) {
-
-		if (userMockInterviews == null) {
-			userMockInterviews = new ArrayList<>();
-		}
-
-		if (!userMockInterviews.contains(mockInterview)) {
-			userMockInterviews.add(mockInterview);
-			mockInterview.setInterviewee(this);
-		}
-	}
-
-	public void removeMockInterview(MockInterview mockInterview) {
-
-		mockInterview.setInterviewee(null);
-		if (userMockInterviews != null && userMockInterviews.contains(mockInterview)) {
-			userMockInterviews.remove(mockInterview);
-
-		}
-	}
-
-	public List<MockInterview> getUserMockInterviews() {
-		return userMockInterviews;
-	}
-
-	public void setUserMockInterviews(List<MockInterview> userMockInterviews) {
-		this.userMockInterviews = userMockInterviews;
-	}
-
-	// ----------------------------------------------------------------------------------
-	// many to many user to mock_interview
-	// join table mock_interviewer
-	@ManyToMany
-	@JoinTable(name = "mock_interviewer", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "mock_interview_id"))
-	private List<MockInterview> mockInterviewAppointments;
-
-	public void addMockInterviewAppointments(MockInterview mockInterviewAppointment) {
-
-		if (mockInterviewAppointments == null) {
-			mockInterviewAppointments = new ArrayList<>();
-		}
-
-		if (!mockInterviewAppointments.contains(mockInterviewAppointment)) {
-			mockInterviewAppointments.add(mockInterviewAppointment);
-			mockInterviewAppointment.addUserInterview(this);
-		}
-	}
-
-	public void removeMockInterviewAppointments(MockInterview mockInterviewAppointment) {
-
-		if (mockInterviewAppointments != null && mockInterviewAppointments.contains(mockInterviewAppointment)) {
-			mockInterviewAppointments.remove(mockInterviewAppointment);
-			mockInterviewAppointment.removeUserInterview(this);
-		}
-	}
-
-	public List<MockInterview> getMockInterviewAppointments() {
-		return mockInterviewAppointments;
-	}
-
-	public void setMockInterviewAppointments(List<MockInterview> mockInterviewAppointments) {
-		this.mockInterviewAppointments = mockInterviewAppointments;
-	}
-
-	// ------------------------------------------------------------------------------------
-	// one to many user/resume
-	@OneToMany(mappedBy = "user")
-	private List<Resume> userResumes;
-
-	public void addResume(Resume resume) {
-
-		if (userResumes == null) {
-			userResumes = new ArrayList<>();
-		}
-
-		if (!userResumes.contains(resume)) {
-			userResumes.add(resume);
-			resume.setUser(this);
-		}
-	}
-
-	public void removeResume(Resume resume) {
-
-		resume.setUser(null);
-		if (userResumes != null && userResumes.contains(resume)) {
-			userResumes.remove(resume);
-
-		}
-	}
-
-	public List<Resume> getUserResumes() {
-		return userResumes;
-	}
-
-	public void setUserResumes(List<Resume> userResumes) {
-		this.userResumes = userResumes;
-	}
-
-	// ----------------------------------------------------------------------------------
-	// many to many user to studyguide
-	// join table user_has_study_guide
-	@ManyToMany
-	@JoinTable(name = "user_has_study_guide", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "study_guide_id"))
-	private List<StudyGuide> userStudyGuides;
-
-	public void addUserStudyGuides(StudyGuide userStudyGuide) {
-
-		if (userStudyGuides == null) {
-			userStudyGuides = new ArrayList<>();
-			if (!userStudyGuides.contains(userStudyGuide)) {
-				userStudyGuides.add(userStudyGuide);
-				userStudyGuide.addUsersWithStudyGuides(this);
-			}
-		}
-	}
-
-	public void removeUserStudyGuides(StudyGuide userStudyGuide) {
-
-		if (userStudyGuides != null && userStudyGuides.contains(userStudyGuide)) {
-			userStudyGuides.remove(userStudyGuide);
-			userStudyGuide.removeUsersWithStudyGuides(this);
-		}
-	}
-
-	public List<StudyGuide> getUserStudyGuides() {
-		return userStudyGuides;
-	}
-
-	public void setUserStudyGuides(List<StudyGuide> userStudyGuides) {
-		this.userStudyGuides = userStudyGuides;
-	}
-
-	// ------------------------------------------------------------------------------------
-
-	// one to many user/studyguide
-	@OneToMany(mappedBy = "user")
-	private List<StudyGuide> studyguides;
-
-	public void addStudyGuide(StudyGuide studyguide) {
-
-		if (studyguides == null) {
-			studyguides = new ArrayList<>();
-		}
-
-		if (!studyguides.contains(studyguide)) {
-			studyguides.add(studyguide);
-			studyguide.setUser(this);
-		}
-	}
-
-	public void removeStudyGuide(StudyGuide studyguide) {
-
-		studyguide.setUser(null);
-		if (studyguides != null && studyguides.contains(studyguide)) {
-			studyguides.remove(studyguide);
-		}
-	}
-
-	public List<StudyGuide> getStudyGuides() {
-		return studyguides;
-	}
-
-	public void setStudyGuides(List<StudyGuide> studyguides) {
-		this.studyguides = studyguides;
-	}
 	
-	// TODO find studyguides
-	//where are these from??
-	public List<StudyGuide> getStudyguides() {
-		return studyguides;
-	}
-
-	public void setStudyguides(List<StudyGuide> studyguides) {
-		this.studyguides = studyguides;
-	}
-
-	// ------------------------------------------------------------------------------------
-
-	// many to one user/jobListing
-	@OneToMany(mappedBy = "user")
-	private List<JobListing> jobListings;
-
-	public void addJobListing(JobListing jobListing) {
-
-		if (jobListing == null) {
-			jobListings = new ArrayList<>();
-		}
-
-		if (!jobListings.contains(jobListing)) {
-			jobListings.add(jobListing);
-			jobListing.setUserJob(this);
-		}
-	}
-
-	public void removeJobListing(JobListing jobListing) {
-
-		jobListing.setUserJob(null);
-		if (jobListings != null && jobListings.contains(jobListing)) {
-			jobListings.remove(jobListing);
-		}
-	}
-
-	public List<JobListing> getJobListings() {
-		return jobListings;
-	}
-
-	public void setJobListings(List<JobListing> jobListings) {
-		this.jobListings = jobListings;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	
+	//GETTERS AND SETTERS
 	public int getId() {
 		return id;
 	}
@@ -391,12 +169,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getUsername() {
+	public String getUserName() {
 		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.userName = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -455,6 +233,228 @@ public class User {
 		this.biography = biography;
 	}
 
+	public List<MockInterview> getUserMockInterviews() {
+		return userMockInterviews;
+	}
+
+	public void setUserMockInterviews(List<MockInterview> userMockInterviews) {
+		this.userMockInterviews = userMockInterviews;
+	}
+
+	public List<MockInterview> getMockInterviewAppointments() {
+		return mockInterviewAppointments;
+	}
+
+	public void setMockInterviewAppointments(List<MockInterview> mockInterviewAppointments) {
+		this.mockInterviewAppointments = mockInterviewAppointments;
+	}
+
+	public List<Resume> getUserResumes() {
+		return userResumes;
+	}
+
+	public void setUserResumes(List<Resume> userResumes) {
+		this.userResumes = userResumes;
+	}
+
+	public List<StudyGuide> getUserStudyGuides() {
+		return userStudyGuides;
+	}
+
+	public void setUserStudyGuides(List<StudyGuide> userStudyGuides) {
+		this.userStudyGuides = userStudyGuides;
+	}
+
+	public List<StudyGuide> getStudyGuidesThatThisUserHas() {
+		return studyGuidesThatThisUserHas;
+	}
+
+	public void setStudyGuidesThatThisUserHas(List<StudyGuide> studyGuidesThatThisUserHas) {
+		this.studyGuidesThatThisUserHas = studyGuidesThatThisUserHas;
+	}
+
+	public List<JobListing> getJobListings() {
+		return jobListings;
+	}
+
+	public void setJobListings(List<JobListing> jobListings) {
+		this.jobListings = jobListings;
+	}
+
+
+
+	//ENTITY RELATIONSHIP MAPPINGS AND ADD/REMOVE METHODS
+	// ------------------------------------------------------------------------------------
+	// one to many user/mock interview
+	@OneToMany(mappedBy = "interviewee")
+	private List<MockInterview> userMockInterviews;
+
+	public void addMockInterview(MockInterview mockInterview) {
+
+		if (userMockInterviews == null) {
+			userMockInterviews = new ArrayList<>();
+		}
+
+		if (!userMockInterviews.contains(mockInterview)) {
+			userMockInterviews.add(mockInterview);
+			mockInterview.setInterviewee(this);
+		}
+	}
+
+	public void removeMockInterview(MockInterview mockInterview) {
+
+		mockInterview.setInterviewee(null);
+		if (userMockInterviews != null && userMockInterviews.contains(mockInterview)) {
+			userMockInterviews.remove(mockInterview);
+
+		}
+	}
+
+	
+
+	// ----------------------------------------------------------------------------------
+	// many to many user to mock_interview
+	// join table mock_interviewer
+	@ManyToMany
+	@JoinTable(name = "mock_interviewer", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "mock_interview_id"))
+	private List<MockInterview> mockInterviewAppointments;
+
+	public void addMockInterviewAppointments(MockInterview mockInterviewAppointment) {
+
+		if (mockInterviewAppointments == null) {
+			mockInterviewAppointments = new ArrayList<>();
+		}
+
+		if (!mockInterviewAppointments.contains(mockInterviewAppointment)) {
+			mockInterviewAppointments.add(mockInterviewAppointment);
+			mockInterviewAppointment.addUserInterview(this);
+		}
+	}
+
+	public void removeMockInterviewAppointments(MockInterview mockInterviewAppointment) {
+
+		if (mockInterviewAppointments != null && mockInterviewAppointments.contains(mockInterviewAppointment)) {
+			mockInterviewAppointments.remove(mockInterviewAppointment);
+			mockInterviewAppointment.removeUserInterview(this);
+		}
+	}
+
+	// ------------------------------------------------------------------------------------
+	// one to many user/resume
+	@OneToMany(mappedBy = "user")
+	private List<Resume> userResumes;
+
+	public void addResume(Resume resume) {
+
+		if (userResumes == null) {
+			userResumes = new ArrayList<>();
+		}
+
+		if (!userResumes.contains(resume)) {
+			userResumes.add(resume);
+			resume.setUser(this);
+		}
+	}
+
+	public void removeResume(Resume resume) {
+
+		resume.setUser(null);
+		if (userResumes != null && userResumes.contains(resume)) {
+			userResumes.remove(resume);
+
+		}
+	}
+
+
+	// ----------------------------------------------------------------------------------
+	// many to many user to studyguide
+	// join table user_has_study_guide
+	@ManyToMany
+	@JoinTable(name = "user_has_study_guide", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "study_guide_id"))
+	private List<StudyGuide> userStudyGuides;
+
+	public void addUserStudyGuides(StudyGuide userStudyGuide) {
+
+		if (userStudyGuides == null) {
+			userStudyGuides = new ArrayList<>();
+			if (!userStudyGuides.contains(userStudyGuide)) {
+				userStudyGuides.add(userStudyGuide);
+				userStudyGuide.addUsersWithStudyGuides(this);
+			}
+		}
+	}
+
+	public void removeUserStudyGuides(StudyGuide userStudyGuide) {
+
+		if (userStudyGuides != null && userStudyGuides.contains(userStudyGuide)) {
+			userStudyGuides.remove(userStudyGuide);
+			userStudyGuide.removeUsersWithStudyGuides(this);
+		}
+	}
+
+	// ------------------------------------------------------------------------------------
+
+	// one to many user/studyguide
+	@OneToMany(mappedBy = "user")
+	private List<StudyGuide> studyGuidesThatThisUserHas;
+
+	public void addStudyGuide(StudyGuide studyguide) {
+
+		if (studyGuidesThatThisUserHas == null) {
+			studyGuidesThatThisUserHas = new ArrayList<>();
+		}
+
+		if (!studyGuidesThatThisUserHas.contains(studyguide)) {
+			studyGuidesThatThisUserHas.add(studyguide);
+			studyguide.setUser(this);
+		}
+	}
+
+	public void removeStudyGuide(StudyGuide studyguide) {
+
+		studyguide.setUser(null);
+		if (studyGuidesThatThisUserHas != null && studyGuidesThatThisUserHas.contains(studyguide)) {
+			studyGuidesThatThisUserHas.remove(studyguide);
+		}
+	}
+
+	public List<StudyGuide> getStudyGuides() {
+		return studyGuidesThatThisUserHas;
+	}
+
+	public void setStudyGuides(List<StudyGuide> studyguides) {
+		this.studyGuidesThatThisUserHas = studyguides;
+	}
+	
+
+	
+
+	// ------------------------------------------------------------------------------------
+
+	// many to one user/jobListing
+	@OneToMany(mappedBy = "user")
+	private List<JobListing> jobListings;
+
+	public void addJobListing(JobListing jobListing) {
+
+		if (jobListing == null) {
+			jobListings = new ArrayList<>();
+		}
+
+		if (!jobListings.contains(jobListing)) {
+			jobListings.add(jobListing);
+			jobListing.setUserJob(this);
+		}
+	}
+
+	public void removeJobListing(JobListing jobListing) {
+
+		jobListing.setUserJob(null);
+		if (jobListings != null && jobListings.contains(jobListing)) {
+			jobListings.remove(jobListing);
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
@@ -479,5 +479,7 @@ public class User {
 		User other = (User) obj;
 		return id == other.id;
 	}
+	
+	
 
 }

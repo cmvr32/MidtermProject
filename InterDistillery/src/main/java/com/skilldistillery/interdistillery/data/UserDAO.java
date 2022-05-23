@@ -1,43 +1,58 @@
 package com.skilldistillery.interdistillery.data;
 
+import java.util.List;
+
 import com.skilldistillery.interdistillery.entities.User;
 
 public interface UserDAO {
 
 	// read
-	// find user account
-	User findById(int userId);
+	// find user account with id
+	public User findById(int userId);
 
 	// read
-	// user can find their account
-	User findUserAccountByNameAndEmail(String firstName, String LastName, String Email);
+	// ADMIN list all user accounts
+	public List<User> findAllUsers();
+
+	// read
+	// user can find their account with name and email
+	public User findUserAccountByNameAndEmail(String firstName, String LastName, String Email);
 
 	// read
 	// log into user account
-	User findByUserNameAndPassword(String username, String password);
+	public User findByUserNameAndPassword(String username, String password);
+
+	// read
+	// Find all users resumes
+	public List<User> findAllCurrentUserResumes(User user);
+
+	// read
+	// Find all user study guides
+	public List<User> findAllCurrentUserStudyGuides(User user);
+
+	// read
+	// Find all user job listings*
+	public List <User> findAllCurrentUserJobListings(User user);
+
+	// read
+	// find user mock interview
+	public User userFindMockInterview();
+
+	// read
+	// find mock interviewer
+	public User userFindInterviewer();
 
 	// create
 	// new user
-	User createUser(User user);
+	public User createUser(User user);
 
-	// update
-	// update user Biography
-	User updateUserBiography(String Biography);
+	// update user
+	public User updateUser(User user);
 
-	// update
-	// user first and last name
-	User updateUserfristNameLastName(String fristName, String lastName);
-	
-	//update
-	//update user email
-	User updateUserEmail(int id, String email);
-	
-	//update
-	//update username and password
-	User updateUserNameAndPassword(int id, String username, String password);
+	// update user as admin
+	public User updateUserAsAdmin(User user);
 
 	// delete
-	Boolean deleteUser(int id, String firstName, String lastName, String userName, String password);
-	
+	public Boolean deleteUser(int userId, String firstName, String lastName, String userName, String password);
 
 }
