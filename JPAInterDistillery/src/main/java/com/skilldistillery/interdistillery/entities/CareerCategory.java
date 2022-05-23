@@ -1,11 +1,13 @@
 package com.skilldistillery.interdistillery.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +21,9 @@ public class CareerCategory {
 	private String name;
 
 	private String description;
+
+	@OneToMany(mappedBy = "careerCategory")
+	private List<Career> careers;
 
 	public CareerCategory() {
 		super();
@@ -48,9 +53,18 @@ public class CareerCategory {
 		this.description = description;
 	}
 
+	public List<Career> getCareers() {
+		return careers;
+	}
+
+	public void setCareers(List<Career> careers) {
+		this.careers = careers;
+	}
+
 	@Override
 	public String toString() {
-		return "CareerCategory [id=" + id + ", name=" + name + ", description=" + description + "]";
+		return "CareerCategory [id=" + id + ", name=" + name + ", description=" + description + ", careers=" + careers
+				+ "]";
 	}
 
 	@Override

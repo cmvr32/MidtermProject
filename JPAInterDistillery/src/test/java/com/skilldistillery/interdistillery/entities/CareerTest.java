@@ -14,26 +14,23 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CareerTest {
-	
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private Career career;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-
 		emf = Persistence.createEntityManagerFactory("JPAInterDistillery");
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-
 		emf.close();
 	}
 
 	@BeforeEach
 	void setUp() throws Exception {
-
 		em = emf.createEntityManager();
 		career = em.find(Career.class, 1);
 	}
@@ -50,7 +47,14 @@ class CareerTest {
 		assertNotNull(career);
 		assertEquals(1, career.getId());
 		assertEquals("Java Developer", career.getCareerTitle());
-		
+
+	}
+
+	@Test
+	@DisplayName("testing career to career category mapping")
+	void test2() {
+		assertNotNull(career);
+		assertTrue(career.getCareerCategory().getCareers().size() > 0);
 	}
 
 }
