@@ -11,7 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+<<<<<<< HEAD
 import javax.persistence.OneToMany;
+=======
+>>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
 
 @Entity
 public class Career {
@@ -32,6 +35,7 @@ public class Career {
 	@Column(name = "high_salary")
 	private double highSalary;
 
+<<<<<<< HEAD
 	// ------------------------------------------------------------------------------------
 	// one to many career/studyguide
 	@OneToMany(mappedBy = "career")
@@ -80,6 +84,18 @@ public class Career {
 		public void setCareerCatergory(CareerCategory careerCatergory) {
 			this.careerCatergory = careerCatergory;
 		}
+=======
+	@ManyToOne
+	@JoinColumn(name = "career_category_id")
+	private CareerCategory careerCategory;
+
+	// TODO: one to many study guide/ career id
+//	@OneToMany(mappedBy = "career")
+//	private List<StudyGuide> studyGuides;
+//
+//	@OneToMany(mappedBy = "career")
+//	private List<Project> projects;
+>>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
 
 	public Career() {
 		super();
@@ -125,11 +141,25 @@ public class Career {
 		this.highSalary = highSalary;
 	}
 
+<<<<<<< HEAD
+=======
+	public CareerCategory getCareerCategory() {
+		return careerCategory;
+	}
+
+	public void setCareerCategory(CareerCategory careerCategory) {
+		this.careerCategory = careerCategory;
+	}
+>>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
 
 	@Override
 	public String toString() {
 		return "Career [id=" + id + ", careerTitle=" + careerTitle + ", imageUrl=" + imageUrl + ", lowSalary="
+<<<<<<< HEAD
 				+ lowSalary + ", highSalary=" + highSalary + "]";
+=======
+				+ lowSalary + ", highSalary=" + highSalary + ", careerCategory=" + careerCategory + "]";
+>>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
 	}
 
 	@Override
