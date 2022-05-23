@@ -58,6 +58,11 @@
 	<%-- ${DEBUG} --%>
 
 	<h3>You've GotSkilled now it is time to GetHired!</h3>
+	
+	<form action="directToAddResume.do">
+	<button>Build a Resume!</button>
+</form>
+	
 
 </body>
 </html>
