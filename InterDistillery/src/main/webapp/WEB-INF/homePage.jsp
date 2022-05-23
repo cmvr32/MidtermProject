@@ -18,7 +18,7 @@
 	<button>Login</button>
 	</form>
 	<br>
-	<form action="directToLogin.do">
+	<form action="directToCreateUser.do">
 	<button>Create An Account</button>
 	</form>
 	<br>
