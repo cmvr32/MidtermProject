@@ -8,5 +8,7 @@
 </head>
 <body>
 
+<input type="text" data-role="calendarpicker" value="1972/12/21" data-format="%d %b %Y">
+
 </body>
 </html>
