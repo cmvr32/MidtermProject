@@ -11,13 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import javax.persistence.OneToMany;
-=======
->>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
-=======
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
 
 @Entity
 public class Career {
@@ -37,16 +31,11 @@ public class Career {
 
 	@Column(name = "high_salary")
 	private double highSalary;
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-	// ------------------------------------------------------------------------------------
-=======
 	@ManyToOne
 	@JoinColumn(name = "career_category_id")
 	private CareerCategory careerCategory;
 
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
 	// one to many career/studyguide
 	@OneToMany(mappedBy = "career")
 	private List<StudyGuide> careerStudyGuides;
@@ -80,33 +69,17 @@ public class Career {
 	}
 
 	// many to one career/career_category
-		@ManyToOne
-		@JoinColumn(name = "career_category_id")
-		private CareerCategory careerCatergory;
-
-	
-	public CareerCategory getCareerCatergory() {
-			return careerCatergory;
-		}
-
-		public void setCareerCatergory(CareerCategory careerCatergory) {
-			this.careerCatergory = careerCatergory;
-		}
-<<<<<<< HEAD
-=======
 	@ManyToOne
 	@JoinColumn(name = "career_category_id")
-	private CareerCategory careerCategory;
+	private CareerCategory careerCatergory;
 
-	// TODO: one to many study guide/ career id
-//	@OneToMany(mappedBy = "career")
-//	private List<StudyGuide> studyGuides;
-//
-//	@OneToMany(mappedBy = "career")
-//	private List<Project> projects;
->>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
-=======
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
+	public CareerCategory getCareerCatergory() {
+		return careerCatergory;
+	}
+
+	public void setCareerCatergory(CareerCategory careerCatergory) {
+		this.careerCatergory = careerCatergory;
+	}
 
 	public Career() {
 		super();
@@ -152,36 +125,12 @@ public class Career {
 		this.highSalary = highSalary;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
 	public CareerCategory getCareerCategory() {
 		return careerCategory;
 	}
 
 	public void setCareerCategory(CareerCategory careerCategory) {
 		this.careerCategory = careerCategory;
-	}
-<<<<<<< HEAD
->>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
-=======
-
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
-
-	@Override
-	public String toString() {
-		return "Career [id=" + id + ", careerTitle=" + careerTitle + ", imageUrl=" + imageUrl + ", lowSalary="
-<<<<<<< HEAD
-<<<<<<< HEAD
-				+ lowSalary + ", highSalary=" + highSalary + "]";
-=======
-				+ lowSalary + ", highSalary=" + highSalary + ", careerCategory=" + careerCategory + "]";
->>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
-=======
-				+ lowSalary + ", highSalary=" + highSalary + ", careerCategory=" + careerCategory + "]";
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
 	}
 
 	@Override

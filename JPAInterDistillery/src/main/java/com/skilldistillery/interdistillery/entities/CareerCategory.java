@@ -1,12 +1,6 @@
 package com.skilldistillery.interdistillery.entities;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
-=======
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
 import java.util.List;
 import java.util.Objects;
 
@@ -60,15 +54,6 @@ public class CareerCategory {
 		this.description = description;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	// -------------------------------------------------------------------
-	// one to many career_category/career
-=======
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
-	@OneToMany(mappedBy = "careerCatergory")
-	private List<Career> careers;
-
 	public void addCareer(Career career) {
 
 		if (careers == null) {
@@ -88,11 +73,6 @@ public class CareerCategory {
 		}
 	}
 
-<<<<<<< HEAD
-=======
->>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
-=======
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
 	public List<Career> getCareers() {
 		return careers;
 	}
@@ -101,13 +81,6 @@ public class CareerCategory {
 		this.careers = careers;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//-------------------------------------------------------------------------------
-=======
->>>>>>> 1753deed26fd0fde178860a66dbea5dcd2fbe9a8
-=======
->>>>>>> 3c11bbdbfa6e5b2b71d99e807504f397e77bc126
 	@Override
 	public String toString() {
 		return "CareerCategory [id=" + id + ", name=" + name + ", description=" + description + ", careers=" + careers
