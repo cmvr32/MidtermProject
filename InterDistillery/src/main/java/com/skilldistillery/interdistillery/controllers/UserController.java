@@ -64,7 +64,10 @@ public class UserController {
 	public String addNewUser() {
 		return "";
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 28179eb6f19f52d7c054fbe7dbb8905b48dfdbb5
 
 	@RequestMapping("directToLogin.do")
 	public String directToLogin() {
