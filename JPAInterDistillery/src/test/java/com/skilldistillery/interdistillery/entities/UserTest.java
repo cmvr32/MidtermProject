@@ -90,15 +90,15 @@ class UserTest {
 		System.err.println("testing user to mockInterview many to many mapping");
 		assertNotNull(user);
 		System.out.println(user);
-		assertNotNull(user.getMockInterviewAppointment());
-		System.out.println(user.getMockInterviewAppointment());
+		assertNotNull(user.getMockInterviewAppointments());
+		System.out.println(user.getMockInterviewAppointments());
 
 	}
 
 	@Test
 	@DisplayName("testing user to studyguide many to many mapping")
 	void test_user_to_studyguide_many_to_many_mapping() {
-		System.out.println("testing user to studyguide many to many mapping");
+		System.err.println("testing user to studyguide many to many mapping");
 		assertNotNull(user);
 		System.out.println(user);
 		assertNotNull(user.getUserStudyGuides());
@@ -106,4 +106,26 @@ class UserTest {
 
 	}
 
+	@Test
+	@DisplayName("testing user to studyguide one to many")
+	void testing_user_to_studyguide_one_to_many() {
+		System.err.println("testing user to studyguide one to many mapping");
+		assertNotNull(user);
+		System.out.println(user);
+		assertNotNull(user.getStudyGuides());
+		System.out.println(user.getUserStudyGuides());
+
+	}
+
+	@Test
+	@DisplayName("testing user to jobListing one to many")
+	void testing_user_to_joblisting_one_to_many() {
+		System.err.println("testing user to joblisting one to many mapping");
+		assertNotNull(user);
+		System.out.println(user);
+		assertNotNull(user.getJobListings());
+		System.out.println(user.getUserStudyGuides());
+		assertTrue(user.getJobListings().size()>0);
+
+	}
 }

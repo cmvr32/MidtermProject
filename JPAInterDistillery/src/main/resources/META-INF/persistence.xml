@@ -19,6 +19,8 @@
 		<class>com.skilldistillery.interdistillery.entities.MockInterviewer</class>
 		<class>com.skilldistillery.interdistillery.entities.Resume</class>
 		<class>com.skilldistillery.interdistillery.entities.StudyGuide</class>
+		<class>com.skilldistillery.interdistillery.entites.JobListing</class>
+		<class>com.skilldistillery.interdistillery.entities.CompositeIdJobSkill</class>
 
 
 		<!-- End Entities -->

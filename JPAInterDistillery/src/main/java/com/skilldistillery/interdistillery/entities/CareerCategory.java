@@ -1,11 +1,14 @@
 package com.skilldistillery.interdistillery.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -48,6 +51,39 @@ public class CareerCategory {
 		this.description = description;
 	}
 
+	// -------------------------------------------------------------------
+	// one to many career_category/career
+	@OneToMany(mappedBy = "careerCatergory")
+	private List<Career> careers;
+
+	public void addCareer(Career career) {
+
+		if (careers == null) {
+			careers = new ArrayList<>();
+		}
+
+		if (!careers.contains(career)) {
+			careers.add(career);
+			career.setCareerCatergory(this);
+		}
+	}
+
+	public void removeCareer(Career career) {
+
+		if (careers != null && careers.contains(career)) {
+			careers.remove(career);
+		}
+	}
+
+	public List<Career> getCareers() {
+		return careers;
+	}
+
+	public void setCareers(List<Career> careers) {
+		this.careers = careers;
+	}
+
+//-------------------------------------------------------------------------------
 	@Override
 	public String toString() {
 		return "CareerCategory [id=" + id + ", name=" + name + ", description=" + description + "]";

@@ -61,14 +61,14 @@ public class MockInterview {
 		}
 		if (!userInterviews.contains(userInterview)) {
 			userInterviews.add(userInterview);
-			userInterview.addMockInterviewAppointment(this);
+			userInterview.addMockInterviewAppointments(this);
 		}
 	}
 
 	public void removeUserInterview(User userInterview) {
 		if (userInterviews != null && userInterviews.contains(userInterview)) {
 			userInterviews.remove(userInterview);
-			userInterview.removeMockInterviewAppointment(this);
+			userInterview.removeMockInterviewAppointments(this);
 		}
 	}
 

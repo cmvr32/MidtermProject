@@ -9,5 +9,7 @@ public interface SkillDAO {
 	public Skill updateSkill(int id, Skill skill);
 	
 	public boolean destroySkill (int id);
+
+	boolean skillComposite(int skillId, int resumeId);
 	
 }

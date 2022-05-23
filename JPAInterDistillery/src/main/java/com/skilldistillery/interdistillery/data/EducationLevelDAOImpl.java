@@ -4,39 +4,39 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.skilldistillery.interdistillery.entities.CareerCategory;
+import com.skilldistillery.interdistillery.entities.EducationLevel;
 
-public class CareerCategoryDaoImpl implements CareerCategoryDAO {
+public class EducationLevelDAOImpl implements EducationLevelDAO {
 
 	@Override
-	public CareerCategory createCareerCategory(CareerCategory careerCategory) {
+	public EducationLevel createEducationLevel(EducationLevel educationLevel) {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
-		System.out.println("Before persist: " + careerCategory);
-		em.persist(careerCategory);
-		System.out.println("After persist: " + careerCategory);
+		System.out.println("Before persist: " + educationLevel);
+		em.persist(educationLevel);
+		System.out.println("After persist: " + educationLevel);
 		em.flush();
 		em.getTransaction().commit();
 
-		return careerCategory;
+		return educationLevel;
 
 	}
 
 	@Override
-	public CareerCategory updateCareerCategory(int id, CareerCategory careerCategory) {
+	public EducationLevel updateEducationLevel(int id, EducationLevel educationLevel) {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
 		EntityManager em = emf.createEntityManager();
 
-		return careerCategory;
+		return educationLevel;
 
 	}
 
 	@Override
-	public boolean destoryCareerCategry(int id) {
+	public boolean destroyEducationLevel(int id) {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
 		EntityManager em = emf.createEntityManager();

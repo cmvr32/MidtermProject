@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -30,7 +31,7 @@ public class User {
 
 	private String email;
 
-	private String username;
+	private String userName;
 
 	private String password;
 
@@ -48,6 +49,91 @@ public class User {
 	private String bannerImageUrl;
 
 	private String biography;
+
+	// default no arg constructor
+	public User() {
+		super();
+	}
+
+	// create new user constructor
+	public User(String firstName, String lastName, String email, String userName, String password,
+			List<StudyGuide> studyguides, List<JobListing> jobListings) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userName = userName;
+		this.password = password;
+		this.studyguides = studyguides;
+		this.jobListings = jobListings;
+	}
+
+	// eventually this will be the new user contructor
+	// have to figure out time created and role
+	public User(String firstName, String lastName, String email, String userName, String password,
+			LocalDateTime dateCreated, String role) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userName = userName;
+		this.password = password;
+		this.dateCreated = dateCreated;
+		this.role = role;
+	}
+
+	// all arg no id contructor
+	public User(String firstName, String lastName, String email, String userName, String password,
+			LocalDateTime dateCreated, Integer active, String role, String profileImageUrl, String bannerImageUrl,
+			String biography, List<MockInterview> userMockInterviews, List<MockInterview> mockInterviewAppointments,
+			List<Resume> userResumes, List<StudyGuide> userStudyGuides, List<StudyGuide> studyguides,
+			List<JobListing> jobListings) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userName = userName;
+		this.password = password;
+		this.dateCreated = dateCreated;
+		this.active = active;
+		this.role = role;
+		this.profileImageUrl = profileImageUrl;
+		this.bannerImageUrl = bannerImageUrl;
+		this.biography = biography;
+		this.userMockInterviews = userMockInterviews;
+		this.mockInterviewAppointments = mockInterviewAppointments;
+		this.userResumes = userResumes;
+		this.userStudyGuides = userStudyGuides;
+		this.studyguides = studyguides;
+		this.jobListings = jobListings;
+	}
+
+	// all arg contructor
+	public User(int id, String firstName, String lastName, String email, String userName, String password,
+			LocalDateTime dateCreated, Integer active, String role, String profileImageUrl, String bannerImageUrl,
+			String biography, List<MockInterview> userMockInterviews, List<MockInterview> mockInterviewAppointments,
+			List<Resume> userResumes, List<StudyGuide> userStudyGuides, List<StudyGuide> studyguides,
+			List<JobListing> jobListings) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userName = userName;
+		this.password = password;
+		this.dateCreated = dateCreated;
+		this.active = active;
+		this.role = role;
+		this.profileImageUrl = profileImageUrl;
+		this.bannerImageUrl = bannerImageUrl;
+		this.biography = biography;
+		this.userMockInterviews = userMockInterviews;
+		this.mockInterviewAppointments = mockInterviewAppointments;
+		this.userResumes = userResumes;
+		this.userStudyGuides = userStudyGuides;
+		this.studyguides = studyguides;
+		this.jobListings = jobListings;
+	}
 
 	// ------------------------------------------------------------------------------------
 	// one to many user/mock interview
@@ -90,15 +176,7 @@ public class User {
 	@JoinTable(name = "mock_interviewer", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "mock_interview_id"))
 	private List<MockInterview> mockInterviewAppointments;
 
-	public List<MockInterview> getMockInterviewAppointment() {
-		return mockInterviewAppointments;
-	}
-
-	public void setMockInterviewAppointment(List<MockInterview> mockInterviewAppointments) {
-		this.mockInterviewAppointments = mockInterviewAppointments;
-	}
-
-	public void addMockInterviewAppointment(MockInterview mockInterviewAppointment) {
+	public void addMockInterviewAppointments(MockInterview mockInterviewAppointment) {
 
 		if (mockInterviewAppointments == null) {
 			mockInterviewAppointments = new ArrayList<>();
@@ -110,7 +188,7 @@ public class User {
 		}
 	}
 
-	public void removeMockInterviewAppointment(MockInterview mockInterviewAppointment) {
+	public void removeMockInterviewAppointments(MockInterview mockInterviewAppointment) {
 
 		if (mockInterviewAppointments != null && mockInterviewAppointments.contains(mockInterviewAppointment)) {
 			mockInterviewAppointments.remove(mockInterviewAppointment);
@@ -118,18 +196,18 @@ public class User {
 		}
 	}
 
+	public List<MockInterview> getMockInterviewAppointments() {
+		return mockInterviewAppointments;
+	}
+
+	public void setMockInterviewAppointments(List<MockInterview> mockInterviewAppointments) {
+		this.mockInterviewAppointments = mockInterviewAppointments;
+	}
+
 	// ------------------------------------------------------------------------------------
 	// one to many user/resume
 	@OneToMany(mappedBy = "user")
 	private List<Resume> userResumes;
-
-	public List<Resume> getUserResumes() {
-		return userResumes;
-	}
-
-	public void setUserResumes(List<Resume> userResumes) {
-		this.userResumes = userResumes;
-	}
 
 	public void addResume(Resume resume) {
 
@@ -152,8 +230,17 @@ public class User {
 		}
 	}
 
+	public List<Resume> getUserResumes() {
+		return userResumes;
+	}
+
+	public void setUserResumes(List<Resume> userResumes) {
+		this.userResumes = userResumes;
+	}
+
 	// ----------------------------------------------------------------------------------
-	// many to many user to studyguide, join table user_has_study_guide
+	// many to many user to studyguide
+	// join table user_has_study_guide
 	@ManyToMany
 	@JoinTable(name = "user_has_study_guide", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "study_guide_id"))
 	private List<StudyGuide> userStudyGuides;
@@ -187,10 +274,91 @@ public class User {
 
 	// ------------------------------------------------------------------------------------
 
-	public User() {
-		super();
+	// one to many user/studyguide
+	@OneToMany(mappedBy = "user")
+	private List<StudyGuide> studyguides;
+
+	public void addStudyGuide(StudyGuide studyguide) {
+
+		if (studyguides == null) {
+			studyguides = new ArrayList<>();
+		}
+
+		if (!studyguides.contains(studyguide)) {
+			studyguides.add(studyguide);
+			studyguide.setUser(this);
+		}
 	}
 
+	public void removeStudyGuide(StudyGuide studyguide) {
+
+		studyguide.setUser(null);
+		if (studyguides != null && studyguides.contains(studyguide)) {
+			studyguides.remove(studyguide);
+		}
+	}
+
+	public List<StudyGuide> getStudyGuides() {
+		return studyguides;
+	}
+
+	public void setStudyGuides(List<StudyGuide> studyguides) {
+		this.studyguides = studyguides;
+	}
+	
+	// TODO find studyguides
+	//where are these from??
+	public List<StudyGuide> getStudyguides() {
+		return studyguides;
+	}
+
+	public void setStudyguides(List<StudyGuide> studyguides) {
+		this.studyguides = studyguides;
+	}
+
+	// ------------------------------------------------------------------------------------
+
+	// many to one user/jobListing
+	@OneToMany(mappedBy = "user")
+	private List<JobListing> jobListings;
+
+	public void addJobListing(JobListing jobListing) {
+
+		if (jobListing == null) {
+			jobListings = new ArrayList<>();
+		}
+
+		if (!jobListings.contains(jobListing)) {
+			jobListings.add(jobListing);
+			jobListing.setUserJob(this);
+		}
+	}
+
+	public void removeJobListing(JobListing jobListing) {
+
+		jobListing.setUserJob(null);
+		if (jobListings != null && jobListings.contains(jobListing)) {
+			jobListings.remove(jobListing);
+		}
+	}
+
+	public List<JobListing> getJobListings() {
+		return jobListings;
+	}
+
+	public void setJobListings(List<JobListing> jobListings) {
+		this.jobListings = jobListings;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	
 	public int getId() {
 		return id;
 	}
@@ -224,11 +392,11 @@ public class User {
 	}
 
 	public String getUsername() {
-		return username;
+		return userName;
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.userName = username;
 	}
 
 	public String getPassword() {
@@ -288,16 +456,16 @@ public class User {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", userName=" + userName + ", password=" + password + ", dateCreated=" + dateCreated + ", active="
+				+ active + ", role=" + role + ", profileImageUrl=" + profileImageUrl + ", bannerImageUrl="
+				+ bannerImageUrl + ", biography=" + biography + "]";
 	}
 
 	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", username=" + username + ", password=" + password + ", dateCreated=" + dateCreated + ", active="
-				+ active + ", role=" + role + ", profileImageUrl=" + profileImageUrl + ", bannerImageUrl="
-				+ bannerImageUrl + ", biography=" + biography + "]";
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class StudyGuide {
 	@Column(name = "image_url")
 	private String imageUrl;
 
-	//--------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
 	// many to many user/mock interviewer
 	// join table mock_interviewer
 	@ManyToMany(mappedBy = "userStudyGuides")
@@ -62,14 +62,41 @@ public class StudyGuide {
 			userWithStudyGuide.removeUserStudyGuides(this);
 		}
 	}
-	
-	//--------------------------------------------------------------------------------------
+
 	public List<User> getUsersWithStudyGuides() {
 		return usersWithStudyGuides;
 	}
 
 	public void setUsersWithStudyGuides(List<User> usersWithStudyGuides) {
 		this.usersWithStudyGuides = usersWithStudyGuides;
+	}
+
+	// --------------------------------------------------------------------------------------
+
+	// many to one studyguide/user
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	// many to one studyguide/career
+	@ManyToOne
+	@JoinColumn(name = "career_id")
+	private Career career;
+
+	public Career getCareer() {
+		return career;
+	}
+
+	public void setCareer(Career career) {
+		this.career = career;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public int getId() {

@@ -14,7 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CareerCategoryTest {
-	
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private CareerCategory careerCategory;
@@ -44,14 +44,22 @@ class CareerCategoryTest {
 		careerCategory = null;
 	}
 
-	
-
 	@Test
 	@DisplayName("testing basic careerCategory mapping")
-	void test() {
+	void test_basic_career_mappings() {
 		assertNotNull(careerCategory);
 		assertEquals(1, careerCategory.getId());
 		assertEquals("Software Development", careerCategory.getName());
 	}
 
+	@Test
+	@DisplayName("testing career category to career one to many mapping")
+	void testing_career_category_to_career_mapping() {
+		System.err.println("testing career catergory to career one to many mapping");
+		assertNotNull(careerCategory);
+		assertNotNull(careerCategory.getCareers());
+		assertTrue(careerCategory.getCareers().size() > 0);
+		System.out.println(careerCategory);
+		System.out.println(careerCategory.getCareers());
+	}
 }

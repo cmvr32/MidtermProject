@@ -48,9 +48,17 @@ class ResumeTest {
 
 	@Test
 	@DisplayName("testing Resume mappings")
-	void test_basic_mappings() {
+	void test_basic_resume_mappings() {
 		assertNotNull(resume);
-		assertEquals("hi", resume.getContactInfo());
+		assertEquals("Nathan, Email, Phone", resume.getContactInfo());
+
+	}
+
+	@Test
+	@DisplayName("testing Resume mappings")
+	void testing_resume_and_education_level_mapping() {
+		assertNotNull(resume);
+		assertEquals("Bachelors", resume.getResumeEducationLevel().getEducationLevel());
 
 	}
 
