@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -31,6 +30,7 @@ public class User {
 
 	private String email;
 
+	@Column(name="username")
 	private String userName;
 
 	private String password;

@@ -17,53 +17,53 @@ public class UserController {
 	@Autowired
 	private UserDAO userDao;
 
-	@RequestMapping(path = { "/", "home.do" })
+	@RequestMapping(path = { "/", "homePage.do" })
 	public String home(Model model) {
 		model.addAttribute("DEBUG", userDao.findById(1)); // DEBUG REMOVE LATER
 		return "homePage";
 	}
 
-	@RequestMapping(path = { "/", "home.do" })
-	public String home1(@RequestParam Integer id, Model model) {
-		model.addAttribute("FINDBYID", userDao.findById(id)); // DEBUG REMOVE LATER
-		return "homePage";
-	}
+//	@RequestMapping(path = { "/", "home.do" })
+//	public String home1(@RequestParam Integer id, Model model) {
+//		model.addAttribute("FINDBYID", userDao.findById(id)); // DEBUG REMOVE LATER
+//		return "homePage";
+//	}
 
-	@RequestMapping("getUser.do")
-	public String findUserAccountByNameAndEmail(@RequestParam String firstName, String lastName, String email,
-			Model model) {
-		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
-		model.addAttribute("user", user);
-		return "";
-	}
-
-	@RequestMapping("getUser.do")
-	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model) {
-		User user = userDao.findByUserNameAndPassword(username, password);
-		model.addAttribute("user", user);
-		return "";
-	}
-
-	@RequestMapping(path = ".do", method = RequestMethod.POST)
-	public String AddNewUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-			@RequestParam String userName, @RequestParam String password, RedirectAttributes redir, User user) {
-		User newUser = new User(firstName, lastName, email, userName, password);
-		user = userDao.createUser(user);
-		boolean addUserFlag = true;
-		redir.addFlashAttribute("addUserFlag", addUserFlag);
-		redir.addFlashAttribute("studyGuides", user);
-		return "redirect:.do";
-	}
-
-	@RequestMapping(path = ".do", method = RequestMethod.GET)
-	public String addUserGetProcess(User user) {
-		return "";
-	}
-
-	@RequestMapping(path = ".do")
-	public String addNewUser() {
-		return "";
-	}
+//	@RequestMapping("getUser.do")
+//	public String findUserAccountByNameAndEmail(@RequestParam String firstName, String lastName, String email,
+//			Model model) {
+//		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
+//		model.addAttribute("user", user);
+//		return "";
+//	}
+//
+//	@RequestMapping("getUser.do")
+//	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model) {
+//		User user = userDao.findByUserNameAndPassword(username, password);
+//		model.addAttribute("user", user);
+//		return "";
+//	}
+//
+//	@RequestMapping(path = ".do", method = RequestMethod.POST)
+//	public String AddNewUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
+//			@RequestParam String userName, @RequestParam String password, RedirectAttributes redir, User user) {
+//		User newUser = new User(firstName, lastName, email, userName, password);
+//		user = userDao.createUser(user);
+//		boolean addUserFlag = true;
+//		redir.addFlashAttribute("addUserFlag", addUserFlag);
+//		redir.addFlashAttribute("studyGuides", user);
+//		return "redirect:.do";
+//	}
+//
+//	@RequestMapping(path = ".do", method = RequestMethod.GET)
+//	public String addUserGetProcess(User user) {
+//		return "";
+//	}
+//
+//	@RequestMapping(path = ".do")
+//	public String addNewUser() {
+//		return "";
+//	}
 
 //	@RequestMapping(path = ".do", method = RequestMethod.POST)
 //	public String updateUserBiography(RedirectAttributes redir, User user) {
@@ -128,39 +128,39 @@ public class UserController {
 //		return "";
 //	}
 
-	@RequestMapping(path = ".do", method = RequestMethod.GET)
-	public String updateUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
-			@RequestParam String email, @RequestParam String userName, @RequestParam String password,
-			@RequestParam String profileImageUrl, @RequestParam String profileBannerUrl,
-			@RequestParam String biography) {
-
-		boolean updateUserEmailFlag = true;
-
-		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
-
-		userDao.updateUser(user);
-		redir.addFlashAttribute("updateUserEmailFlag", updateUserEmailFlag);
-		redir.addFlashAttribute("user", user);
-		return "redirect:.do";
-
-	}
-
-	@RequestMapping(path = ".do", method = RequestMethod.POST)
-	public String deleteUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
-			@RequestParam String email) {
-
-		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
-		Integer userId = user.getId();
-		boolean containsFlag = userDao.deleteUser(userId);
-		boolean deleteUserFlag = true;
-		redir.addFlashAttribute("deleteUserFlag", deleteUserFlag);
-		redir.addFlashAttribute("containsFlag", containsFlag);
-		return "redirect:.do";
-	}
-
-	@RequestMapping(path = ".do", method = RequestMethod.GET)
-	public String deleteUserGetProcess(User user) {
-		return "";
-	}
+//	@RequestMapping(path = ".do", method = RequestMethod.GET)
+//	public String updateUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
+//			@RequestParam String email, @RequestParam String userName, @RequestParam String password,
+//			@RequestParam String profileImageUrl, @RequestParam String profileBannerUrl,
+//			@RequestParam String biography) {
+//
+//		boolean updateUserEmailFlag = true;
+//
+//		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
+//
+//		userDao.updateUser(user);
+//		redir.addFlashAttribute("updateUserEmailFlag", updateUserEmailFlag);
+//		redir.addFlashAttribute("user", user);
+//		return "redirect:.do";
+//
+//	}
+//
+//	@RequestMapping(path = ".do", method = RequestMethod.POST)
+//	public String deleteUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
+//			@RequestParam String email) {
+//
+//		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
+//		Integer userId = user.getId();
+//		boolean containsFlag = userDao.deleteUser(userId);
+//		boolean deleteUserFlag = true;
+//		redir.addFlashAttribute("deleteUserFlag", deleteUserFlag);
+//		redir.addFlashAttribute("containsFlag", containsFlag);
+//		return "redirect:.do";
+//	}
+//
+//	@RequestMapping(path = ".do", method = RequestMethod.GET)
+//	public String deleteUserGetProcess(User user) {
+//		return "";
+//	}
 
 }
