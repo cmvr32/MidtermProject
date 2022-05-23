@@ -1,6 +1,5 @@
 package com.skilldistillery.interdistillery.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +21,9 @@ public class CareerCategory {
 	private String name;
 
 	private String description;
+
+	@OneToMany(mappedBy = "careerCategory")
+	private List<Career> careers;
 
 	public CareerCategory() {
 		super();
@@ -51,8 +53,6 @@ public class CareerCategory {
 		this.description = description;
 	}
 
-	// -------------------------------------------------------------------
-	// one to many career_category/career
 	@OneToMany(mappedBy = "careerCatergory")
 	private List<Career> careers;
 
@@ -83,10 +83,10 @@ public class CareerCategory {
 		this.careers = careers;
 	}
 
-//-------------------------------------------------------------------------------
 	@Override
 	public String toString() {
-		return "CareerCategory [id=" + id + ", name=" + name + ", description=" + description + "]";
+		return "CareerCategory [id=" + id + ", name=" + name + ", description=" + description + ", careers=" + careers
+				+ "]";
 	}
 
 	@Override

@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Career {
@@ -31,8 +30,10 @@ public class Career {
 
 	@Column(name = "high_salary")
 	private double highSalary;
+	@ManyToOne
+	@JoinColumn(name = "career_category_id")
+	private CareerCategory careerCategory;
 
-	// ------------------------------------------------------------------------------------
 	// one to many career/studyguide
 	@OneToMany(mappedBy = "career")
 	private List<StudyGuide> careerStudyGuides;
@@ -65,8 +66,6 @@ public class Career {
 		this.careerStudyGuides = careerStudyGuides;
 	}
 
-	// ------------------------------------------------------------------------------------
-	
 	// many to one career/career_category
 		@ManyToOne
 		@JoinColumn(name = "career_category_id")
@@ -125,11 +124,19 @@ public class Career {
 		this.highSalary = highSalary;
 	}
 
+	public CareerCategory getCareerCategory() {
+		return careerCategory;
+	}
+
+	public void setCareerCategory(CareerCategory careerCategory) {
+		this.careerCategory = careerCategory;
+	}
+
 
 	@Override
 	public String toString() {
 		return "Career [id=" + id + ", careerTitle=" + careerTitle + ", imageUrl=" + imageUrl + ", lowSalary="
-				+ lowSalary + ", highSalary=" + highSalary + "]";
+				+ lowSalary + ", highSalary=" + highSalary + ", careerCategory=" + careerCategory + "]";
 	}
 
 	@Override
