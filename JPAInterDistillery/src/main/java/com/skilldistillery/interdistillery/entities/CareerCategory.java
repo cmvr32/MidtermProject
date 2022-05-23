@@ -23,6 +23,9 @@ public class CareerCategory {
 
 	private String description;
 
+	@OneToMany(mappedBy = "careerCategory")
+	private List<Career> careers;
+
 	public CareerCategory() {
 		super();
 	}
@@ -51,10 +54,6 @@ public class CareerCategory {
 		this.description = description;
 	}
 
-	// -------------------------------------------------------------------
-	// one to many career_category/career
-	@OneToMany(mappedBy = "careerCategory")
-	private List<Career> careers;
 
 	public void addCareer(Career career) {
 
@@ -83,10 +82,10 @@ public class CareerCategory {
 		this.careers = careers;
 	}
 
-//-------------------------------------------------------------------------------
 	@Override
 	public String toString() {
-		return "CareerCategory [id=" + id + ", name=" + name + ", description=" + description + "]";
+		return "CareerCategory [id=" + id + ", name=" + name + ", description=" + description + ", careers=" + careers
+				+ "]";
 	}
 
 	@Override

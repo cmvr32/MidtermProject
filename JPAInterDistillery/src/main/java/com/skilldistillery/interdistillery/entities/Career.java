@@ -32,7 +32,10 @@ public class Career {
 	@Column(name = "high_salary")
 	private double highSalary;
 
-	// ------------------------------------------------------------------------------------
+	@ManyToOne
+	@JoinColumn(name = "career_category_id")
+	private CareerCategory careerCategory;
+
 	// one to many career/studyguide
 	@OneToMany(mappedBy = "career")
 	private List<StudyGuide> careerStudyGuides;
@@ -65,12 +68,8 @@ public class Career {
 		this.careerStudyGuides = careerStudyGuides;
 	}
 
+
 	// ------------------------------------------------------------------------------------
-	
-	// many to one career/career_category
-		@ManyToOne
-		@JoinColumn(name = "career_category_id")
-		private CareerCategory careerCategory;
 
 	
 	public CareerCategory getCareerCategory() {
@@ -125,12 +124,6 @@ public class Career {
 		this.highSalary = highSalary;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Career [id=" + id + ", careerTitle=" + careerTitle + ", imageUrl=" + imageUrl + ", lowSalary="
-				+ lowSalary + ", highSalary=" + highSalary + "]";
-	}
 
 	@Override
 	public int hashCode() {
