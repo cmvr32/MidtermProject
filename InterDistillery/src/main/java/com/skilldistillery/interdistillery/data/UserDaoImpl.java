@@ -174,8 +174,7 @@ public class UserDaoImpl implements UserDAO {
 
 		if (deleteUser != null) {
 			System.err.println("deleteUser not null");
-			System.err.println("Verifying fname, lname, username, and password...");
-
+			
 			em.remove(deleteUser);
 
 			successfullyDeleted = !em.contains(deleteUser);
