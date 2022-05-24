@@ -18,12 +18,13 @@ public class MockInterviewImpl implements MockInterviewDAO {
 	@PersistenceContext
 	private EntityManager em;
 
-	@Override
-	// find by user id
-	public MockInterview findByInterviewId(int interviewId) {
-
-		return em.find(MockInterview.class, interviewId);
-	}
+	// TODO
+//	@Override
+//	// find by user id
+//	public MockInterview findByInterviewId(User user) {
+//		MockInterview interviewId = user.getUserMockInterviews();
+//		return em.find(MockInterview.class, interviewId);
+//	}
 
 	@Override
 	public List<MockInterview> listAllInterviews() {
@@ -137,6 +138,12 @@ public class MockInterviewImpl implements MockInterviewDAO {
 		em.close();
 		return successfullyDeleted;
 
+	}
+
+	@Override
+	public MockInterview findByInterviewId(User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
