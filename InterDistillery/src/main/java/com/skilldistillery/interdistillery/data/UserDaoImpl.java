@@ -38,17 +38,24 @@ public class UserDaoImpl implements UserDAO {
 	// TODO user login
 	public User findByUserNameAndPassword(String username, String password) {
 
-		User userFindUsernameAndPassword = null;
-		String jpql = "SELECT c FROM user c WHERE c.username = :un AND c.password=:pw";
+	List<User> userFindUsernameAndPassword = null;
+		String jpql = "SELECT c FROM User c WHERE c.username = :un AND c.password=:pw";
 
 		userFindUsernameAndPassword = em.createQuery(jpql, User.class).setParameter("un", username)
-				.setParameter("pw", password).getSingleResult();
-		System.out.println("---FINDING USER WITH EMAIL AND PASSWORD---");
-		System.err.println("LOOKING FOR: " + username + ", " + password);
-		System.err.println("NAME FOUND: " + userFindUsernameAndPassword);
-
-		em.close();
-		return userFindUsernameAndPassword;
+				.setParameter("pw", password).getResultList();
+		if(userFindUsernameAndPassword!=null && !userFindUsernameAndPassword.isEmpty()) {
+			
+			System.out.println("---FINDING USER WITH EMAIL AND PASSWORD---");
+			System.err.println("LOOKING FOR: " + username + ", " + password);
+			System.err.println("NAME FOUND: " + userFindUsernameAndPassword);
+			
+			return userFindUsernameAndPassword.get(0);
+			
+		}
+	
+		
+		return null;
+		
 
 	}
 
@@ -102,7 +109,7 @@ public class UserDaoImpl implements UserDAO {
 			newUserCreated = false;
 
 		}
-		em.close();
+		
 		return newUser;
 
 	}
@@ -132,7 +139,7 @@ public class UserDaoImpl implements UserDAO {
 
 			userUpdated = true;
 		}
-		em.close();
+		
 		return userToUpdate;
 
 	}
@@ -161,7 +168,7 @@ public class UserDaoImpl implements UserDAO {
 
 			userUpdated = false;
 		}
-		em.close();
+		
 		return user;
 	}
 
@@ -182,7 +189,7 @@ public class UserDaoImpl implements UserDAO {
 			System.err.println("Character Deleted ID: " + id);
 		}
 
-		em.close();
+		
 		return successfullyDeleted;
 
 	}

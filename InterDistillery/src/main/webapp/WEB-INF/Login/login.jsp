@@ -8,11 +8,11 @@
 
 </head>
 <body>
-
+<%@ include file="nav.jsp"%>
 <h2>Log In</h2>
 	<form action="login.do" method="POST">
 	<label for="username">Username</label><br>
-		<input type="text" name="userName">
+		<input type="text" name="username">
 	<br><label for="password">Password</label><br>
 		<input type="password" name="password"/><br>
 		<br><input type="submit" value="Log In" > 

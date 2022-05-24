@@ -1,5 +1,9 @@
 package com.skilldistillery.interdistillery.controllers;
 
+import java.time.LocalDateTime;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +27,7 @@ public class UserController {
 		return "homePage";
 	}
 
-	@RequestMapping(path = {"homePage.do" })
+	@RequestMapping(path = { "homePage.do" })
 	public String home1(@RequestParam Integer id, Model model) {
 		model.addAttribute("FINDBYID", userDao.findById(id)); // DEBUG REMOVE LATER
 		return "homePage";
@@ -37,22 +41,11 @@ public class UserController {
 		return "login/account";
 	}
 
-	@RequestMapping("getUser.do")
-	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model) {
-		User user = userDao.findByUserNameAndPassword(username, password);
-		model.addAttribute("user", user);
-		return "login/account";
-	}
-
 	@RequestMapping(path = "CreateUser.do", method = RequestMethod.POST)
-	public String addNewUser(RedirectAttributes redir,
-							@RequestParam String firstName, 
-							@RequestParam String lastName, 
-							@RequestParam String email,
-							@RequestParam String userName, 
-							@RequestParam String password,
-							@RequestParam User user) {
-		User newUser = new User(firstName, lastName, email, userName, password);
+	public String addNewUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
+			@RequestParam String email, @RequestParam String username, @RequestParam String password,
+			@RequestParam User user) {
+		User newUser = new User(firstName, lastName, email, username, password);
 		user = userDao.createUser(newUser);
 		boolean addUserFlag = true;
 		redir.addFlashAttribute("addUserFlag", addUserFlag);
@@ -71,15 +64,10 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "UpdateUser.do", method = RequestMethod.GET)
-	public String updateUser(RedirectAttributes redir, 
-							@RequestParam String firstName, 
-							@RequestParam String lastName,
-							@RequestParam String email, 
-							@RequestParam String userName, 
-							@RequestParam String password,
-							@RequestParam String profileImageUrl, 
-							@RequestParam String profileBannerUrl,
-							@RequestParam String biography) {
+	public String updateUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
+			@RequestParam String email, @RequestParam String username, @RequestParam String password,
+			@RequestParam String profileImageUrl, @RequestParam String profileBannerUrl,
+			@RequestParam String biography) {
 
 		boolean updateUserEmailFlag = true;
 
@@ -93,10 +81,8 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "DeleteUser.do", method = RequestMethod.POST)
-	public String deleteUser(RedirectAttributes redir, 
-							@RequestParam String firstName, 
-							@RequestParam String lastName,
-							@RequestParam String email) {
+	public String deleteUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
+			@RequestParam String email) {
 
 		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
 		Integer userId = user.getId();
@@ -112,19 +98,59 @@ public class UserController {
 		return "Login/DeleteUser";
 	}
 
-	
-	//Redirect Methods:
-	
+	// LOGIN METHODS
+
+	// THIS IS THE START OF THE LOGIN
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
+	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model,
+			HttpSession session) {
+		User user = userDao.findByUserNameAndPassword(username, password);
+
+		if (user != null) {
+			session.setAttribute("user", user);
+			return "Login/account";
+
+		} else {
+
+			return "Login/login";
+		}
+	}
+
+//	logout.do removes the user from session and redirects to index.do.
+	@RequestMapping(path = "logout.do")
+	public String logout(HttpSession session) {
+		session.removeAttribute("loggedInUser");
+		return "homePage";
+	}
+
+//	@RequestMapping(path="logout.do")
+//	public ModelAndView logout(HttpSession session) {
+//		session.removeAttribute("loggedInUser");
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("redirect:index.do");
+//		return mv;
+//	}
+
+//	public boolean sessionTimedOut(HttpSession session) {
+//		LocalDateTime loginTime = (LocalDateTime) session.getAttribute("loginTime");
+//		if (java.time.Duration.between(loginTime, LocalDateTime.now()).getSeconds() > 60 * 30) {
+//			return true;
+//		}
+//		return false;
+//	}
+
+	// Redirect Methods:
+
 	@RequestMapping("directToLogin.do")
 	public String directToLogin() {
 		return "Login/login";
 	}
-	
+
 	@RequestMapping("directToCreateUser.do")
 	public String directToCreateUser() {
 		return "Login/CreateUser";
 	}
-	
+
 	@RequestMapping("directToHomePage.do")
 	public String directToHomePage() {
 		return "homePage";
