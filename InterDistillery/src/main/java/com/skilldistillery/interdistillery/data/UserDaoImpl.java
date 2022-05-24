@@ -176,14 +176,13 @@ public class UserDaoImpl implements UserDAO {
 			System.err.println("deleteUser not null");
 			System.err.println("Verifying fname, lname, username, and password...");
 
+			em.remove(deleteUser);
 
-				em.remove(deleteUser);
+			successfullyDeleted = !em.contains(deleteUser);
 
-				successfullyDeleted = !em.contains(deleteUser);
-
-				System.err.println("Character Deleted ID: " + id);
+			System.err.println("Character Deleted ID: " + id);
 		}
-			
+
 		em.close();
 		return successfullyDeleted;
 
@@ -222,6 +221,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
+	//find all study guides a user has
 	public List<User> findAllCurrentUserStudyGuides(User user) {
 
 		Boolean studyGuideListFound = false;
@@ -252,6 +252,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
+	//find every job listing a user has checked
 	public List<User> findAllCurrentUserJobListings(User user) {
 
 		Boolean jobListFound = false;
@@ -282,9 +283,35 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public User userFindMockInterview() {
-		// TODO Auto-generated method stub
-		return null;
+	//find the mock interviews a user has
+	public List<User> userFindMockInterview(User user) {
+
+		Boolean hasMockInterview = false;
+		List<User> userInterviewList = null;
+		Integer userId = user.getId();
+		String jpql = "SELECT c.userMockInterviews FROM User c WHERE c.id=: id";
+		userInterviewList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
+
+		System.err.println("---FINDING ALL CURRENT USER MOCK INTERVIEWS---");
+
+		if (userInterviewList != null) {
+
+			hasMockInterview = true;
+
+			for (User interview : userInterviewList) {
+
+				System.out.println(interview);
+
+			}
+
+		} else if (userInterviewList == null) {
+
+			hasMockInterview = false;
+			System.err.println("USER INTERVIEW LIST NOT FOUND");
+			System.out.println("USER ID: " + userId);
+		}
+		return userInterviewList;
+
 	}
 
 	@Override
