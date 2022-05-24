@@ -52,12 +52,25 @@ public class MockInterview {
 	private List<User> userInterviews;
 
 
+
 	public MockInterview(Date interviewDate, Time interviewTime, String topic) {
 		super();
 		this.interviewDate = interviewDate;
 		this.interviewTime = interviewTime;
 		this.topic = topic;
 	}
+	
+	public MockInterview(int id, Date interviewDate, Time interviewTime, String topic) {
+		super();
+		this.id = id;
+		this.interviewDate = interviewDate;
+		this.interviewTime = interviewTime;
+		this.topic = topic;
+	}
+	
+	
+
+
 
 
 	public List<User> getUserInterviews() {
