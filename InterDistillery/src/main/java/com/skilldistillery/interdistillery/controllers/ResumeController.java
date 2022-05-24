@@ -32,6 +32,10 @@ public class ResumeController {
 	public String directToAddResume() {
 		return "resume/CreateResume";
 	}
+	@RequestMapping("directToUpdateResume.do")
+	public String directToUpdateResume() {
+		return "resume/UpdateResume";
+	}
 
 	@RequestMapping(path = "ViewResume.do", method = RequestMethod.GET)
 	public String singleResume(int id, Model model) {
@@ -93,15 +97,15 @@ public class ResumeController {
 //		return "";
 //	}
 //
-//	@RequestMapping(path = ".do", method = RequestMethod.POST)
-//	public String updateResume(RedirectAttributes redir, Resume resumes) {
-//		boolean updateResumeFlag = true;
-//		resumes = resumeDao.updateResume(resumes);
-//		redir.addFlashAttribute("updateResumeFlag", updateResumeFlag);
-//		redir.addFlashAttribute("resumes", resumes);
-//		return "redirect:.do";
-//	}
-//
+	@RequestMapping("updateResume.do")
+	public String updateResume(Resume resume, Model model) {
+		//boolean updateResumeFlag = true;
+		resumeDao.updateResume(resume);
+		//redir.addFlashAttribute("updateResumeFlag", updateResumeFlag);
+		model.addAttribute("resume", resume);
+		return "Login/account";
+	}
+
 //	@RequestMapping(path = ".do", method = RequestMethod.GET)
 //	public String updateResumeGetProcess(Resume resumes) {
 //		return "";

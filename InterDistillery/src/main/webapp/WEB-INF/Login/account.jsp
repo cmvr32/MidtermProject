@@ -16,6 +16,15 @@
 	<form action="directToAddResume.do">
 	<button>Build a Resume</button>
 	</form>
+	<form action="directToUpdateResume.do">
+	<button>Update Resume</button>
+	</form>
+	<form action="directToRequestMockInterview.do">
+	<button>Schedule a Mock Interview</button>
+	</form>
+	<form action="directToEditMockInterview.do">
+	<button>Update Mock Interview</button>
+	</form>
 
 	<%-- Output user details --%>
 

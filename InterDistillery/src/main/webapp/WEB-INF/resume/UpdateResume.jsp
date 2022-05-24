@@ -10,16 +10,16 @@
 
 <h1>Update Your Resume</h1>
 	<form action="updateResume.do" , method="post">
-		<input type="hidden" name="contactInfo" value="" /> 
+		<input type="hidden" name="contactInfo" value="${resume.contactInfo}" /> 
 		<label for="contactInfo"> Contact Information </label>
 		<br> 
-		<input type="hidden" name="introduction" value="" /> 
+		<input type="hidden" name="introduction" value="${resume.introduction}" /> 
 		<label for="introduction"> About Me </label>
 		<br> 
-		<input type="hidden" name="experience" value="" /> 
+		<input type="hidden" name="experience" value="${resume.experience}" /> 
 		<label for="experience"> Experience </label>
 		<br> 
-		<input type="hidden" name="degree" value="" /> 
+		<input type="hidden" name="degree" value="${resume.degree}" /> 
 		<label for="degree"> Degree </label>
 		<br> 
 		<br> <br> <br>
