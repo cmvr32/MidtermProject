@@ -1,9 +1,9 @@
 package com.skilldistillery.interdistillery.controllers;
 
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,9 +35,12 @@ public class MockInterviewController {
 							  @RequestParam MockInterview interview, 
 							  @RequestParam Date interviewDate, 
 							  @RequestParam Time interviewTime,
-							  @RequestParam String topic) {
+							  @RequestParam String topic,
+							  HttpSession session) {
+		User user2 = (User)session.getAttribute("user");
 		MockInterview newMockInterview = new MockInterview(interviewDate, interviewTime, topic);
-		interview = mockInterviewDao.createInterview(interview);
+		interview = mockInterviewDao.createInterview(interview, user2);
+		
 		boolean addInterviewFlag = true;
 		redir.addFlashAttribute("addInterviewsFlag", addInterviewFlag);
 		redir.addFlashAttribute("careers", interview);

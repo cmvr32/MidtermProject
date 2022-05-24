@@ -42,15 +42,25 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "CreateUser.do", method = RequestMethod.POST)
-	public String addNewUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
-			@RequestParam String email, @RequestParam String username, @RequestParam String password,
-			@RequestParam User user) {
-		User newUser = new User(firstName, lastName, email, username, password);
-		user = userDao.createUser(newUser);
-		boolean addUserFlag = true;
-		redir.addFlashAttribute("addUserFlag", addUserFlag);
-		redir.addFlashAttribute("user", user);
-		return "Login/login";
+	public String addNewUser(Model model,
+							@RequestParam String firstName, 
+							@RequestParam String lastName,
+							@RequestParam String email, 
+							@RequestParam String username, 
+							@RequestParam String password) {
+		User newUser = new User();
+		newUser.setFirstName(firstName);
+		newUser.setLastName(lastName);
+		newUser.setEmail(email);
+		newUser.setUserName(username);
+		newUser.setPassword(password);
+		
+		newUser = userDao.createUser(newUser);
+		//boolean addUserFlag = true;
+		//model.addFlashAttribute("addUserFlag", addUserFlag);
+		model.addAttribute("user", newUser);
+		//System.out.println("User added maybe" + newUser);
+		return "homePage";
 	}
 
 	@RequestMapping(path = "CreateUser.do", method = RequestMethod.GET)

@@ -44,7 +44,7 @@ public class MockInterviewImpl implements MockInterviewDAO {
 			System.err.println("NO MOCK INTERVIEWS FOUND");
 
 		}
-		em.close();
+	
 		return allMockInterviews;
 	}
 
@@ -85,12 +85,13 @@ public class MockInterviewImpl implements MockInterviewDAO {
 	}
 
 	@Override
-	public MockInterview createInterview(MockInterview mockInterview) {
+	public MockInterview createInterview(MockInterview mockInterview, User user) {
 
 		boolean mockInterviewCreated = false;
-
+		User user1 = em.find(User.class, user.getId());
+		
 		if (mockInterview != null) {
-
+			mockInterview.setInterviewee(user1);
 			System.out.println("Before persist " + mockInterview);
 			em.persist(mockInterview);
 			System.out.println("After persist " + mockInterview);
@@ -98,11 +99,11 @@ public class MockInterviewImpl implements MockInterviewDAO {
 			System.err.println("New MockInterview Created");
 			mockInterviewCreated = true;
 		} else {
-			System.err.println("Character was not created");
+			System.err.println("Interview was not created");
 			mockInterviewCreated = false;
 
 		}
-		em.close();
+		
 		return mockInterview;
 
 	}
@@ -128,7 +129,7 @@ public class MockInterviewImpl implements MockInterviewDAO {
 			System.out.println("INTERVIEW ID: " + interviewId);
 
 		}
-		em.close();
+		
 		return successfullyDeleted;
 
 	}

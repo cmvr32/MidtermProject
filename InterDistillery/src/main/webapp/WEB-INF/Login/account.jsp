@@ -5,13 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-	<%@ include file="bootstrapHead.jsp"%>
+<title>User Profile</title>
+<%-- 	<%@ include file="bootstrapHead.jsp"%> --%>
 </head>
 <body>
 	<%--Edit the file nav.jsp to change nav links --%>
-	<%@ include file="nav.jsp"%>
-	<h2>Your Details</h2>
+<%-- 	<%@ include file="nav.jsp"%> --%>
+	<h2>User Profile</h2>
+	
+	<form action="directToAddResume.do">
+	<button>Build a Resume</button>
+	</form>
 
 	<%-- Output user details --%>
 
@@ -25,7 +29,7 @@
 			</p>
 		</c:when>
 		<c:otherwise>
-			<h3>Not logged in.</h3>
+			
 		</c:otherwise>
 	</c:choose>
 </body>

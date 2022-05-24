@@ -2,11 +2,8 @@ package com.skilldistillery.interdistillery.data;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
-import org.springframework.stereotype.Service;
-
 import com.skilldistillery.interdistillery.entities.Resume;
+import com.skilldistillery.interdistillery.entities.User;
 
 public interface ResumeDAO {
 	
@@ -35,7 +32,7 @@ public interface ResumeDAO {
 	
 	// create
 	// create a new resume
-	public Resume createResume(Resume newResume);
+	public Resume createResume(Resume newResume, User user);
 
 	// update
 	public Resume updateResume(Resume updateResume);

@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.interdistillery.entities.Resume;
+import com.skilldistillery.interdistillery.entities.User;
 
 //TODO RESUME DAO
 
@@ -62,7 +63,7 @@ public class ResumeDAOImpl implements ResumeDAO {
 			System.out.println("SEARCH PARAMETERS: userId" + userId + ", resumeId " + resumeId);
 			resumeFound = false;
 		}
-		em.close();
+		
 
 		return userFindResumeByUserIdAndResumeId;
 
@@ -70,11 +71,12 @@ public class ResumeDAOImpl implements ResumeDAO {
 
 	@Override
 	// create new resume for user
-	public Resume createResume(Resume newUserResume) {
+	public Resume createResume(Resume newUserResume, User user) {
 
 		boolean resumeCreated = false;
-
+		User user1 = em.find(User.class, user.getId());
 		if (newUserResume != null) {
+			newUserResume.setUser(user1);
 
 			System.out.println("Before persist " + newUserResume);
 			em.persist(newUserResume);
@@ -87,7 +89,7 @@ public class ResumeDAOImpl implements ResumeDAO {
 			resumeCreated = false;
 
 		}
-		em.close();
+		
 		return newUserResume;
 
 	}
@@ -158,7 +160,7 @@ public class ResumeDAOImpl implements ResumeDAO {
 			System.out.println("SEARCH PARAMETERS: Resume Id:" + resumeId);
 			resumeFound = false;
 		}
-		em.close();
+	
 
 		return educationLevelResult;
 
@@ -197,7 +199,7 @@ public class ResumeDAOImpl implements ResumeDAO {
 			jobSkillFound = false;
 		}
 
-		em.close();
+		
 
 		return jobSkillResult;
 
@@ -233,7 +235,7 @@ public class ResumeDAOImpl implements ResumeDAO {
 			resumeFound = false;
 		}
 
-		em.close();
+	
 		return jobListing;
 	}
 

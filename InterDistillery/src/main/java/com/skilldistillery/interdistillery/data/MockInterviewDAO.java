@@ -15,7 +15,7 @@ public interface MockInterviewDAO {
 	
 	public List<MockInterview> findByUserIdAndMockInterviewId(int userId, int mockInterviewId);
 	
-	public MockInterview createInterview(MockInterview mockInterview);
+	public MockInterview createInterview(MockInterview mockInterview, User user);
 
 	public boolean deleteInterview(int interviewId);
 

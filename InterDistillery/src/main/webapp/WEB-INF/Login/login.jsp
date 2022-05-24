@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<%@ include file="nav.jsp"%>
+<%-- <%@ include file="nav.jsp"%> --%>
 <h2>Log In</h2>
 	<form action="login.do" method="POST">
 	<label for="username">Username</label><br>

@@ -11,7 +11,7 @@
 
 <h1>Let's Build Your Resume!</h1>
 
-<form action="resume/CreateResume.do" method="post">
+<form action="CreateResume.do" method="post">
 
 	<label for="contactInfo">Contact Information</label><br>
 	<input type="text" name="contactInfo" placeholder="Name, Email, Phone"></input> 

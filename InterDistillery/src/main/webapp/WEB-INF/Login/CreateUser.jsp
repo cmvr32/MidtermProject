@@ -10,7 +10,7 @@
 
 <H1>Create an Account</H1>
 
-<form action="createUser.do" method="post">
+<form action="CreateUser.do" method="post">
 
 	<label for="contactInfo">First Name</label><br>
 	<input type="text" name="firstName" placeholder="first name"></input> 
@@ -29,7 +29,7 @@
 	<br><br>
 	<input type="submit"/>
 </form>
-</form><form action="directToHomePage.do"><button>Return Home</button></form>
+<form action="directToHomePage.do"><button>Return Home</button></form>
 
 
 </body>
