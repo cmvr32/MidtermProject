@@ -29,7 +29,7 @@ public class MockInterviewImpl implements MockInterviewDAO {
 	public List<MockInterview> listAllInterviews() {
 
 		boolean foundInterviews = false;
-		String jpql = "SELECT c FROM user c";
+		String jpql = "SELECT c FROM MockInterview c";
 
 		List<MockInterview> allMockInterviews = null;
 
