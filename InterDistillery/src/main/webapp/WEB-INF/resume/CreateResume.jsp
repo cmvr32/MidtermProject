@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Let's Build Your Resume!</title>
 </head>
 <body>
 
 <h1>Let's Build Your Resume!</h1>
 
-<form action="createResume.do" method="post">
+<form action="resume/CreateResume.do" method="post">
 
 	<label for="contactInfo">Contact Information</label><br>
 	<input type="text" name="contactInfo" placeholder="Name, Email, Phone"></input> 
@@ -25,8 +26,8 @@
 	<input type="text" name="degree" placeholder="Degree"></input> 
 	<br><br>
 	<input type="submit"/>
-	
 </form>
+<form action="directToHomePage.do"><button>Return Home</button></form>
 	
 </body>
 </html>

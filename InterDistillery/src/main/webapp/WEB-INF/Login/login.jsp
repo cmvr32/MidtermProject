@@ -11,9 +11,13 @@
 
 <h2>Log In</h2>
 	<form action="login.do" method="POST">
+	<label for="username">Username</label><br>
 		<input type="text" name="userName">
-		<input type="password" name="password"/>
-		<input type="submit" value="Log In" > 
-	</form>
+	<br><label for="password">Password</label><br>
+		<input type="password" name="password"/><br>
+		<br><input type="submit" value="Log In" > 
+	</form><form action="directToCreateUser.do"> <button>Create An Account</button>
+	</form><form action="directToHomePage.do"><button>Return Home</button></form>
+	
 </body>
 </html>
