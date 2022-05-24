@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.interdistillery.data.MockInterviewDAO;
-import com.skilldistillery.interdistillery.entities.Career;
 import com.skilldistillery.interdistillery.entities.MockInterview;
 
 public class MockInterviewController {
@@ -20,14 +18,14 @@ public class MockInterviewController {
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
-		model.addAttribute("DEBUG", mockInterviewDao.findById(1)); // DEBUG REMOVE LATER
+		model.addAttribute("DEBUG", mockInterviewDao.findByMockIntervieweeId(1)); // DEBUG REMOVE LATER
 		return "homePage";
 	}
 
 	@RequestMapping(path = ".do", method = RequestMethod.GET)
 	public String singleInterview(int id, Model model) {
 		List<MockInterview> interviews = new ArrayList<>();
-		interviews.add(mockInterviewDao.findById(id));
+		interviews.add(mockInterviewDao.findByInterviewId(id));
 		model.addAttribute("interviews", interviews);
 		return "";
 	}
@@ -93,4 +91,8 @@ public class MockInterviewController {
 //		return "";
 //	}
 
+	@RequestMapping("directToRequestMockInterview.do")
+	public String directToRequestMockInterview() {
+		return "mockinterview/RequestMockInterview";
+	}
 }
