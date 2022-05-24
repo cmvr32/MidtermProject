@@ -97,7 +97,6 @@ public class UserController {
 		return "login";
 	}
 
-<<<<<<< HEAD
 //	@RequestMapping(path = "CreateUser.do", method = RequestMethod.GET)
 //	public String addUserGetProcess(User user) {
 //		return "account";
@@ -107,12 +106,6 @@ public class UserController {
 //	public String addNewUser() {
 //		return "";
 //	}
-=======
-	@RequestMapping(path = "CreateUser.do")
-	public String addNewUser() {
-		return "";
-	}
-
 
 	@RequestMapping("directToLogin.do")
 	public String directToLogin() {
@@ -123,12 +116,11 @@ public class UserController {
 	public String directToCreateUser() {
 		return "Login/CreateUser";
 	}
-	
+
 	@RequestMapping("directToHomePage.do")
 	public String directToHomePage() {
 		return "homePage";
 	}
->>>>>>> 9eb2aeaac97977fba09373b3e3468cb7c0dc1370
 
 //	@RequestMapping("directToLogin.do")
 //	public String directToLogin() {
