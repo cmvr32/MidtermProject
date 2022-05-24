@@ -23,51 +23,47 @@ public class UserController {
 		return "homePage";
 	}
 
-	@RequestMapping(path = { "/", "home.do" })
-	public String home1(@RequestParam Integer id, Model model) {
-		model.addAttribute("FINDBYID", userDao.findById(id)); // DEBUG REMOVE LATER
-		return "homePage";
-	}
-
-	@RequestMapping("getUser.do")
-	public String findUserAccountByNameAndEmail(@RequestParam String firstName, String lastName, String email,
-			Model model) {
-		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
-		model.addAttribute("user", user);
-		return "login/account";
-	}
-
-	@RequestMapping("getUser.do")
-	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model) {
-		User user = userDao.findByUserNameAndPassword(username, password);
-		model.addAttribute("user", user);
-		return "login/account";
-	}
-
-	@RequestMapping(path = "CreateUser.do", method = RequestMethod.POST)
-	public String AddNewUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-			@RequestParam String userName, @RequestParam String password, RedirectAttributes redir, User user) {
-		User newUser = new User(firstName, lastName, email, userName, password);
-		user = userDao.createUser(user);
-		boolean addUserFlag = true;
-		redir.addFlashAttribute("addUserFlag", addUserFlag);
-		redir.addFlashAttribute("studyGuides", user);
-		return "redirect:.do";
-	}
-
-	@RequestMapping(path = "CreateUser.do", method = RequestMethod.GET)
-	public String addUserGetProcess(User user) {
-		return "account";
-	}
-
-	@RequestMapping(path = "CreateUser.do")
-	public String addNewUser() {
-		return "";
-	}
-<<<<<<< HEAD
-
-=======
->>>>>>> 28179eb6f19f52d7c054fbe7dbb8905b48dfdbb5
+//	@RequestMapping(path = { "/", "home.do" })
+//	public String home1(@RequestParam Integer id, Model model) {
+//		model.addAttribute("FINDBYID", userDao.findById(id)); // DEBUG REMOVE LATER
+//		return "homePage";
+//	}
+//
+//	@RequestMapping("getUser.do")
+//	public String findUserAccountByNameAndEmail(@RequestParam String firstName, String lastName, String email,
+//			Model model) {
+//		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
+//		model.addAttribute("user", user);
+//		return "login/account";
+//	}
+//
+//	@RequestMapping("getUser.do")
+//	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model) {
+//		User user = userDao.findByUserNameAndPassword(username, password);
+//		model.addAttribute("user", user);
+//		return "login/account";
+//	}
+//
+//	@RequestMapping(path = "CreateUser.do", method = RequestMethod.POST)
+//	public String AddNewUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
+//			@RequestParam String userName, @RequestParam String password, RedirectAttributes redir, User user) {
+//		User newUser = new User(firstName, lastName, email, userName, password);
+//		user = userDao.createUser(user);
+//		boolean addUserFlag = true;
+//		redir.addFlashAttribute("addUserFlag", addUserFlag);
+//		redir.addFlashAttribute("studyGuides", user);
+//		return "redirect:.do";
+//	}
+//
+//	@RequestMapping(path = "CreateUser.do", method = RequestMethod.GET)
+//	public String addUserGetProcess(User user) {
+//		return "account";
+//	}
+//
+//	@RequestMapping(path = "CreateUser.do")
+//	public String addNewUser() {
+//		return "";
+//	}
 
 	@RequestMapping("directToLogin.do")
 	public String directToLogin() {
@@ -77,6 +73,11 @@ public class UserController {
 	@RequestMapping("directToCreateUser.do")
 	public String directToCreateUser() {
 		return "Login/CreateUser";
+	}
+	
+	@RequestMapping("directToHomePage.do")
+	public String directToHomePage() {
+		return "homePage";
 	}
 
 //	@RequestMapping(path = ".do", method = RequestMethod.POST)

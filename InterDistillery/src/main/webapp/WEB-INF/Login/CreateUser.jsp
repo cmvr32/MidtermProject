@@ -27,10 +27,9 @@
 	<label for="degree">Create a password</label><br>
 	<input type="text" name="password" placeholder="password"></input> 
 	<br><br>
-
 	<input type="submit"/>
-	
 </form>
+</form><form action="directToHomePage.do"><button>Return Home</button></form>
 
 
 </body>

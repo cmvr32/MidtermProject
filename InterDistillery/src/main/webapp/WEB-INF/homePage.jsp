@@ -12,7 +12,7 @@
 	
 	<h1>InterDistillery</h1>
 
-	<h3>You've GotSkilled now it is time to GetHired!</h3>
+	<h3>You GotSkilled now it is time to GetHired!</h3>
 	
 	<form action="directToLogin.do">
 	<button>Login</button>

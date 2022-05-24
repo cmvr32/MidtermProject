@@ -1,28 +1,23 @@
 package com.skilldistillery.interdistillery.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.interdistillery.data.ResumeDAO;
-import com.skilldistillery.interdistillery.entities.MockInterview;
-import com.skilldistillery.interdistillery.entities.Resume;
 
+@Controller
 public class ResumeController {
 
 	@Autowired
 	private ResumeDAO resumeDao;
 
-	@RequestMapping(path = { "/", "home.do" })
-	public String home(Model model) {
-		model.addAttribute("DEBUG", resumeDao.findResumeById(1)); // DEBUG REMOVE LATER
-		return "homePage";
-	}
+//	@RequestMapping(path = { "/", "homePage.do" })
+//	public String home(Model model) {
+//		model.addAttribute("DEBUG", resumeDao.findResumeById(1)); // DEBUG REMOVE LATER
+//		return "homePage";
+//	}
 
 	@RequestMapping("directToAddResume.do")
 	public String directToAddResume() {
