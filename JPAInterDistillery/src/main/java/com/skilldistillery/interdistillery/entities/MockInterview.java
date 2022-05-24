@@ -33,25 +33,15 @@ public class MockInterview {
 
 	private String topic;
 
-//	@Column(name = "interviewee_id")
-//	private int intervieweeId;
-
-	// ----------------------------------------------------------------------
-	// one to many user/mock interviewer
-	@ManyToOne
-	@JoinColumn(name = "interviewee_id")
-	private User interviewee;
-
-	// -----------------------------------------------------------------------
-	// many to many user/mock interviewer
-	// join table mock_interviewer
 	
+	//Constructors
 	
+	//defualt no arg
+	public MockInterview() {
+		super();
+	}
 
-	@ManyToMany(mappedBy = "mockInterviewAppointments")
-	private List<User> userInterviews;
-
-
+	//date, time topic
 	public MockInterview(Date interviewDate, Time interviewTime, String topic) {
 		super();
 		this.interviewDate = interviewDate;
@@ -59,6 +49,32 @@ public class MockInterview {
 		this.topic = topic;
 	}
 
+	public MockInterview(int id, Date interviewDate, Time interviewTime, String topic) {
+		super();
+		this.id = id;
+		this.interviewDate = interviewDate;
+		this.interviewTime = interviewTime;
+		this.topic = topic;
+	}
+	
+	
+	//date, time, topic, and interviewee
+	public MockInterview(Date interviewDate, Time interviewTime, String topic, User interviewee) {
+		super();
+		this.interviewDate = interviewDate;
+		this.interviewTime = interviewTime;
+		this.topic = topic;
+		this.interviewee = interviewee;
+	}
+
+	public MockInterview(int id, Date interviewDate, Time interviewTime, String topic, User interviewee) {
+		super();
+		this.id = id;
+		this.interviewDate = interviewDate;
+		this.interviewTime = interviewTime;
+		this.topic = topic;
+		this.interviewee = interviewee;
+	}
 
 	public List<User> getUserInterviews() {
 		return userInterviews;
@@ -66,23 +82,6 @@ public class MockInterview {
 
 	public void setUserInterviews(List<User> userInterviews) {
 		this.userInterviews = userInterviews;
-	}
-
-	public void addUserInterview(User userInterview) {
-		if (userInterviews == null) {
-			userInterviews = new ArrayList<>();
-		}
-		if (!userInterviews.contains(userInterview)) {
-			userInterviews.add(userInterview);
-			userInterview.addMockInterviewAppointments(this);
-		}
-	}
-
-	public void removeUserInterview(User userInterview) {
-		if (userInterviews != null && userInterviews.contains(userInterview)) {
-			userInterviews.remove(userInterview);
-			userInterview.removeMockInterviewAppointments(this);
-		}
 	}
 
 	public User getInterviewee() {
@@ -101,27 +100,21 @@ public class MockInterview {
 		this.id = id;
 	}
 
-
-
 	public Date getInterviewDate() {
 		return interviewDate;
 	}
-
 
 	public void setInterviewDate(Date interviewDate) {
 		this.interviewDate = interviewDate;
 	}
 
-
 	public Time getInterviewTime() {
 		return interviewTime;
 	}
 
-
 	public void setInterviewTime(Time interviewTime) {
 		this.interviewTime = interviewTime;
 	}
-
 
 	public String getTopic() {
 		return topic;
@@ -131,15 +124,37 @@ public class MockInterview {
 		this.topic = topic;
 	}
 
-//	public int getIntervieweeId() {
-//		return intervieweeId;
-//	}
-//
-//	public void setIntervieweeId(int intervieweeId) {
-//		this.intervieweeId = intervieweeId;
-//	}
+	// ----------------------------------------------------------------------
+	// one to many user/mock interviewer
+	@ManyToOne
+	@JoinColumn(name = "interviewee_id")
+	private User interviewee;
 
+	// -----------------------------------------------------------------------
+	// many to many user/mock interviewer
+	// join table mock_interviewer
 
+	@ManyToMany(mappedBy = "mockInterviewAppointments")
+	private List<User> userInterviews;
+
+	public void addUserInterview(User userInterview) {
+		if (userInterviews == null) {
+			userInterviews = new ArrayList<>();
+		}
+		if (!userInterviews.contains(userInterview)) {
+			userInterviews.add(userInterview);
+			userInterview.addMockInterviewAppointments(this);
+		}
+	}
+
+	public void removeUserInterview(User userInterview) {
+		if (userInterviews != null && userInterviews.contains(userInterview)) {
+			userInterviews.remove(userInterview);
+			userInterview.removeMockInterviewAppointments(this);
+		}
+	}
+
+	// -----------------------------------------------------------------------
 
 	@Override
 	public int hashCode() {
@@ -151,7 +166,6 @@ public class MockInterview {
 		return "MockInterview [id=" + id + ", interviewDate=" + interviewDate + ", interviewTime=" + interviewTime
 				+ ", topic=" + topic + ", interviewee=" + interviewee + "]";
 	}
-	
 
 	@Override
 	public boolean equals(Object obj) {

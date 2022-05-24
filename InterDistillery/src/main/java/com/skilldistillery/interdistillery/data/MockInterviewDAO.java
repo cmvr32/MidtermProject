@@ -7,7 +7,7 @@ import com.skilldistillery.interdistillery.entities.User;
 
 public interface MockInterviewDAO {
 	
-	public MockInterview findByInterviewId(User user);
+	public List<MockInterview> findByInterviewId(User user);
 	
 	public List<MockInterview> listAllInterviews();
 	
@@ -18,6 +18,8 @@ public interface MockInterviewDAO {
 	public MockInterview createInterview(MockInterview mockInterview);
 
 	public boolean deleteInterview(int interviewId);
+
+	public List<MockInterview> findAllMockInterviewsForUser(User user);
 
 	
 	

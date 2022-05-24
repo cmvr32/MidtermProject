@@ -31,8 +31,70 @@ public class Resume {
 	@Column(name = "degreed")
 	private Integer degree;
 
-//	@Column(name = "user_id")
-//	private int userId;
+	public Resume() {
+		super();
+	}
+
+	public Resume(String contactInfo, String introduction, String experience) {
+		super();
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+	}
+
+	public Resume(int id, String contactInfo, String introduction, String experience) {
+		super();
+		this.id = id;
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+	}
+
+	public Resume(String contactInfo, String introduction, String experience, Integer degree, User user) {
+		super();
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+		this.degree = degree;
+		this.user = user;
+	}
+
+	public Resume(int id, String contactInfo, String introduction, String experience, Integer degree, User user) {
+		super();
+		this.id = id;
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+		this.degree = degree;
+		this.user = user;
+	}
+
+	public Resume(String contactInfo, String introduction, String experience, Integer degree, User user,
+			JobListing jobListing, EducationLevel resumeEducationLevel, List<JobSkill> jobSkills) {
+		super();
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+		this.degree = degree;
+		this.user = user;
+		this.jobListing = jobListing;
+		this.resumeEducationLevel = resumeEducationLevel;
+		this.jobSkills = jobSkills;
+	}
+
+	public Resume(int id, String contactInfo, String introduction, String experience, Integer degree, User user,
+			JobListing jobListing, EducationLevel resumeEducationLevel, List<JobSkill> jobSkills) {
+		super();
+		this.id = id;
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+		this.degree = degree;
+		this.user = user;
+		this.jobListing = jobListing;
+		this.resumeEducationLevel = resumeEducationLevel;
+		this.jobSkills = jobSkills;
+	}
 
 	// many to one user/resume
 	@ManyToOne
@@ -99,9 +161,6 @@ public class Resume {
 		this.jobSkills = jobSkills;
 	}
 
-	public Resume() {
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -142,13 +201,6 @@ public class Resume {
 		this.degree = degree;
 	}
 
-//	public int getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
 
 	public User getUser() {
 		return user;
@@ -158,21 +210,6 @@ public class Resume {
 		this.user = user;
 	}
 
-//	public Integer getJobListingId() {
-//		return jobListingId;
-//	}
-//
-//	public void setJobListingId(Integer jobListingId) {
-//		this.jobListingId = jobListingId;
-//	}
-
-//	public Integer getEducationLevelId() {
-//		return educationLevelId;
-//	}
-//
-//	public void setEducationLevelId(Integer educationLevelId) {
-//		this.educationLevelId = educationLevelId;
-//	}
 
 	@Override
 	public String toString() {

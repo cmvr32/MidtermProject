@@ -28,22 +28,8 @@ public class MockInterviewController {
 		model.addAttribute("DEBUG", mockInterviewDao.findByMockIntervieweeId(1)); // DEBUG REMOVE LATER
 		return "homePage";
 	}
-
-	@RequestMapping(path = "ViewSingleMockInterview.do", method = RequestMethod.GET)
-	public String singleInterview(User user, Model model) {
-		List<MockInterview> interviews = new ArrayList<>();
-		interviews.add(mockInterviewDao.findByInterviewId(user));
-		model.addAttribute("interviews", interviews);
-		return "mockinterview/ViewMockInterview";
-	}
-
-	@RequestMapping(path = "ViewAllInterviews.do")
-	public String getAllInterview(Model model) {
-		List<MockInterview> interviews = mockInterviewDao.listAllInterviews();
-		model.addAttribute("interviews", interviews);
-		return "mockinterview/ViewMockInterview";
-	}
-
+	
+	//create interview
 	@RequestMapping(path = "CreateInterview.do", method = RequestMethod.POST)
 	public String addInterview(RedirectAttributes redir,
 							  @RequestParam MockInterview interview, 
@@ -58,6 +44,17 @@ public class MockInterviewController {
 		return "resume/ViewResume";
 	}
 
+
+
+	@RequestMapping(path = "delete.do", method = RequestMethod.POST)
+	public String deleteInterview(RedirectAttributes redir, int id) {
+		boolean containsFlag = mockInterviewDao.deleteInterview(id);
+		boolean deleteInterviewFlag = true;
+		redir.addFlashAttribute("deleteInterviewFlag", deleteInterviewFlag);
+		redir.addFlashAttribute("containsFlag", containsFlag);
+		return "homepage.do";
+	}
+	
 //	@RequestMapping(path = ".do", method = RequestMethod.GET)
 //	public String addInterviewsGetProcess(MockInterview interviews) {
 //		return "";
@@ -68,28 +65,21 @@ public class MockInterviewController {
 //		return "";
 //	}
 
-	@RequestMapping(path = ".do", method = RequestMethod.POST)
-	public String deleteInterview(RedirectAttributes redir, int id) {
-		boolean containsFlag = mockInterviewDao.deleteInterview(id);
-		boolean deleteInterviewFlag = true;
-		redir.addFlashAttribute("deleteInterviewFlag", deleteInterviewFlag);
-		redir.addFlashAttribute("containsFlag", containsFlag);
-		return "redirect:.do";
-	}
-
 //	@RequestMapping(path = ".do", method = RequestMethod.GET)
 //	public String deleteInterviewGetProcess(MockInterview interviews) {
 //		return "";
 //	}
 
-	@RequestMapping(path = ".do", method = RequestMethod.POST)
-	public String updateInterview(RedirectAttributes redir, MockInterview interviews) {
-		boolean updateInterviewFlag = true;
-		interviews = mockInterviewDao.updateInterview(interviews);
-		redir.addFlashAttribute("updateInterviewFlag", updateInterviewFlag);
-		redir.addFlashAttribute("career", interviews);
-		return "redirect:.do";
-	}
+	
+	//TODO FINSH UPDATE
+//	@RequestMapping(path = "update.do", method = RequestMethod.POST)
+//	public String updateInterview(RedirectAttributes redir, MockInterview interviews) {
+//		boolean updateInterviewFlag = true;
+//		interviews = mockInterviewDao.updateInterview(interviews);
+//		redir.addFlashAttribute("updateInterviewFlag", updateInterviewFlag);
+//		redir.addFlashAttribute("career", interviews);
+//		return "homepage.do";
+//	}
 
 //	@RequestMapping(path = ".do", method = RequestMethod.GET)
 //	public String updateInterviewGetProcess(MockInterview interviews) {
@@ -101,6 +91,25 @@ public class MockInterviewController {
 //		MockInterview interviews = mockInterviewDao.findById(id);
 //		model.addAttribute("interviews", interviews);
 //		return "";
+//	}
+	
+//	@RequestMapping(path = "ViewSingleMockInterview.do", method = RequestMethod.GET)
+//	public String singleInterview(User user, Model model) {
+//		List<MockInterview> interviews = new ArrayList<>();
+//		interviews.add(mockInterviewDao.findByInterviewId(user));
+//		model.addAttribute("interviews", interviews);
+//		return "mockinterview/ViewMockInterview";
+//	}
+//
+//	//find all interviews for a user
+//	@RequestMapping(path = "ViewAllInterviews.do", method =RequestMethod.GET)
+//	public String getAllInterview( Model model,
+//								@RequestParam int userId) {
+//		
+//		
+//		List<MockInterview> interviews = mockInterviewDao.findAllMockInterviewsForUser();
+//		model.addAttribute("interviews", interviews);
+//		return "mockinterview/ViewMockInterview";
 //	}
 
 	

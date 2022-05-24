@@ -18,7 +18,7 @@
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser }">
 			<h6>Account ID: ${sessionScope.loggedInUser.userId}</h6>
-			<h5>Username: ${sessionScope.loggedInUser.userName}</h5>
+			<h5>Username: ${sessionScope.loggedInUser.username}</h5>
 			<p>
 				<c:out value="${sessionScope.loggedInUser.firstName }" />
 				<c:out value="${sessionScope.loggedInUser.lastName }" />

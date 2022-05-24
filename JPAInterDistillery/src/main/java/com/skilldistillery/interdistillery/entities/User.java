@@ -32,8 +32,7 @@ public class User {
 
 	private String email;
 
-	@Column(name="username")
-	private String userName;
+	private String username;
 
 	private String password;
 
@@ -58,43 +57,80 @@ public class User {
 		super();
 	}
 
-	// create new user constructor
-	public User(String firstName, String lastName, String email, String userName, String password) {
+	// with mandatory fields fname,lname, email, username, password
+	public User(String firstName, String lastName, String email, String username, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 	}
-	
 
-	public User(String firstName, String lastName, String email, String userName, String password, String role) {
+	public User(int id, String firstName, String lastName, String email, String username, String password) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+	}
+
+	// with date created
+	public User(String firstName, String lastName, String email, String username, String password,
+			LocalDateTime dateCreated) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
+		this.dateCreated = dateCreated;
+	}
+
+	public User(int id, String firstName, String lastName, String email, String username, String password,
+			LocalDateTime dateCreated) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.dateCreated = dateCreated;
+	}
+
+	// with role and active
+	public User(String firstName, String lastName, String email, String username, String password,
+			LocalDateTime dateCreated, Integer active, String role) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.dateCreated = dateCreated;
+		this.active = active;
 		this.role = role;
 	}
 
-	// eventually this will be the new user contructor
-	// have to figure out time created and role
-	public User(String firstName, String lastName, String email, String userName, String password,
-			LocalDateTime dateCreated, String role) {
+	public User(int id, String firstName, String lastName, String email, String username, String password,
+			LocalDateTime dateCreated, Integer active, String role) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.dateCreated = dateCreated;
+		this.active = active;
 		this.role = role;
 	}
 
 	// all arg no id contructor
-	public User(String firstName, String lastName, String email, String userName, String password,
+	public User(String firstName, String lastName, String email, String username, String password,
 			LocalDateTime dateCreated, Integer active, String role, String profileImageUrl, String bannerImageUrl,
 			String biography, List<MockInterview> userMockInterviews, List<MockInterview> mockInterviewAppointments,
 			List<Resume> userResumes, List<StudyGuide> userStudyGuides, List<StudyGuide> studyguides,
@@ -103,7 +139,7 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.dateCreated = dateCreated;
 		this.active = active;
@@ -120,7 +156,7 @@ public class User {
 	}
 
 	// all arg contructor
-	public User(int id, String firstName, String lastName, String email, String userName, String password,
+	public User(int id, String firstName, String lastName, String email, String username, String password,
 			LocalDateTime dateCreated, Integer active, String role, String profileImageUrl, String bannerImageUrl,
 			String biography, List<MockInterview> userMockInterviews, List<MockInterview> mockInterviewAppointments,
 			List<Resume> userResumes, List<StudyGuide> userStudyGuides, List<StudyGuide> studyguides,
@@ -130,7 +166,7 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.dateCreated = dateCreated;
 		this.active = active;
@@ -180,11 +216,11 @@ public class User {
 	}
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -460,7 +496,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", userName=" + userName + ", password=" + password + ", dateCreated=" + dateCreated + ", active="
+				+ ", username=" + username + ", password=" + password + ", dateCreated=" + dateCreated + ", active="
 				+ active + ", role=" + role + ", profileImageUrl=" + profileImageUrl + ", bannerImageUrl="
 				+ bannerImageUrl + ", biography=" + biography + "]";
 	}
