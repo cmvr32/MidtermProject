@@ -85,7 +85,7 @@ public class ResumeDAOImpl implements ResumeDAO {
 			System.out.println("New Resume Created");
 			resumeCreated = true;
 		} else {
-			System.err.println("Character was not created");
+			System.err.println("Resume was not created");
 			resumeCreated = false;
 
 		}

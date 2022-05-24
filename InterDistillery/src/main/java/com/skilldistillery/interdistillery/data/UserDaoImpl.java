@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.interdistillery.entities.Resume;
 import com.skilldistillery.interdistillery.entities.User;
 
 @Service
@@ -45,7 +46,7 @@ public class UserDaoImpl implements UserDAO {
 				.setParameter("pw", password).getResultList();
 		if(userFindUsernameAndPassword!=null && !userFindUsernameAndPassword.isEmpty()) {
 			
-			System.out.println("---FINDING USER WITH EMAIL AND PASSWORD---");
+			System.out.println("---FINDING USER WITH USERNAME AND PASSWORD---");
 			System.err.println("LOOKING FOR: " + username + ", " + password);
 			System.err.println("NAME FOUND: " + userFindUsernameAndPassword);
 			
@@ -196,13 +197,13 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	// find all resumes for the current user
-	public List<User> findAllCurrentUserResumes(User user) {
+	public List<Resume> findAllCurrentUserResumes(User user) {
 
 		Boolean resumeListFound = false;
-		List<User> completeResumeList = null;
+		List<Resume> completeResumeList = null;
 		Integer userId = user.getId();
-		String jpql = "SELECT c.userResumes FROM User c WHERE c.id=: id";
-		completeResumeList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
+		String jpql = "SELECT r FROM Resume r WHERE r.user.id=:id";
+		completeResumeList = em.createQuery(jpql, Resume.class).setParameter("id", userId).getResultList();
 
 		System.err.println("---FINDING ALL CURRENT USER RESUMES---");
 
@@ -210,11 +211,6 @@ public class UserDaoImpl implements UserDAO {
 
 			resumeListFound = true;
 
-			for (User resume : completeResumeList) {
-
-				System.out.println(resume);
-
-			}
 
 		} else if (completeResumeList == null) {
 

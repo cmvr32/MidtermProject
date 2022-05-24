@@ -2,6 +2,7 @@ package com.skilldistillery.interdistillery.data;
 
 import java.util.List;
 
+import com.skilldistillery.interdistillery.entities.Resume;
 import com.skilldistillery.interdistillery.entities.User;
 
 public interface UserDAO {
@@ -24,7 +25,7 @@ public interface UserDAO {
 
 	// read
 	// Find all users resumes
-	public List<User> findAllCurrentUserResumes(User user);
+	public List<Resume> findAllCurrentUserResumes(User user);
 
 	// read
 	// Find all user study guides

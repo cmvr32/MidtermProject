@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.interdistillery.data.ResumeDAO;
+import com.skilldistillery.interdistillery.data.UserDAO;
 import com.skilldistillery.interdistillery.entities.Resume;
 import com.skilldistillery.interdistillery.entities.User;
 
@@ -22,6 +23,9 @@ public class ResumeController {
 	@Autowired
 	private ResumeDAO resumeDao;
 
+	@Autowired
+	private UserDAO userResumeDao;
+	
 //	@RequestMapping(path = { "/", "homePage.do" })
 //	public String home(Model model) {
 //		model.addAttribute("DEBUG", resumeDao.findResumeById(1)); // DEBUG REMOVE LATER
@@ -33,16 +37,33 @@ public class ResumeController {
 		return "resume/CreateResume";
 	}
 	@RequestMapping("directToUpdateResume.do")
-	public String directToUpdateResume() {
+	public String directToUpdateResume(Model model, HttpSession session) {
+		
+		User user = (User)session.getAttribute("user");
+		List<Resume> userResumes=new ArrayList<>();
+		
+		userResumes.addAll(userResumeDao.findAllCurrentUserResumes(user));
+		
+		model.addAttribute("userResumes", userResumes);
+		
 		return "resume/UpdateResume";
 	}
 
 	@RequestMapping(path = "ViewResume.do", method = RequestMethod.GET)
-	public String singleResume(int id, Model model) {
-		List<Resume> resumes = new ArrayList<>();
-		resumes.add(resumeDao.findResumeById(id));
-		model.addAttribute("resumes", resumes);
-		return "resume/CreateResume";
+	public String viewUserResumes(int id, Model model, HttpSession session) {
+		
+		User user = (User)session.getAttribute("user");
+		List<Resume> userResumes=new ArrayList<>();
+		
+		userResumes.addAll(userResumeDao.findAllCurrentUserResumes(user));
+		
+		model.addAttribute("userResumes", userResumes);
+		
+//		List<Resume> resumes = new ArrayList<>();
+//		resumes.add(resumeDao.findResumeById(user));
+//		model.addAttribute("resumes", resumes);
+		
+		return "resume/UpdateResume";
 	}
 
 //	@RequestMapping(path = ".do")
