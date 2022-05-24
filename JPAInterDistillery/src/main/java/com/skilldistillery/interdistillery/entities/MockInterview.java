@@ -1,7 +1,9 @@
 package com.skilldistillery.interdistillery.entities;
 
+import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,10 +26,10 @@ public class MockInterview {
 	private int id;
 
 	@Column(name = "interview_date")
-	private LocalDateTime interviewDate;
+	private Date interviewDate;
 
 	@Column(name = "interview_time")
-	private LocalDateTime interviewTime;
+	private Time interviewTime;
 
 	private String topic;
 
@@ -43,9 +45,20 @@ public class MockInterview {
 	// -----------------------------------------------------------------------
 	// many to many user/mock interviewer
 	// join table mock_interviewer
+	
+	
 
 	@ManyToMany(mappedBy = "mockInterviewAppointments")
 	private List<User> userInterviews;
+
+
+	public MockInterview(Date interviewDate, Time interviewTime, String topic) {
+		super();
+		this.interviewDate = interviewDate;
+		this.interviewTime = interviewTime;
+		this.topic = topic;
+	}
+
 
 	public List<User> getUserInterviews() {
 		return userInterviews;
@@ -88,21 +101,27 @@ public class MockInterview {
 		this.id = id;
 	}
 
-	public LocalDateTime getInterviewDate() {
+
+
+	public Date getInterviewDate() {
 		return interviewDate;
 	}
 
-	public void setInterviewDate(LocalDateTime interviewDate) {
+
+	public void setInterviewDate(Date interviewDate) {
 		this.interviewDate = interviewDate;
 	}
 
-	public LocalDateTime getInterviewTime() {
+
+	public Time getInterviewTime() {
 		return interviewTime;
 	}
 
-	public void setInterviewTime(LocalDateTime interviewTime) {
+
+	public void setInterviewTime(Time interviewTime) {
 		this.interviewTime = interviewTime;
 	}
+
 
 	public String getTopic() {
 		return topic;

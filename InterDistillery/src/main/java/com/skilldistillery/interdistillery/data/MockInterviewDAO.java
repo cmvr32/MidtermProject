@@ -3,10 +3,11 @@ package com.skilldistillery.interdistillery.data;
 import java.util.List;
 
 import com.skilldistillery.interdistillery.entities.MockInterview;
+import com.skilldistillery.interdistillery.entities.User;
 
 public interface MockInterviewDAO {
 	
-	public MockInterview findByInterviewId(int interviewId);
+	public MockInterview findByInterviewId(User user);
 	
 	public List<MockInterview> listAllInterviews();
 	
