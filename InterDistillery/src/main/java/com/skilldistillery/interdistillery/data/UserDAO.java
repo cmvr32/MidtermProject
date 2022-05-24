@@ -32,7 +32,7 @@ public interface UserDAO {
 
 	// read
 	// Find all user job listings*
-	public List <User> findAllCurrentUserJobListings(User user);
+	public List<User> findAllCurrentUserJobListings(User user);
 
 	// read
 	// find user mock interview
@@ -52,8 +52,6 @@ public interface UserDAO {
 	// update user as admin
 	public User updateUserAsAdmin(User user);
 
-	
 	public Boolean deleteUser(int id);
-
 
 }

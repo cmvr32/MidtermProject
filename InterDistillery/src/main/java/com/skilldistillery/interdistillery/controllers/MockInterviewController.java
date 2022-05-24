@@ -18,20 +18,20 @@ public class MockInterviewController {
 	@Autowired
 	private MockInterviewDAO mockInterviewDao;
 
-//	@RequestMapping(path = { "/", "home.do" })
-//	public String home(Model model) {
-//		model.addAttribute("DEBUG", mockInterviewDao.findById(1)); // DEBUG REMOVE LATER
-//		return "homePage";
-//	}
-//
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String singleInterview(int id, Model model) {
-//		List<MockInterview> interviews = new ArrayList<>();
-//		interviews.add(mockInterviewDao.findById(id));
-//		model.addAttribute("interviews", interviews);
-//		return "";
-//	}
-//
+	@RequestMapping(path = { "/", "home.do" })
+	public String home(Model model) {
+		model.addAttribute("DEBUG", mockInterviewDao.findById(1)); // DEBUG REMOVE LATER
+		return "homePage";
+	}
+
+	@RequestMapping(path = ".do", method = RequestMethod.GET)
+	public String singleInterview(int id, Model model) {
+		List<MockInterview> interviews = new ArrayList<>();
+		interviews.add(mockInterviewDao.findById(id));
+		model.addAttribute("interviews", interviews);
+		return "";
+	}
+
 //	@RequestMapping(path = ".do")
 //	public String getAllInterview(Model model) {
 //		List<MockInterview> interviews = mockInterviewDao.findAllInterviews();

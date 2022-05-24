@@ -37,8 +37,8 @@ public class User {
 
 	private String password;
 
-	@Column(name = "date_created")
 	@CreationTimestamp
+	@Column(name = "date_created")
 	private LocalDateTime dateCreated;
 
 	private Integer active;

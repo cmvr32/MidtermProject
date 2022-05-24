@@ -45,52 +45,34 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "CreateUser.do", method = RequestMethod.POST)
-	public String AddNewUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
+	public String addNewUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
 			@RequestParam String userName, @RequestParam String password, RedirectAttributes redir, User user) {
 		User newUser = new User(firstName, lastName, email, userName, password);
-		user = userDao.createUser(user);
+		user = userDao.createUser(newUser);
 		boolean addUserFlag = true;
 		redir.addFlashAttribute("addUserFlag", addUserFlag);
-		redir.addFlashAttribute("studyGuides", user);
-		return "redirect:.do";
+		redir.addFlashAttribute("user", user);
+		return "login";
 	}
 
-	@RequestMapping(path = "CreateUser.do", method = RequestMethod.GET)
-	public String addUserGetProcess(User user) {
-		return "account";
-	}
+//	@RequestMapping(path = "CreateUser.do", method = RequestMethod.GET)
+//	public String addUserGetProcess(User user) {
+//		return "account";
+//	}
 
-	@RequestMapping(path = "CreateUser.do")
-	public String addNewUser() {
-		return "";
-	}
-<<<<<<< HEAD
+//	@RequestMapping(path = "CreateUser.do")
+//	public String addNewUser() {
+//		return "";
+//	}
 
-=======
->>>>>>> 28179eb6f19f52d7c054fbe7dbb8905b48dfdbb5
-
-	@RequestMapping("directToLogin.do")
-	public String directToLogin() {
-		return "Login/login";
-	}
-
-	@RequestMapping("directToCreateUser.do")
-	public String directToCreateUser() {
-		return "Login/CreateUser";
-	}
-
-//	@RequestMapping(path = ".do", method = RequestMethod.POST)
-//	public String updateUserBiography(RedirectAttributes redir, User user) {
-//		boolean updateUserBiographyFlag = true;
-//		user = userDao.updateUserfristNameLastName(null, null);
-//		redir.addFlashAttribute("updateUserBiographyFlag", updateUserBiographyFlag);
-//		redir.addFlashAttribute("user", user);
-//		return "redirect:.do";
+//	@RequestMapping("directToLogin.do")
+//	public String directToLogin() {
+//		return "Login/login";
 //	}
 //
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String updateUserBiographyGetProcess(User user) {
-//		return "";
+//	@RequestMapping("directToCreateUser.do")
+//	public String directToCreateUser() {
+//		return "Login/CreateUser";
 //	}
 //
 //	@RequestMapping(path = ".do")
@@ -99,9 +81,9 @@ public class UserController {
 //		model.addAttribute("user", user);
 //		return "";
 //	}
-//
+
 //	@RequestMapping(path = ".do", method = RequestMethod.POST)
-//	public String updateUserfristNameLastName(RedirectAttributes redir, User user) {
+//	public String updateUserFirstNameLastName(RedirectAttributes redir, User user) {
 //		boolean updateUserFirstNameLastNameFlag = true;
 //		user = userDao.updateUserfristNameLastName(null, null);
 //		redir.addFlashAttribute("updateUserFirstNameLastNameFlag", updateUserFirstNameLastNameFlag);
@@ -120,7 +102,7 @@ public class UserController {
 //		model.addAttribute("user", user);
 //		return "";
 //	}
-//
+
 //	@RequestMapping(path = ".do", method = RequestMethod.POST)
 //	public String updateUserEmail(RedirectAttributes redir, User user) {
 //		boolean updateUserEmailFlag = true;
@@ -142,39 +124,39 @@ public class UserController {
 //		return "";
 //	}
 
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String updateUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
-//			@RequestParam String email, @RequestParam String userName, @RequestParam String password,
-//			@RequestParam String profileImageUrl, @RequestParam String profileBannerUrl,
-//			@RequestParam String biography) {
-//
-//		boolean updateUserEmailFlag = true;
-//
-//		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
-//
-//		userDao.updateUser(user);
-//		redir.addFlashAttribute("updateUserEmailFlag", updateUserEmailFlag);
-//		redir.addFlashAttribute("user", user);
-//		return "redirect:.do";
-//
-//	}
-//
-//	@RequestMapping(path = ".do", method = RequestMethod.POST)
-//	public String deleteUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
-//			@RequestParam String email) {
-//
-//		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
-//		Integer userId = user.getId();
-//		boolean containsFlag = userDao.deleteUser(userId);
-//		boolean deleteUserFlag = true;
-//		redir.addFlashAttribute("deleteUserFlag", deleteUserFlag);
-//		redir.addFlashAttribute("containsFlag", containsFlag);
-//		return "redirect:.do";
-//	}
-//
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String deleteUserGetProcess(User user) {
-//		return "";
-//	}
+	@RequestMapping(path = ".do", method = RequestMethod.GET)
+	public String updateUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
+			@RequestParam String email, @RequestParam String userName, @RequestParam String password,
+			@RequestParam String profileImageUrl, @RequestParam String profileBannerUrl,
+			@RequestParam String biography) {
+
+		boolean updateUserEmailFlag = true;
+
+		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
+
+		userDao.updateUser(user);
+		redir.addFlashAttribute("updateUserEmailFlag", updateUserEmailFlag);
+		redir.addFlashAttribute("user", user);
+		return "redirect:.do";
+
+	}
+
+	@RequestMapping(path = ".do", method = RequestMethod.POST)
+	public String deleteUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
+			@RequestParam String email) {
+
+		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
+		Integer userId = user.getId();
+		boolean containsFlag = userDao.deleteUser(userId);
+		boolean deleteUserFlag = true;
+		redir.addFlashAttribute("deleteUserFlag", deleteUserFlag);
+		redir.addFlashAttribute("containsFlag", containsFlag);
+		return "redirect:.do";
+	}
+
+	@RequestMapping(path = ".do", method = RequestMethod.GET)
+	public String deleteUserGetProcess(User user) {
+		return "";
+	}
 
 }

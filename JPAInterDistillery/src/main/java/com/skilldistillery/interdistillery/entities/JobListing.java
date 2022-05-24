@@ -1,5 +1,6 @@
 package com.skilldistillery.interdistillery.entities;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -43,9 +44,9 @@ public class JobListing {
 	@Column(name = "job_posting_url")
 	private String jobPostUrl;
 
-	@Column(name = "job_post_date")
 	@CreationTimestamp
-	private String jobPostDate;
+	@Column(name = "job_post_date")
+	private LocalDateTime jobPostDate;
 
 	@Column(name = "pay_scale_type")
 	private String salaryType;
@@ -155,11 +156,11 @@ public class JobListing {
 		this.jobPostUrl = jobPostUrl;
 	}
 
-	public String getJobPostDate() {
+	public LocalDateTime getJobPostDate() {
 		return jobPostDate;
 	}
 
-	public void setJobPostDate(String jobPostDate) {
+	public void setJobPostDate(LocalDateTime jobPostDate) {
 		this.jobPostDate = jobPostDate;
 	}
 

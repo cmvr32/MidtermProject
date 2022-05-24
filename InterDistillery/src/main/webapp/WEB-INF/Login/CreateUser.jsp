@@ -10,7 +10,7 @@
 
 <H1>Create an Account</H1>
 
-<form action="createResume.do" method="post">
+<form action="createUser.do" method="post">
 
 	<label for="contactInfo">First Name</label><br>
 	<input type="text" name="firstName" placeholder="first name"></input> 
