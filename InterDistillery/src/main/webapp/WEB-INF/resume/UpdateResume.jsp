@@ -19,30 +19,31 @@
 <h1>Update Your Resume</h1>
 <h3> Displaying Resumes for:</h3>
 <h3>${sessionScope.user.firstName} ${sessionScope.user.firstName}</h3>
-</div>
+
 <hr>
 
-<div>
+
 <h2> Resume Update Please select a resume from the list below to update</h2>
-	<%-- <form action="updateResume.do" , method="GET">
-	<input type="hidden" name="id" value="${resume}" /> 
-		<input type="hidden" name="contactInfo" value="${resume.contactInfo}" /> 
+	
+	 <form action="updateResume.do" method="GET">
+	<input type="hidden" name="id" value="${editResume.id}" /> 
+		<input type="text" name="contactInfo" value="${editResume.contactInfo}" /> 
 		<label for="contactInfo"> Contact Information </label>
 		<br> 
-		<input type="hidden" name="introduction" value="${resume.introduction}" /> 
+		<input type="text" name="introduction" value="${editResume.introduction}" /> 
 		<label for="introduction"> About Me </label>
 		<br> 
-		<input type="hidden" name="experience" value="${resume.experience}" /> 
+		<input type="text" name="experience" value="${editResume.experience}" /> 
 		<label for="experience"> Experience </label>
 		<br> 
-		<input type="hidden" name="degree" value="${resume.degree}" /> 
+		<input type="text" name="degree" value="${editResume.degree}" /> 
 		<label for="degree"> Degree </label>
 		<br> 
 		<br> <br> <br>
 		<input type="submit" />
 
 	</form>
-	<hr> --%>
+	<hr> 
 	
 
 

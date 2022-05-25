@@ -13,6 +13,7 @@
 
 <h1>Resume Resources</h1>
 
+<br><form action="ViewResume.do"><button>View Resumes</button></form>
 <br><form action="directToAddResume.do"><button>Build a Resume</button></form>
 
 <form action="directToUpdateResume.do" >

@@ -8,7 +8,7 @@ import com.skilldistillery.interdistillery.entities.User;
 public interface ResumeDAO {
 
 	// read
-	public Resume findResumeById(int userId);
+	public Resume findResumeById(int resumeId);
 
 	// read
 	// TODO create admin permissions
@@ -34,9 +34,9 @@ public interface ResumeDAO {
 	public Resume createResume(Resume newResume, User user);
 
 	// update
-//	public Resume updateResume(Integer resumeId, Resume resume);
-	public Resume updateResume(Integer resumeId, Resume resumeToUpdate, Resume resumeUpdater, String introduction,
-			String contactInfo, String experience);
+	public Resume updateResume(Resume resume);
+//	public Resume updateResume(Integer resumeId, Resume resumeToUpdate, Resume resumeUpdater, String introduction,
+//			String contactInfo, String experience);
 
 	// delete
 	public Boolean deleteResume(int resumeId);

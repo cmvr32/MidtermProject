@@ -19,11 +19,11 @@ public class UserController {
 	@Autowired
 	private UserDAO userDao;
 
-	@RequestMapping(path = { "/", "homePage.do" })
-	public String home(Model model) {
-		model.addAttribute("DEBUG", userDao.findById(1));
-		return "homePage";
-	}
+//	@RequestMapping(path = { "/", "homePage.do" })
+//	public String home(Model model) {
+//		model.addAttribute("DEBUG", userDao.findById(1));
+//		return "homePage";
+//	}
 
 	@RequestMapping(path = { "homePage.do" })
 	public String home1(@RequestParam Integer id, Model model) {
@@ -52,7 +52,8 @@ public class UserController {
 		newUser.setEmail(email);
 		newUser.setUserName(username);
 		newUser.setPassword(password);
-		
+		newUser.setActive(1);
+		newUser.setRole("User");
 		newUser = userDao.createUser(newUser);
 		//boolean addUserFlag = true;
 		//model.addFlashAttribute("addUserFlag", addUserFlag);
@@ -66,10 +67,10 @@ public class UserController {
 		return "Login/account";
 	}
 
-	@RequestMapping(path = "CreateUser.do")
-	public String addNewUser() {
-		return "Login/login";
-	}
+//	@RequestMapping(path = "CreateUser.do")
+//	public String addNewUser() {
+//		return "Login/login";
+//	}
 
 	@RequestMapping(path = "UpdateUser.do", method = RequestMethod.GET)
 	public String updateUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
