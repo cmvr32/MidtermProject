@@ -33,6 +33,8 @@ public class ResumeController {
 //		return "homePage";
 //	}
 
+	
+	
 	@RequestMapping("directToAddResume.do")
 	public String directToAddResume() {
 		return "resume/CreateResume";
@@ -65,7 +67,7 @@ public class ResumeController {
 //		resumes.add(resumeDao.findResumeById(user));
 //		model.addAttribute("resumes", resumes);
 
-		return "resume/UpdateResume";
+		return "resume/ViewResume";
 	}
 
 //	@RequestMapping(path = ".do")
@@ -118,18 +120,39 @@ public class ResumeController {
 //
 
 	@RequestMapping(path = "updateResume.do", method = RequestMethod.GET)
-	public String updateResume(RedirectAttributes redir, @RequestParam Integer resumeId, HttpSession session) {
+	public String updateResume(RedirectAttributes redir, Model model, 
+			@RequestParam Integer resumeId, 
+			@RequestParam String introduction,
+			@RequestParam String contactInfo, 
+			@RequestParam String experience, 
+			@RequestParam HttpSession session) {
 
 		boolean updateUserEmailFlag = true;
+		
+		System.err.println("---RESUME CONTROLLER---");
+		System.err.println("---updateResume---");
 
+		//user in session
 		User user = (User) session.getAttribute("user");
-		Resume resume = resumeDao.findResumeById(resumeId);
-
 		int userId = user.getId();
-		resumeDao.updateResume(resumeId, resume);
+		
+		//users current resume
+		Resume resumeToUpdate = resumeDao.findResumeById(resumeId);
+		
+		//resume with new fields, used to update users resume
+		Resume resumeUpdater=new Resume(contactInfo, introduction, experience);
+
+		//call resume update method in dao
+		Resume updatedResume=resumeDao.updateResume(resumeId, resumeToUpdate, resumeUpdater, 
+				introduction, contactInfo, experience);
+		
+		//model
+		model.addAttribute("updatedResume", updatedResume);
+		
+		//redir
 		redir.addFlashAttribute("updateUserEmailFlag", updateUserEmailFlag);
-		redir.addFlashAttribute("resume", resume);
-		return "Login/UpdateResume";
+		redir.addFlashAttribute("updatedResume", updatedResume);
+		return "resume/ViewResume";
 
 	}
 

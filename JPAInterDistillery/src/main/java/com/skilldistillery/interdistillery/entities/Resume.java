@@ -50,6 +50,46 @@ public class Resume {
 		this.experience = experience;
 	}
 
+	public Resume(String contactInfo, String introduction, String experience, Integer degree) {
+		super();
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+		this.degree = degree;
+	}
+
+	public Resume(int id, String contactInfo, String introduction, String experience, Integer degree) {
+		super();
+		this.id = id;
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+		this.degree = degree;
+	}
+
+	public Resume(String contactInfo, String introduction, String experience, Integer degree,
+			EducationLevel resumeEducationLevel, List<JobSkill> jobSkills) {
+		super();
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+		this.degree = degree;
+		this.resumeEducationLevel = resumeEducationLevel;
+		this.jobSkills = jobSkills;
+	}
+
+	public Resume(int id, String contactInfo, String introduction, String experience, Integer degree,
+			EducationLevel resumeEducationLevel, List<JobSkill> jobSkills) {
+		super();
+		this.id = id;
+		this.contactInfo = contactInfo;
+		this.introduction = introduction;
+		this.experience = experience;
+		this.degree = degree;
+		this.resumeEducationLevel = resumeEducationLevel;
+		this.jobSkills = jobSkills;
+	}
+
 	public Resume(String contactInfo, String introduction, String experience, Integer degree, User user) {
 		super();
 		this.contactInfo = contactInfo;
@@ -201,7 +241,6 @@ public class Resume {
 		this.degree = degree;
 	}
 
-
 	public User getUser() {
 		return user;
 	}
@@ -209,7 +248,6 @@ public class Resume {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 
 	@Override
 	public String toString() {
