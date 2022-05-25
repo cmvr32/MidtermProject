@@ -89,30 +89,6 @@ public class ResumeController {
 		return "Login/account";
 	}
 
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String addResumeGetProcess(Resume resumes) {
-//		return "";
-//	}
-//
-//	@RequestMapping(path = ".do")
-//	public String addNewResume() {
-//		return "";
-//	}
-//
-//	@RequestMapping(path = ".do", method = RequestMethod.POST)
-//	public String deleteResume(RedirectAttributes redir, int id) {
-//		boolean containsFlag = resumeDao.deleteResume(id);
-//		boolean deleteResumeFlag = true;
-//		redir.addFlashAttribute("deleteResumeFlag", deleteResumeFlag);
-//		redir.addFlashAttribute("containsFlag", containsFlag);
-//		return "redirect:.do";
-//	}
-//
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String deleteResumeGetProcess(Resume resumes) {
-//		return "";
-//	}
-//
 
 	@RequestMapping(path = "updateResume.do", method = RequestMethod.GET)
 	public String updateResume(RedirectAttributes redir, Model model, 
@@ -166,13 +142,41 @@ public class ResumeController {
 	public String directToDeleteResume() {
 		return "resume/DeleteResume";
 	}
-	@RequestMapping("directToUpdateResume.do")
-	public String directToUpdateResume() {
-		return "resume/UpdateResume";
-	}
+//	@RequestMapping("directToUpdateResume.do")
+//	public String directToUpdateResume() {
+//		return "resume/UpdateResume";
+//	}
 	@RequestMapping("directToViewResume.do")
 	public String directToViewResume() {
 		return "resume/ViewResume";
 	}
+	
+	
+	
+
+//	@RequestMapping(path = ".do", method = RequestMethod.GET)
+//	public String addResumeGetProcess(Resume resumes) {
+//		return "";
+//	}
+//
+//	@RequestMapping(path = ".do")
+//	public String addNewResume() {
+//		return "";
+//	}
+//
+//	@RequestMapping(path = ".do", method = RequestMethod.POST)
+//	public String deleteResume(RedirectAttributes redir, int id) {
+//		boolean containsFlag = resumeDao.deleteResume(id);
+//		boolean deleteResumeFlag = true;
+//		redir.addFlashAttribute("deleteResumeFlag", deleteResumeFlag);
+//		redir.addFlashAttribute("containsFlag", containsFlag);
+//		return "redirect:.do";
+//	}
+//
+//	@RequestMapping(path = ".do", method = RequestMethod.GET)
+//	public String deleteResumeGetProcess(Resume resumes) {
+//		return "";
+//	}
+//
 
 }
