@@ -8,42 +8,23 @@
 <title>Update Your Resume</title>
 </head>
 <body>
-
-<h1>Update Your Resume</h1>
-	<form action="updateResume.do" , method="post">
-	<input type="hidden" name="id" value="${resume.id}" /> 
-		<input type="hidden" name="contactInfo" value="${resume.contactInfo}" /> 
-		<label for="contactInfo"> Contact Information </label>
-		<br> 
-		<input type="hidden" name="introduction" value="${resume.introduction}" /> 
-		<label for="introduction"> About Me </label>
-		<br> 
-		<input type="hidden" name="experience" value="${resume.experience}" /> 
-		<label for="experience"> Experience </label>
-		<br> 
-		<input type="hidden" name="degree" value="${resume.degree}" /> 
-		<label for="degree"> Degree </label>
-		<br> 
-		<br> <br> <br>
-		<input type="submit" />
-
-	</form>
-	
-	
+<form action="directToHomePage.do"><button>Return Home</button></form>
+<br><form action="directToAddResume.do"><button>Build a Resume</button></form>
 	<div>
-		<h2>List Resumes</h2>
+		<h2>Your Resumes</h2>
+		<h5>Select a resume to edit.</h5>
 		<form action="ViewResume.do" method="GET">
-		<input type="submit" value="Refresh Table">
+		<!-- <input type="submit" value="Refresh Table"> -->
 		</form>
 	<table>
 		<thead>
 			<tr>
-				<th scope="col">id</th>
-				<th scope="col">contactInfo</th>
-				<th scope="col">introduction</th>
-				<th scope="col">experience</th>
-				<th scope="col">degree</th>
-				<td scope="col">user</td>
+				<th scope="col">Resume ID</th>
+				<th scope="col">Contact Information</th>
+				<th scope="col">Introduction</th>
+				<th scope="col">Experience</th>
+				<th scope="col">Degree</th>
+				<th scope="col">User</th>
 			
 			</tr>
 		</thead>

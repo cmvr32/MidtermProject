@@ -30,6 +30,10 @@
 	<button>Schedule a Mock Interview</button>
 	</form>
 	<br>
+	<form action="directToAccount.do">
+	<button>User Profile</button>
+	</form>
+	<br>
 
 </body>
 </html>

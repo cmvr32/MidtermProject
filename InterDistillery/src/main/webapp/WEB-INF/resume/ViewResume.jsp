@@ -7,7 +7,8 @@
 <title>Your Resume</title>
 </head>
 <body>
-
+<form action="directToHomePage.do"><button>Return Home</button></form>
+<br><form action="directToAddResume.do"><button>Build a Resume</button></form>
 <h1>Your Resume</h1>
 
 <form action="directToUpdateResume.do" >
