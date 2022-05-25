@@ -7,6 +7,8 @@
 <title>Delete Resume</title>
 </head>
 <body>
+<jsp:include page="../bootstrapHead.jsp"/>
+<%@ include file="../nav.jsp"%>
 
 <h1>Your resume has been deleted</h1>
 

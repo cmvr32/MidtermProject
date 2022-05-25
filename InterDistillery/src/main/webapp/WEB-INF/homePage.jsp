@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>InterDistillery</title>
+<jsp:include page="bootstrapHead.jsp"/>
+<%@ include file="nav.jsp"%>
 </head>
 <body>
-
 	
 	<h1>InterDistillery</h1>
 
@@ -28,6 +29,10 @@
 	<br>
 	<form action="directToRequestMockInterview.do">
 	<button>Schedule a Mock Interview</button>
+	</form>
+	<br>
+	<form action="directToAccount.do">
+	<button>User Profile</button>
 	</form>
 	<br>
 

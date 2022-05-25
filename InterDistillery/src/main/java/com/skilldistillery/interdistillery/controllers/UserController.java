@@ -163,4 +163,9 @@ public class UserController {
 	public String directToHomePage() {
 		return "homePage";
 	}
+	@RequestMapping("directToAccount.do")
+	public String directToAccount() {
+		return "Login/account";
+	}
+
 }
