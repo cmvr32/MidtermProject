@@ -8,8 +8,8 @@
 	<a class="navbar-brand" href="directToHomePage.do">InterDistillery</a>
 	<c:choose>
 	  <c:when test="${not empty sessionScope.user }">
-	    <a href="directToViewResume.do" class="btn btn-success">Resume Resources </a>
-	    <a href="directToViewMockInterviewRequest.do" class="btn btn-success">Interview Preparation</a>
+	    <a href="directToResumeResouces.do" class="btn btn-success">Resume Resources </a>
+	    <a href="directToMockInterviewResources.do" class="btn btn-success">Interview Preparation</a>
 	    <a href="directToAccount.do" class="btn btn-success">Account</a>
 	    <a href="logout.do" class="btn btn-primary">Log Out</a>
 	  </c:when>
