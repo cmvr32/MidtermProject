@@ -4,8 +4,12 @@
 
 
 <nav class="navbar navbar-expand-lg bg-light">
-<div class="container-fluid">
+<div class="container">
 	<a class="navbar-brand" href="directToHomePage.do">InterDistillery</a>
+		<img src="/docs/5.0/assets/brand/bootstrap-logo.svg" 
+		alt=""
+		width="30"
+		height="24"/>
 	<c:choose>
 	  <c:when test="${not empty sessionScope.user }">
 	    <a href="directToResumeResources.do" class="btn btn-success">Resume Resources </a>
