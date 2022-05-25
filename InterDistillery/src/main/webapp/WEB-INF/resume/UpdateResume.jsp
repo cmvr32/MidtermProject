@@ -11,8 +11,33 @@
 <%@ include file="../nav.jsp"%>
 </head>
 <body>
+<<<<<<< HEAD
+
+<h1>Update Your Resume</h1>
+	<form action="updateResume.do" , method="GET">
+	<input type="hidden" name="id" value="${resume}" /> 
+		<input type="hidden" name="contactInfo" value="${resume.contactInfo}" /> 
+		<label for="contactInfo"> Contact Information </label>
+		<br> 
+		<input type="hidden" name="introduction" value="${resume.introduction}" /> 
+		<label for="introduction"> About Me </label>
+		<br> 
+		<input type="hidden" name="experience" value="${resume.experience}" /> 
+		<label for="experience"> Experience </label>
+		<br> 
+		<input type="hidden" name="degree" value="${resume.degree}" /> 
+		<label for="degree"> Degree </label>
+		<br> 
+		<br> <br> <br>
+		<input type="submit" />
+
+	</form>
+	
+	
+=======
 <form action="directToHomePage.do"><button>Return Home</button></form>
 <br><form action="directToAddResume.do"><button>Build a Resume</button></form>
+>>>>>>> 73b0babcc96a3440f4f5656926a8848cf457fde6
 	<div>
 		<h2>Your Resumes</h2>
 		<h5>Select a resume to edit.</h5>
@@ -35,7 +60,7 @@
 			<c:forEach var="userResume" items="${userResumes}"> 
 			<tr>
 			
-			<td>${userResume.id}</td>
+			<td><a href="updateResume.do?id=${userResume.id}">${userResume.id}</a></td>
 			<td>${userResume.contactInfo}</td>
 			<td>${userResume.introduction}</td>
 			<td>${userResume.experience}</td>

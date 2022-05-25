@@ -6,41 +6,40 @@ import com.skilldistillery.interdistillery.entities.Resume;
 import com.skilldistillery.interdistillery.entities.User;
 
 public interface ResumeDAO {
-	
+
 	// read
-	Resume findResumeById(int userId);
+	public Resume findResumeById(int userId);
 
 	// read
 	// TODO create admin permissions
 	public List<Resume> findAllResumes();
-	
+
 	// read
 	public Resume findByUserIdAndResumeId(int userId, int resumeId);
-	
-	//read
-	//find resume joblisting
+
+	// read
+	// find resume joblisting
 	public Resume findResumeJobListing(Resume resume);
-	
-	//read
-	//find resume EducationLevel
+
+	// read
+	// find resume EducationLevel
 	public Resume findResumeEducationLevel(Resume resume);
-	
-	//read
-	//find resumeJobSkills
+
+	// read
+	// find resumeJobSkills
 	public List<Resume> findResumeJobSkills(Resume resume);
-	
-	
+
 	// create
 	// create a new resume
 	public Resume createResume(Resume newResume, User user);
 
 	// update
-	public Resume updateResume(Resume updateResume);
+	public Resume updateResume(Integer resumeId, Resume resume);
 
 	// delete
 	public Boolean deleteResume(int resumeId);
-	
-	//TODO ADD RESUME TO USER
-	//TODO ADD RESUME TO JOBLISTING
-	
+
+	// TODO ADD RESUME TO USER
+	// TODO ADD RESUME TO JOBLISTING
+
 }
