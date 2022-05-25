@@ -1,7 +1,5 @@
 package com.skilldistillery.interdistillery.controllers;
 
-import java.time.LocalDateTime;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;

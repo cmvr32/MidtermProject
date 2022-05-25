@@ -10,8 +10,8 @@
 <body>
 
 <h1>Update Your Resume</h1>
-	<form action="updateResume.do" , method="post">
-	<input type="hidden" name="id" value="${resume.id}" /> 
+	<form action="updateResume.do" , method="GET">
+	<input type="hidden" name="id" value="${resume}" /> 
 		<input type="hidden" name="contactInfo" value="${resume.contactInfo}" /> 
 		<label for="contactInfo"> Contact Information </label>
 		<br> 
@@ -51,7 +51,7 @@
 			<c:forEach var="userResume" items="${userResumes}"> 
 			<tr>
 			
-			<td>${userResume.id}</td>
+			<td><a href="updateResume.do?id=${userResume.id}">${userResume.id}</a></td>
 			<td>${userResume.contactInfo}</td>
 			<td>${userResume.introduction}</td>
 			<td>${userResume.experience}</td>

@@ -63,7 +63,6 @@ public class ResumeDAOImpl implements ResumeDAO {
 			System.out.println("SEARCH PARAMETERS: userId" + userId + ", resumeId " + resumeId);
 			resumeFound = false;
 		}
-		
 
 		return userFindResumeByUserIdAndResumeId;
 
@@ -89,16 +88,17 @@ public class ResumeDAOImpl implements ResumeDAO {
 			resumeCreated = false;
 
 		}
-		
+
 		return newUserResume;
 
 	}
 
 	@Override
-	public Resume updateResume(Resume resume) {
+	public Resume updateResume(Integer resumeId, Resume resume) {
 
 		Resume resumeToUpdate = em.find(Resume.class, resume.getId());
-		if (resumeToUpdate != null) {
+
+		if (resumeToUpdate != null && resumeToUpdate.getId() == resumeId) {
 			resumeToUpdate.setContactInfo(resume.getContactInfo());
 			resumeToUpdate.setIntroduction(resume.getIntroduction());
 			resumeToUpdate.setExperience(resume.getExperience());
@@ -160,7 +160,6 @@ public class ResumeDAOImpl implements ResumeDAO {
 			System.out.println("SEARCH PARAMETERS: Resume Id:" + resumeId);
 			resumeFound = false;
 		}
-	
 
 		return educationLevelResult;
 
@@ -199,8 +198,6 @@ public class ResumeDAOImpl implements ResumeDAO {
 			jobSkillFound = false;
 		}
 
-		
-
 		return jobSkillResult;
 
 	}
@@ -235,7 +232,6 @@ public class ResumeDAOImpl implements ResumeDAO {
 			resumeFound = false;
 		}
 
-	
 		return jobListing;
 	}
 

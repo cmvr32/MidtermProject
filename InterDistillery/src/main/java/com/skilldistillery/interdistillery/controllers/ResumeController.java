@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.interdistillery.data.ResumeDAO;
 import com.skilldistillery.interdistillery.data.UserDAO;
@@ -25,8 +26,7 @@ public class ResumeController {
 
 	@Autowired
 	private UserDAO userResumeDao;
-	
-	
+
 //	@RequestMapping(path = { "/", "homePage.do" })
 //	public String home(Model model) {
 //		model.addAttribute("DEBUG", resumeDao.findResumeById(1)); // DEBUG REMOVE LATER
@@ -37,33 +37,34 @@ public class ResumeController {
 	public String directToAddResume() {
 		return "resume/CreateResume";
 	}
+
 	@RequestMapping("directToUpdateResume.do")
 	public String directToUpdateResume(Model model, HttpSession session) {
-		
-		User user = (User)session.getAttribute("user");
-		List<Resume> userResumes=new ArrayList<>();
-		
+
+		User user = (User) session.getAttribute("user");
+		List<Resume> userResumes = new ArrayList<>();
+
 		userResumes.addAll(userResumeDao.findAllCurrentUserResumes(user));
-		
+
 		model.addAttribute("userResumes", userResumes);
-		
+
 		return "resume/UpdateResume";
 	}
 
 	@RequestMapping(path = "ViewResume.do", method = RequestMethod.GET)
 	public String viewUserResumes(int id, Model model, HttpSession session) {
-		
-		User user = (User)session.getAttribute("user");
-		List<Resume> userResumes=new ArrayList<>();
-		
+
+		User user = (User) session.getAttribute("user");
+		List<Resume> userResumes = new ArrayList<>();
+
 		userResumes.addAll(userResumeDao.findAllCurrentUserResumes(user));
-		
+
 		model.addAttribute("userResumes", userResumes);
-		
+
 //		List<Resume> resumes = new ArrayList<>();
 //		resumes.add(resumeDao.findResumeById(user));
 //		model.addAttribute("resumes", resumes);
-		
+
 		return "resume/UpdateResume";
 	}
 
@@ -75,22 +76,18 @@ public class ResumeController {
 //	}
 
 	@RequestMapping(path = "CreateResume.do", method = RequestMethod.POST)
-	public String addResume(Model model,
-							@RequestParam String contactInfo,
-							@RequestParam String introduction,
-							@RequestParam String experience,
-							@RequestParam Integer degree,
-							HttpSession session) {
-		
-		User user = (User)session.getAttribute("user");
+	public String addResume(Model model, @RequestParam String contactInfo, @RequestParam String introduction,
+			@RequestParam String experience, @RequestParam Integer degree, HttpSession session) {
+
+		User user = (User) session.getAttribute("user");
 		Resume newResume = new Resume();
 		newResume.setContactInfo(contactInfo);
 		newResume.setIntroduction(introduction);
 		newResume.setExperience(experience);
 		newResume.setDegree(degree);
 		newResume = resumeDao.createResume(newResume, user);
-		//boolean addResumeFlag = true;
-		//redir.addFlashAttribute("addResumeFlag", addResumeFlag);
+		// boolean addResumeFlag = true;
+		// redir.addFlashAttribute("addResumeFlag", addResumeFlag);
 		model.addAttribute("resume", newResume);
 		return "Login/account";
 	}
@@ -119,24 +116,21 @@ public class ResumeController {
 //		return "";
 //	}
 //
-	@RequestMapping("updateResume.do")
-	public String updateResume(Resume resume, Model model) {
-		//boolean updateResumeFlag = true;
-		resumeDao.updateResume(resume);
-		//redir.addFlashAttribute("updateResumeFlag", updateResumeFlag);
-		model.addAttribute("resume", resume);
-		return "Login/account";
+
+	@RequestMapping(path = "updateResume.do", method = RequestMethod.GET)
+	public String updateResume(RedirectAttributes redir, @RequestParam Integer resumeId, HttpSession session) {
+
+		boolean updateUserEmailFlag = true;
+
+		User user = (User) session.getAttribute("user");
+		Resume resume = resumeDao.findResumeById(resumeId);
+
+		int userId = user.getId();
+		resumeDao.updateResume(resumeId, resume);
+		redir.addFlashAttribute("updateUserEmailFlag", updateUserEmailFlag);
+		redir.addFlashAttribute("resume", resume);
+		return "Login/UpdateResume";
+
 	}
 
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String updateResumeGetProcess(Resume resumes) {
-//		return "";
-//	}
-//
-//	@RequestMapping(path = ".do")
-//	public String Resume(Model model, int id) {
-//		Resume resumes = resumeDao.findResumeById(id);
-//		model.addAttribute("resumes", resumes);
-//		return "";
-//	}
 }
