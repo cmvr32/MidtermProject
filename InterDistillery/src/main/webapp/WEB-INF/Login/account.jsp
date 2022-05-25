@@ -13,18 +13,11 @@
 <body>
 	<h2>User Profile</h2>
 	
-	<form action="directToAddResume.do">
-	<button>Build a Resume</button>
-	</form>
-	<form action="directToUpdateResume.do">
-	<button>Update Resume</button>
-	</form>
-	<form action="directToRequestMockInterview.do">
-	<button>Schedule a Mock Interview</button>
-	</form>
-	<form action="directToEditMockInterview.do">
-	<button>Update Mock Interview</button>
-	</form>
+<ul>
+<li>displace user info</li>
+<li> ability to edit user info</li>
+<li> add profile picture </li>
+</ul>
 
 	<%-- Output user details --%>
 

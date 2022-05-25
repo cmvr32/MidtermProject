@@ -17,8 +17,10 @@
 	<br><label for="password">Password</label><br>
 		<input type="password" name="password"/><br>
 		<br><input type="submit" value="Log In" > 
-	</form><form action="directToCreateUser.do"> <button>Create An Account</button>
-	</form><form action="directToHomePage.do"><button>Return Home</button></form>
+		
+	<h5> Don't have an account? Click the button below!</h5>
+	</form><form action="directToCreateUser.do"> <button>Create An Account</button></form>
+
 	
 </body>
 </html>

@@ -122,4 +122,8 @@ public class MockInterviewController {
 	public String directToRequestMockInterview() {
 		return "mockinterview/RequestMockInterview";
 	}
+	@RequestMapping("directToViewMockInterviewRequest.do")
+	public String directToViewMockInterviewRequest() {
+		return "mockinterview/ViewMockInterviewRequest";
+	}
 }

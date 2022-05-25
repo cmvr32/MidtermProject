@@ -10,10 +10,10 @@
 <%@ include file="../nav.jsp"%>
 </head>
 <body>
-<form action="directToHomePage.do"><button>Return Home</button></form>
-<br><form action="directToAddResume.do"><button>Build a Resume</button></form>
-<h1>Your Resume</h1>
 
+<h1>Resume Resources</h1>
+
+<br><form action="directToAddResume.do"><button>Build a Resume</button></form>
 
 <form action="directToUpdateResume.do" >
 	<input type="hidden" name="id" value="${resume.id}"/>
@@ -25,9 +25,8 @@
 	<button> Delete Resume </button>
 </form> 
 <br>
-<form action="homePage.do" >
-	<button> Return To Home Page </button>
-</form><br>
+
+<br><form action=""><button>Example Resumes</button></form>
 
 </body>
 </html>
