@@ -5,11 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Your Resume</title>
+
+<jsp:include page="../bootstrapHead.jsp"/>
+<%@ include file="../nav.jsp"%>
 </head>
 <body>
 <form action="directToHomePage.do"><button>Return Home</button></form>
 <br><form action="directToAddResume.do"><button>Build a Resume</button></form>
 <h1>Your Resume</h1>
+
 
 <form action="directToUpdateResume.do" >
 	<input type="hidden" name="id" value="${resume.id}"/>

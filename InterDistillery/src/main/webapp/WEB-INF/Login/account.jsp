@@ -6,11 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>User Profile</title>
-<%-- 	<%@ include file="bootstrapHead.jsp"%> --%>
+<jsp:include page="../bootstrapHead.jsp"/>
+<%@ include file="../nav.jsp"%>
+
 </head>
 <body>
-	<%--Edit the file nav.jsp to change nav links --%>
-<%@ include file="nav.jsp"%>
 	<h2>User Profile</h2>
 	
 	<form action="directToAddResume.do">

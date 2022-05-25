@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Update Your Resume</title>
+
+<jsp:include page="../bootstrapHead.jsp"/>
+<%@ include file="../nav.jsp"%>
 </head>
 <body>
 <form action="directToHomePage.do"><button>Return Home</button></form>

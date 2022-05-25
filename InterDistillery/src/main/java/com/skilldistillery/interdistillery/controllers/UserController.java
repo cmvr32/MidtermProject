@@ -169,4 +169,5 @@ public class UserController {
 	public String directToAccount() {
 		return "Login/account";
 	}
+
 }

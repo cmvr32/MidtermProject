@@ -8,6 +8,8 @@
 <title>Let's Build Your Resume!</title>
 </head>
 <body>
+<jsp:include page="../bootstrapHead.jsp"/>
+<%@ include file="../nav.jsp"%>
 
 <h1>Let's Build Your Resume!</h1>
 
