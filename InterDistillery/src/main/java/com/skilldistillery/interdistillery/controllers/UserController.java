@@ -167,9 +167,6 @@ public class UserController {
 	public String directToAccount() {
 		return "Login/account";
 	}
-	@RequestMapping("directToViewResume.do")
-	public String directToViewResume() {
-		return "resume/ViewResume";
-	}
+
 
 }
