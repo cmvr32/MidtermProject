@@ -11,7 +11,8 @@
 <%@ include file="../nav.jsp"%>
 </head>
 <body>
-<h3>${sessionScope.user.firstName} ${sessionScope.user.firstName}</h3>
+<div class="container">
+<h3>${sessionScope.user.firstName} ${sessionScope.user.lastName}</h3>
 <div>
 		<h2>Your Resumes</h2>
 		<h5>Select a resume to edit.</h5>
@@ -61,6 +62,6 @@
 	</div>
 	<hr>
 
-
+</div>
 </body>
 </html>

@@ -13,7 +13,7 @@
 
 </head>
 <body>
-
+<div class="container">
 
 
 <h1>Update Your Resume</h1>
@@ -46,6 +46,6 @@
 	<hr> 
 	
 
-
+</div>
 </body>
 </html>

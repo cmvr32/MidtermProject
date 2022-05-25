@@ -10,10 +10,10 @@
 
 </head>
 <body>
-
+<div class="container">
 <h1>View Scheduled Interview</h1>
 
 
-
+</div>
 </body>
 </html>
