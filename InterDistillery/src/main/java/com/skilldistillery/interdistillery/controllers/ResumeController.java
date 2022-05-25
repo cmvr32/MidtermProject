@@ -33,21 +33,6 @@ public class ResumeController {
 		return "homePage";
 	}
 
-	
-//
-//	@RequestMapping("getResumes.do")
-//	public String directToUpdateResume2(Model model, HttpSession session) {
-//
-//		User user = (User) session.getAttribute("user");
-//		List<Resume> userResumes = new ArrayList<>();
-//
-//		userResumes.addAll(userResumeDao.findAllCurrentUserResumes(user));
-//
-//		model.addAttribute("userResumes", userResumes);
-//
-//		return "resume/UpdateResume";
-//	}
-
 	@RequestMapping(path = "ViewResume.do", method = RequestMethod.GET)
 	public String viewUserResumes(Model model, HttpSession session) {
 
@@ -58,19 +43,10 @@ public class ResumeController {
 
 		model.addAttribute("userResumes", userResumes);
 
-//		List<Resume> resumes = new ArrayList<>();
-//		resumes.add(resumeDao.findResumeById(user));
-//		model.addAttribute("resumes", resumes);
-
 		return "resume/ViewResume";
 	}
 
-//	@RequestMapping(path = ".do")
-//	public String Resume(Model model) {
-//		List<Resume> resumes = resumeDao.findAllResumes();
-//		model.addAttribute("resumes", resumes);
-//		return "";
-//	}
+	// CRUD OPERATIONS
 
 	@RequestMapping(path = "CreateResume.do", method = RequestMethod.POST)
 	public String addResume(Model model, @RequestParam String contactInfo, @RequestParam String introduction,
@@ -88,36 +64,51 @@ public class ResumeController {
 		model.addAttribute("resume", newResume);
 		return "Login/account";
 	}
-	
-
 
 	@RequestMapping(path = "updateResume.do", method = RequestMethod.GET)
-	public String updateResume(RedirectAttributes redir, 
-							   Model model, 
-							   Resume resume, 
-							   HttpSession session) {
-	
-		//user in session
+	public String updateResume(RedirectAttributes redir, Model model, Resume resume, HttpSession session) {
+
+		// user in session
 		User user = (User) session.getAttribute("user");
 		int userId = user.getId();
 		Resume updatedResume = resumeDao.updateResume(resume);
 		model.addAttribute("editResume", updatedResume);
-		
+
 		return "redirect:ViewResume.do";
 
 	}
-	
-	
-	//Redirect Methods:
-	
+
+	@RequestMapping(path = "deleteResume.do", method = RequestMethod.POST)
+	public String deleteResume(RedirectAttributes redir, Model model, Resume resume, Integer resumeId,
+			HttpSession session) {
+		
+		System.out.println("********************");
+		System.out.println("Resume Id:  " + resumeId);
+		System.out.println("ResumeDAO:  " + resumeDao);
+		System.out.println("********************");
+
+		// user in session
+		User user = (User) session.getAttribute("user");
+		int userId = user.getId();
+
+		boolean resumeDeleted = resumeDao.deleteResume(resumeId);
+		model.addAttribute("deletedResume", resumeDeleted);
+
+		return "redirect:ViewResume.do";
+	}
+
+	// Redirect Methods:
+
 	@RequestMapping("directToAddResume.do")
 	public String directToAddResume() {
 		return "resume/CreateResume";
 	}
+
 	@RequestMapping("directToResumeResources.do")
 	public String directToResumeResources() {
 		return "resume/ResumeResources";
 	}
+
 	@RequestMapping("directToDeleteResume.do")
 	public String directToDeleteResume() {
 		return "resume/DeleteResume";
@@ -135,36 +126,10 @@ public class ResumeController {
 	}
 
 	@RequestMapping("directToViewResume.do")
-	public String directToViewResume() {
-		return "resume/ViewResume";
-	}
-	
-	
-	
+	public String directToViewResume(Integer resumeId, Model model) {
 
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String addResumeGetProcess(Resume resumes) {
-//		return "";
-//	}
-//
-//	@RequestMapping(path = ".do")
-//	public String addNewResume() {
-//		return "";
-//	}
-//
-//	@RequestMapping(path = ".do", method = RequestMethod.POST)
-//	public String deleteResume(RedirectAttributes redir, int id) {
-//		boolean containsFlag = resumeDao.deleteResume(id);
-//		boolean deleteResumeFlag = true;
-//		redir.addFlashAttribute("deleteResumeFlag", deleteResumeFlag);
-//		redir.addFlashAttribute("containsFlag", containsFlag);
-//		return "redirect:.do";
-//	}
-//
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String deleteResumeGetProcess(Resume resumes) {
-//		return "";
-//	}
-//
+
+		return "resume/DeleteResume";
+	}
 
 }

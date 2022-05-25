@@ -94,44 +94,10 @@ public class ResumeDAOImpl implements ResumeDAO {
 
 	}
 
-//	@Override
-//	public Resume updateResume(Integer resumeId, Resume resumeToUpdate, Resume resumeUpdater, String introduction, String contactInfo,
-//			String experience) {
-//
-//		// Resume resumeToUpdate = em.find(Resume.class, resumeUpdater.getId());
-//
-//		System.err.println("UPDATING USER RESUME" + resumeId);
-//		System.out.println("RESUME TO UPDATE: " + resumeToUpdate);
-//		System.out.println("RESUME SENT IN AS PARAMETER: " + resumeUpdater);
-//
-//		if (resumeToUpdate != null && resumeToUpdate.getId() == resumeId) {
-//
-//			System.err.println("RESUME FOUND BEGINNING UPDATE");
-//
-//			resumeToUpdate.setContactInfo(resumeUpdater.getContactInfo());
-//			resumeToUpdate.setIntroduction(resumeUpdater.getIntroduction());
-//			resumeToUpdate.setExperience(resumeUpdater.getExperience());
-//			resumeToUpdate.setDegree(resumeUpdater.getDegree());
-//			resumeToUpdate.setUser(resumeUpdater.getUser());
-//			resumeToUpdate.setJobListing(resumeUpdater.getJobListing());
-//			resumeToUpdate.setResumeEducationLevel(resumeUpdater.getResumeEducationLevel());
-//
-//			System.err.println("NEW RESUME");
-//			System.err.println("UPDATE SUCCESFUL");
-//			System.out.println(resumeToUpdate);
-//
-//			return resumeToUpdate;
-//
-//		}
-//
-//		System.err.println("UPDATE FAILED FOR RESUME ID" + resumeId);
-//
-//		return null;
-//	}
 
 	@Override
 	// delete resume
-	public Boolean deleteResume(int id) {
+	public Boolean deleteResume(Integer id) {
 
 		boolean deleted = false;
 		System.out.println("DELETING RESUME RESUME ID: " + id);

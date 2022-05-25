@@ -49,7 +49,7 @@
 				</form>
 				
 				<form action="deleteResume.do" method="POST">
-				<input type="text" hidden="true" value="${userResume.id }" name="deleteResume" /> 
+				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
 				<input type="submit" value="delete">
 				</form></td>
 			

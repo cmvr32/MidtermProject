@@ -11,6 +11,7 @@
 <%@ include file="../nav.jsp"%>
 
 <h1>Your resume has been deleted</h1>
+<h3>${sessionScope.user.firstName} ${sessionScope.user.firstName}</h3>
 
 <form action="index.do" >
 	<button> Return To Home Page </button>

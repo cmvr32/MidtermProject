@@ -39,7 +39,7 @@ public interface ResumeDAO {
 //			String contactInfo, String experience);
 
 	// delete
-	public Boolean deleteResume(int resumeId);
+	public Boolean deleteResume(Integer resumeId);
 
 	// TODO ADD RESUME TO USER
 	// TODO ADD RESUME TO JOBLISTING
