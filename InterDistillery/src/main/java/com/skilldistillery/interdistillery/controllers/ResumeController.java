@@ -123,11 +123,6 @@ public class ResumeController {
 		return "resume/DeleteResume";
 	}
 
-//	@RequestMapping("directToUpdateResume.do")
-//	public String directToUpdateResume() {
-//		return "resume/UpdateResume";
-//	}
-
 	@RequestMapping("directToUpdateResume.do")
 	public String directToUpdateResume(Integer resumeId, Model model) {
 		System.out.println("********************");
