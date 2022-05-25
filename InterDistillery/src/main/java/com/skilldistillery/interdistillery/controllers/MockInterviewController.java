@@ -126,4 +126,16 @@ public class MockInterviewController {
 	public String directToViewMockInterviewRequest() {
 		return "mockinterview/ViewMockInterviewRequest";
 	}
+	@RequestMapping("directToDeleteMockInterview.do")
+	public String directToDeleteMockInterview() {
+		return "mockinterview/DeleteMockInterview";
+	}
+	@RequestMapping("directToUpdateMockInterview.do")
+	public String directToUpdateMockInterview() {
+		return "mockinterview/UpdateMockInterview";
+	}
+	@RequestMapping("directToMockInterviewResources.do")
+	public String directToMockInterviewResources() {
+		return "mockinterview/MockInterviewResources";
+	}
 }

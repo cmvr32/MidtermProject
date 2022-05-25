@@ -16,8 +16,9 @@
 		<h2>Your Resumes</h2>
 		<h5>Select a resume to edit.</h5>
 		<form action="ViewResume.do" method="GET">
-		<!-- <input type="submit" value="Refresh Table"> -->
+	
 		</form>
+	
 	<table>
 		<thead>
 			<tr>
@@ -30,11 +31,11 @@
 			
 			</tr>
 		</thead>
-		
+		<tbody>
 			<c:forEach var="userResume" items="${userResumes}"> 
 			<tr>
 			
-			<td><a href="updateResume.do?id=${userResume.id}">${userResume.id}</a></td>
+			<td><a href="ViewResume.do?id=${userResume.id}">${userResume.id}</a></td>
 			<td>${userResume.contactInfo}</td>
 			<td>${userResume.introduction}</td>
 			<td>${userResume.experience}</td>
@@ -42,14 +43,12 @@
 			<td>${userResume.user}</td>
 			
 			
-			<form action="directToAddResume.do"><button>Build a Resume</button></form>
-			
-				<td><form action="updateResume.do" method="GET">
-				<input type="text" hidden="true" value="${userResume.id}" name="updateResume" /> 
+				<td><form action="directToUpdateResume.do" method="GET">
+				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
 				<input type="submit" value="edit">
 				</form>
 				
-				<form action="deleteFilm.do" method="POST">
+				<form action="deleteResume.do" method="POST">
 				<input type="text" hidden="true" value="${userResume.id }" name="deleteResume" /> 
 				<input type="submit" value="delete">
 				</form></td>
@@ -57,12 +56,10 @@
 			
 			</tr>
 			</c:forEach>
+			</tbody>
 			</table>	
 	</div>
 	<hr>
-
-<form action="directToHomePage.do"><button>Return Home</button></form>
-<br><form action="directToAddResume.do"><button>Build a Resume</button></form>
 
 
 </body>
