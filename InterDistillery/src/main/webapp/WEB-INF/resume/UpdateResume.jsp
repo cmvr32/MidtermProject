@@ -11,7 +11,6 @@
 <%@ include file="../nav.jsp"%>
 </head>
 <body>
-<<<<<<< HEAD
 
 <h1>Update Your Resume</h1>
 	<form action="updateResume.do" , method="GET">
@@ -34,10 +33,9 @@
 	</form>
 	
 	
-=======
 <form action="directToHomePage.do"><button>Return Home</button></form>
 <br><form action="directToAddResume.do"><button>Build a Resume</button></form>
->>>>>>> 73b0babcc96a3440f4f5656926a8848cf457fde6
+
 	<div>
 		<h2>Your Resumes</h2>
 		<h5>Select a resume to edit.</h5>
