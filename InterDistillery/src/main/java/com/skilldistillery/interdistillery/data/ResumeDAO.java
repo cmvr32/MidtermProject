@@ -34,7 +34,9 @@ public interface ResumeDAO {
 	public Resume createResume(Resume newResume, User user);
 
 	// update
-	public Resume updateResume(Integer resumeId, Resume resume);
+//	public Resume updateResume(Integer resumeId, Resume resume);
+	public Resume updateResume(Integer resumeId, Resume resumeToUpdate, Resume resumeUpdater, String introduction,
+			String contactInfo, String experience);
 
 	// delete
 	public Boolean deleteResume(int resumeId);
