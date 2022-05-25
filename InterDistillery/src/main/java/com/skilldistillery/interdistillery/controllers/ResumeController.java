@@ -26,6 +26,7 @@ public class ResumeController {
 	@Autowired
 	private UserDAO userResumeDao;
 	
+	
 //	@RequestMapping(path = { "/", "homePage.do" })
 //	public String home(Model model) {
 //		model.addAttribute("DEBUG", resumeDao.findResumeById(1)); // DEBUG REMOVE LATER
