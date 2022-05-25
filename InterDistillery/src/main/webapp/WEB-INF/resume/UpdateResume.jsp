@@ -19,10 +19,10 @@
 <h1>Update Your Resume</h1>
 <h3> Displaying Resumes for:</h3>
 <h3>${sessionScope.user.firstName} ${sessionScope.user.firstName}</h3>
-
+</div>
 <hr>
 
-
+<div>
 <h2> Resume Update Please select a resume from the list below to update</h2>
 	<%-- <form action="updateResume.do" , method="GET">
 	<input type="hidden" name="id" value="${resume}" /> 

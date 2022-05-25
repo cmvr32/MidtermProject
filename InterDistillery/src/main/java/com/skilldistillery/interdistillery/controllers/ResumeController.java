@@ -34,24 +34,19 @@ public class ResumeController {
 //	}
 
 	
-	
-	@RequestMapping("directToAddResume.do")
-	public String directToAddResume() {
-		return "resume/CreateResume";
-	}
 
-	@RequestMapping("directToUpdateResume.do")
-	public String directToUpdateResume(Model model, HttpSession session) {
-
-		User user = (User) session.getAttribute("user");
-		List<Resume> userResumes = new ArrayList<>();
-
-		userResumes.addAll(userResumeDao.findAllCurrentUserResumes(user));
-
-		model.addAttribute("userResumes", userResumes);
-
-		return "resume/UpdateResume";
-	}
+//	@RequestMapping("directToUpdateResume.do")
+//	public String directToUpdateResume2(Model model, HttpSession session) {
+//
+//		User user = (User) session.getAttribute("user");
+//		List<Resume> userResumes = new ArrayList<>();
+//
+//		userResumes.addAll(userResumeDao.findAllCurrentUserResumes(user));
+//
+//		model.addAttribute("userResumes", userResumes);
+//
+//		return "resume/UpdateResume";
+//	}
 
 	@RequestMapping(path = "ViewResume.do", method = RequestMethod.GET)
 	public String viewUserResumes(int id, Model model, HttpSession session) {
@@ -154,6 +149,30 @@ public class ResumeController {
 		redir.addFlashAttribute("updatedResume", updatedResume);
 		return "resume/ViewResume";
 
+	}
+	
+	
+	//Redirect Methods:
+	
+	@RequestMapping("directToAddResume.do")
+	public String directToAddResume() {
+		return "resume/CreateResume";
+	}
+	@RequestMapping("directToResumeResources.do")
+	public String directToResumeResources() {
+		return "resume/ResumeResources";
+	}
+	@RequestMapping("directToDeleteResume.do")
+	public String directToDeleteResume() {
+		return "resume/DeleteResume";
+	}
+	@RequestMapping("directToUpdateResume.do")
+	public String directToUpdateResume() {
+		return "resume/UpdateResume";
+	}
+	@RequestMapping("directToViewResume.do")
+	public String directToViewResume() {
+		return "resume/ViewResume";
 	}
 
 }
