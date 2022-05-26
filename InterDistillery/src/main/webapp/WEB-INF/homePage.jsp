@@ -33,21 +33,21 @@
       </div>
     </div>
     <div class="carousel-item active" data-bs-interval="2000">
-      <img src="../images/ResumeC.png" class="d-sm-block w-100 h-100" alt="...">
+      <img src="images/ResumeC.png" class="d-sm-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Resume Support</h5>
         <p>Get access to the resources you need to build a powerful resume.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="../images/InterviewC.png" class="d-block w-100 h-100" alt="...">
+      <img src="images/InterviewC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Interview Preparation</h5>
         <p>Participate in mock interviews and improve your skills.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="../images/DiscussionC.png" class="d-block w-100 h-100" alt="...">
+      <img src="images/DiscussionC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Discussion Board</h5>
         <p>Connect with peers, ask questions and seek advice.</p>
@@ -56,7 +56,7 @@
     <div class="carousel-item" data-bs-interval="2000">
       <img src="images/StudyC.png" class="d-block w-100 h-100" alt="...">
     <div class="carousel-item" data-bs-interval="5000">
-      <img src="../images/StudyC.png" class="d-block w-100 h-100" alt="...">
+      <img src="images/StudyC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Study Materials</h5>
         <p>The best way to prepare for an interview is to keep coding!</p>
