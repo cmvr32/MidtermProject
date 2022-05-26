@@ -45,8 +45,32 @@ public class UserDaoImpl implements UserDAO {
 	// ADMIN list all users
 	// TODO create admin permissions
 	public List<User> findAllUsers() {
+
+		List<User> listUserAccounts = null;
+		
+		
+		
+		
 		String jpql = "SELECT c FROM user c";
-		return em.createQuery(jpql, User.class).getResultList();
+		System.err.println("---ADMIN--_");
+		System.err.println("---DAO FINDING ALL USERS---");
+		
+		listUserAccounts = em.createQuery(jpql, User.class).getResultList();
+
+		em.createQuery(jpql, User.class).getResultList();
+		System.err.println("---FINDING ALL USERS WITH ACCOUNTS--");
+		if (listUserAccounts != null && !listUserAccounts.isEmpty()) {
+			
+			System.err.println("---QUERY SUCCESFUL---");
+			System.err.println("---PRINTING USER LIST---");
+			for (User user : listUserAccounts) {
+				
+				System.out.println(user);
+			}
+			return listUserAccounts;
+		}
+		System.err.println("---QUERY FAILED---");
+		return null;
 	}
 
 	@Override
@@ -312,8 +336,7 @@ public class UserDaoImpl implements UserDAO {
 //		Integer userId = user.getId();
 //		String jpql = "SELECT c.UserInterviews FROM MockInterview c WHERE c.id=: id";
 //		userInterviewList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
-		
-		
+
 		String jpql = "SELECT i FROM MockInterview i WHERE i.interviewee=: user";
 		userInterviewList = em.createQuery(jpql, MockInterview.class).setParameter("user", user).getResultList();
 
