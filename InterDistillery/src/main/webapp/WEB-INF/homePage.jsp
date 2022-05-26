@@ -29,8 +29,6 @@
  <div class="carousel-item active" data-bs-interval="1000">
       <img src="../images/LogoC.png" class="d-sm-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
-        <h5></h5>
-        <p></p>
       </div>
     </div>
     <div class="carousel-item active" data-bs-interval="1000">
