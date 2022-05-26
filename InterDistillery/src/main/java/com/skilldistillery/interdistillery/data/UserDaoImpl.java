@@ -139,7 +139,7 @@ public class UserDaoImpl implements UserDAO {
 		if (userToUpdate != null) {
 			userToUpdate.setFirstName(user.getFirstName());
 			userToUpdate.setLastName(user.getLastName());
-			userToUpdate.setUserName(user.getUserName());
+			userToUpdate.setUsername(user.getUsername());
 			userToUpdate.setPassword(user.getPassword());
 			userToUpdate.setProfileImageUrl(user.getProfileImageUrl());
 			userToUpdate.setBannerImageUrl(user.getBannerImageUrl());
@@ -171,7 +171,7 @@ public class UserDaoImpl implements UserDAO {
 			userToUpdate = em.find(User.class, user.getId());
 			userToUpdate.setActive(user.getActive());
 			userToUpdate.setRole(user.getRole());
-			userToUpdate.setUserName(user.getUserName());
+			userToUpdate.setUsername(user.getUsername());
 			userToUpdate.setPassword(user.getPassword());
 
 			userUpdated = true;

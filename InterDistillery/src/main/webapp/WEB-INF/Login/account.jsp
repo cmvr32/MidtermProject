@@ -10,17 +10,21 @@
 <%@ include file="../nav.jsp"%>
 </head>
 <body>
+
 <div class="container">
 	<h2>User Profile</h2>
+
+	<h2>Welcome, ${sessionScope.user.firstName}</h2>
+
 	
 <ul>
-<li>displace user info</li>
-<li>displace user info</li>
-<li>displace user info</li>
-<li>displace user info</li>
+<li>${sessionScope.user.firstName}</li>
+<li>${sessionScope.user.lastName}</li>
+<li>${sessionScope.user.email}</li>
+<li>${sessionScope.user.biography}</li>
+<li>${sessionScope.user.dateCreated}</li>
 
-<li> ability to edit user info</li>
-<li> add profile picture </li>
+
 </ul>
 
 	<%-- Output user details --%>
@@ -28,16 +32,28 @@
 	
 	<form action="showUser.do" method="GET"></form>
 	
-		
+		<hr>
 		RESULT:	${sessionScope.user} 
+		<hr>
 
+<h3>USER FIELDS:</h3>
 	<c:choose>
+	
+	
 		<c:when test="${not empty sessionScope.user}">
 			<%-- <h6>Account ID: ${sessionScope.user.id}</h6>
 			<h5>Username: ${sessionScope.user.username}</h5> --%>
 			<p>
 				<c:out value="${sessionScope.user.firstName }" />
 				<c:out value="${sessionScope.user.lastName }" />
+				<c:out value="${sessionScope.user.email}"/>
+				<c:out value="${sessionScope.user.biography}"/>
+				<c:out value="${sessionScope.user.dateCreated}"/>
+				<c:out value="${sessionScope.user.role}"/>
+				<c:out value="${sessionScope.user.active}"/>
+				<c:out value="${sessionScope.user.username}"/>
+				<c:out value="${sessionScope.user.password}"/>
+				<c:out value="${sessionScope.user.profileImageUrl}"/>		
 			</p>
 				
 		</c:when>
@@ -46,49 +62,15 @@
 		</c:otherwise>
 	</c:choose>
 	
-	
-	<form action="showUser.do" method="POST">
-	
-		</form>
-	
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">First Name</th>
-				<th scope="col">Last Name</th>
-				<th scope="col">Email</th>
-				<th scope="col">Username</th>
-				<th scope="col">Biography</th>
-				<th scope="col">dateCreated</th>
-				<th scope="col">Account Status</th>
-				<th scope="col">Account Permission Group</th>
-				<th scope="col">Profile Image Url</th>
-				<th scope="col">Banner Image Url</th>
-				
-			
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="userInfo" items="${accountInfo}"> 
-			<tr>
-			
-			<td><a href="showUser.do?id=${userInfo.id}">${userInfo.id}</a></td>
-			<td>${userInfo.firstName}</td>
-			<td>${userInfo.lastName}</td>
-			<td>${userInfo.email}</td>
-			<td>${userInfo.username}</td>
-			<td>${userInfo.biography}</td>
-			<td>${userInfo.password}</td>
-			<td>${userInfo.dateCreated}</td>
-			<td>${userInfo.active}</td>
-			<td>${userInfo.role}</td>
-			<td>${userInfo.profileImageUrl}</td>
-			<td>${userInfo.bannerImageUrl}</td>
+	<form action="directToUpdateResume.do" method="GET">
+				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
+				<input type="submit" value="edit">
+				</form>
 
-			</tr>
-			</c:forEach>
-			</tbody>
-			</table>	
-</div>	
+				<form action="deleteResume.do" method="POST">
+				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
+				<input type="submit" value="delete">
+				</form>
+</div>
 </body>
 </html>
