@@ -55,8 +55,6 @@
     </div>
     <div class="carousel-item" data-bs-interval="2000">
       <img src="images/StudyC.png" class="d-block w-100 h-100" alt="...">
-    <div class="carousel-item" data-bs-interval="5000">
-      <img src="images/StudyC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Study Materials</h5>
         <p>The best way to prepare for an interview is to keep coding!</p>
