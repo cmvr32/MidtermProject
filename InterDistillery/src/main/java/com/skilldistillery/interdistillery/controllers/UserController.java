@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.interdistillery.data.UserDAO;
+import com.skilldistillery.interdistillery.entities.Resume;
 import com.skilldistillery.interdistillery.entities.User;
 
 @Controller
@@ -78,7 +79,7 @@ public class UserController {
 		
 		model.addAttribute("accountInfo", accountInfo);
 		
-		return "Login/login";
+		return "Login/account";
 	}
 
 	@RequestMapping("getUserAccount.do")
@@ -100,7 +101,7 @@ public class UserController {
 		newUser.setFirstName(firstName);
 		newUser.setLastName(lastName);
 		newUser.setEmail(email);
-		newUser.setUserName(username);
+		newUser.setUsername(username);
 		newUser.setPassword(password);
 		newUser.setActive(1);
 		newUser.setRole("User");
@@ -123,27 +124,25 @@ public class UserController {
 //	}
 
 	@RequestMapping(path = "UpdateUser.do", method = RequestMethod.GET)
-	public String updateUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
-			@RequestParam String email, @RequestParam String username, @RequestParam String password,
-			@RequestParam String profileImageUrl, @RequestParam String profileBannerUrl,
-			@RequestParam String biography) {
+	public String updateUser(RedirectAttributes redir, Model model, User user, HttpSession session) {
 
-		boolean updateUserEmailFlag = true;
+	
+				// user in session
+				User userInSession = (User) session.getAttribute("user");
+				int userId = user.getId();
+			
+				User updatedUser=userDao.updateUser(user);
+				model.addAttribute("updatedUser", updatedUser);
 
-		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
-
-		userDao.updateUser(user);
-		redir.addFlashAttribute("updateUserEmailFlag", updateUserEmailFlag);
-		redir.addFlashAttribute("user", user);
-		return "Login/UpdateUser";
+	
+		return "redirect:Login/account";
 
 	}
 
 	@RequestMapping(path = "DeleteUser.do", method = RequestMethod.POST)
-	public String deleteUser(RedirectAttributes redir, @RequestParam String firstName, @RequestParam String lastName,
-			@RequestParam String email) {
+	public String deleteUser(RedirectAttributes redir) {
 
-		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
+		User user = null;
 		Integer userId = user.getId();
 		boolean containsFlag = userDao.deleteUser(userId);
 		boolean deleteUserFlag = true;
@@ -166,6 +165,18 @@ public class UserController {
 	@RequestMapping("directToCreateUser.do")
 	public String directToCreateUser() {
 		return "Login/CreateUser";
+	}
+	@RequestMapping("directToCreateUser.do")
+	public String directToUpdateUser(Integer userId, Model model) {
+		
+		System.out.println("********************");
+		System.out.println("User Id:  " + userId);
+		System.out.println("UserDAO:  " + userDao);
+		System.out.println("********************");
+		User userUpdate = userDao.findById(userId);
+		model.addAttribute("userUpdate", userUpdate);
+		
+		return "Login/UpdateUser";
 	}
 
 	@RequestMapping("directToHomePage.do")
