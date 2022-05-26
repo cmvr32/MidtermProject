@@ -14,8 +14,8 @@
 <br>
 <div class="col d-flex justify-content-center">
 <div class="card text-center text-black bg-light mb-3" style="width: 18rem;">
-<br><br>
-<h6>Enter Your Basic Resume elements:</h6>
+<br>
+<h4>Basic Resume Elements:</h4>
 
 <form action="CreateResume.do" method="post">
 
@@ -28,20 +28,10 @@
 	<label for="experience">Experience</label><br>
 	<input type="text" name="experience" placeholder="Relevent work experience"></input> 
 	<br><br>
-	<input type="text" name="degree" list="degreeoptions">
-    <datalist id="degree">
-      <option value="Assosiates">
-      <option value="Bachelors">
-      <option value="Masters">
-      <option value="Doctorate">
-      <option value="Certificate">
-    </datalist>
-
-
-<!-- 	<label for="degree">Degree</label><br>
-	<input type="text" name="degree" placeholder="Degree"></input> 
+	<label for="degree">Degree</label><br>
+	<input type="text" name="degree" placeholder="1 - Bachelors 2 - other"></input> 
 	<br><br>
-	<input type="submit"/> -->
+	<input type="submit"/> 
 </form>
 <br><br>
 </div>
