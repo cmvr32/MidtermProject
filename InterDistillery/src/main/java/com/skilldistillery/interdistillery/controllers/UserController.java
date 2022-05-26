@@ -1,5 +1,7 @@
 package com.skilldistillery.interdistillery.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,35 +36,33 @@ public class UserController {
 		System.err.println("---LOGIN USER---");
 		User user = userDao.findByUserNameAndPassword(username, password);
 
-			Integer userId = user.getId();
-			User userAccountInfo = userDao.findById(userId);
+		Integer userId = user.getId();
+		User userAccountInfo = userDao.findById(userId);
 
-		
-			System.out.println("********************");
-			System.err.println("---GET USE ACCOUNT INFO---");
-			System.out.println("User Id:  " + userId);
-			System.out.println("UserDAO:  " + userDao);
-			System.out.println("********************");
-			System.out.println(userAccountInfo);
+		System.out.println("********************");
+		System.err.println("---GET USE ACCOUNT INFO---");
+		System.out.println("User Id:  " + userId);
+		System.out.println("UserDAO:  " + userDao);
+		System.out.println("********************");
+		System.out.println(userAccountInfo);
 
-			System.err.println(userAccountInfo);
+		System.err.println(userAccountInfo);
 
-			if (user != null) {
-				
-				model.addAttribute("userAccountInfo", userAccountInfo);
-				model.addAttribute("user", user);
-				
-				session.setAttribute("user", user);
-				session.setAttribute("userAccountInfo", userAccountInfo);
+		if (user != null) {
 
-				return "homePage";
+			model.addAttribute("userAccountInfo", userAccountInfo);
+			model.addAttribute("user", user);
 
-			} else {
+			session.setAttribute("user", user);
+			session.setAttribute("userAccountInfo", userAccountInfo);
 
-				return "Login/login";
-			}
+			return "homePage";
+
+		} else {
+
+			return "Login/login";
 		}
-	
+	}
 
 //	logout.do removes the user from session and redirects to index.do.
 	@RequestMapping(path = "logout.do")
@@ -95,6 +95,23 @@ public class UserController {
 			return "Redirect:Login/login";
 		}
 
+	}
+
+	// admin only
+	// display all user accounts
+	@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
+	public String adminViewManageAccounts(RedirectAttributes redir, Model model, HttpSession session) {
+
+		// user in session
+		User user = (User) session.getAttribute("user");
+
+		Integer userId = user.getId();
+		List<User> listUserAccounts=null;
+		
+		listUserAccounts=userDao.findAllUsers();
+		model.addAttribute("listUserAccounts", listUserAccounts);
+		
+		return "admin";
 	}
 
 	// CREATE NEW USER ACCOUNT

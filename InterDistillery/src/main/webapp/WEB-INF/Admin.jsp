@@ -8,6 +8,19 @@
 </head>
 <body>
 
+<h4>Admin:${sessionScope.user.firstName} ${sessionScope.user.lastName} </h4>
+			
+			
+			
+			<div>
+		<h2>User Accounts</h2>
+		<h5>Manage user accounts.</h5>
+		<form action="ViewResume.do" method="GET">
+	
+		</form>
+	
+			
+			
 			<table>
 		<thead>
 			<tr>
@@ -47,6 +60,8 @@
 			</c:forEach>
 			</tbody>
 			</table>
+			
+			</div>
 		
 		
 </body>
