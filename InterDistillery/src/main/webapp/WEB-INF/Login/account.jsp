@@ -10,10 +10,14 @@
 <%@ include file="../nav.jsp"%>
 </head>
 <body>
+<<<<<<< HEAD
 
 <div class="container">
 	<h2>User Profile</h2>
 
+=======
+<div class="container">
+>>>>>>> a062bb178eb846c40673322ced0055b0b43d1d0f
 	<h2>Welcome, ${sessionScope.user.firstName}</h2>
 
 	
@@ -66,11 +70,20 @@
 				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
 				<input type="submit" value="edit">
 				</form>
+<<<<<<< HEAD
 
 				<form action="deleteResume.do" method="POST">
 				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
 				<input type="submit" value="delete">
 				</form>
 </div>
+=======
+				
+				<form action="deleteResume.do" method="POST">
+				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
+				<input type="submit" value="delete">
+				</form></td>
+  </div>	
+>>>>>>> a062bb178eb846c40673322ced0055b0b43d1d0f
 </body>
 </html>
