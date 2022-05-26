@@ -15,6 +15,7 @@
 <br>
 	<h3>Account Information</h3>
 	<br>
+	<div class="row">
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${sessionScope.user.profileImageUrl}" alt="Card image cap">
   <div class="card-body">
@@ -40,6 +41,20 @@
 			<p>
   </div>
 </div>
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Activity Log
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="invalid nav-item"><a href="index.html">valid</a></li>
+    <li class="list-group-item">View Your Resumes</li>
+    <li class="list-group-item">View Your Mock Interviews</li>
+    <li class="list-group-item">View Your Posts</li>
+    <li class="list-group-item">View Your Study Guides</li>
+    <li class="list-group-item">View Your Job Listings</li>
+  </ul>
+</div>
+  </div>
 			<br><br><br>
 </div>
 <%-- 
