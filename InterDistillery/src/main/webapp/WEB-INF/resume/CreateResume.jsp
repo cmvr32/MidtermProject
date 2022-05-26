@@ -12,25 +12,37 @@
 <%@ include file="../nav.jsp"%>
 <div class="container">
 <br>
-<h3>Let's Build Your Resume!</h3>
+<div class="col d-flex justify-content-center">
+<div class="card text-center text-black bg-light mb-3" style="width: 18rem;">
+<br><br>
+<h6>Enter Your Basic Resume elements:</h6>
 
 <form action="CreateResume.do" method="post">
 
 	<label for="contactInfo">Contact Information</label><br>
 	<input type="text" name="contactInfo" placeholder="Name, Email, Phone"></input> 
 	<br><br>
-	<label for="introduction">About Me</label><br>
-	<input type="text" name="introduction" placeholder="Share a bit about yourself"></input> 
+	<label for="introduction">Bio</label><br>
+	<input type="text" name="introduction" placeholder="Get to know you"></input> 
 	<br><br>
 	<label for="experience">Experience</label><br>
-	<input type="text" name="experience" placeholder="List relevent work experience"></input> 
+	<input type="text" name="experience" placeholder="Relevent work experience"></input> 
 	<br><br>
+	<input type="text" name="city" list="cityname">
+    <datalist id="cityname">
+      <option value="Boston">
+      <option value="Cambridge">
+    </datalist>
+
+
 	<label for="degree">Degree</label><br>
 	<input type="text" name="degree" placeholder="Degree"></input> 
 	<br><br>
 	<input type="submit"/>
 </form>
-
+<br><br>
+</div>
+</div>
 </div>
 </body>
 </html>
