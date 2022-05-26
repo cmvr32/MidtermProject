@@ -5,7 +5,7 @@
 
 <nav class="navbar navbar-expand-lg bg-light" style="background-color:#0dcaf0;">
 <div class="container">
-<a href="directToHomePage.do"><img src="../images/Logo.png" alt="" width="60" height="60"/></a>
+<a href="directToHomePage.do"><img src="images/Logo.png" alt="" width="60" height="60"/></a>
 	
 	<c:choose>
 	  <c:when test="${not empty sessionScope.user }">
