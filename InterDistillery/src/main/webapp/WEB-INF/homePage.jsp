@@ -10,11 +10,13 @@
 <%@ include file="nav.jsp"%>
 </head>
 <body>
-	
+
+<div class="container">
+	<br><br>
 	<h1>InterDistillery</h1>
 
 	<h3>You GotSkilled now it is time to GetHired!</h3>
 	
-
+</div>
 </body>
 </html>

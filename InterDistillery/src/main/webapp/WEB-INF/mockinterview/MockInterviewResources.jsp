@@ -10,7 +10,7 @@
 
 </head>
 <body>
-
+<div class="container">
 <h1>Interview Resources</h1>
 
 <br><form action="directToRequestMockInterview.do"><button>Schedule A Mock Interview</button></form>
@@ -27,6 +27,6 @@
 <br>
 
 <br><form action=""><button>Example Interview Questions</button></form>
-
+</div>
 </body>
 </html>

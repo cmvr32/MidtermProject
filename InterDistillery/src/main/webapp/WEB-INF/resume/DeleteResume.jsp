@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="../bootstrapHead.jsp"/>
 <%@ include file="../nav.jsp"%>
-
+<div class="container">
 <h1>Your resume has been deleted</h1>
 <h3>${sessionScope.user.firstName} ${sessionScope.user.firstName}</h3>
 
@@ -17,6 +17,6 @@
 	<button> Return To Home Page </button>
 </form>
 
-
+</div>
 </body>
 </html>

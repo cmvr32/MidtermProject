@@ -10,8 +10,8 @@
 <%@ include file="../nav.jsp"%>
 </head>
 <body>
-
-<h1>Resume Resources</h1>
+<div class="container">
+<h2>Resume Resources</h2>
 
 <br><form action="ViewResume.do"><button>View Resumes</button></form>
 <br><form action="directToAddResume.do"><button>Build a Resume</button></form>
@@ -28,6 +28,6 @@
 <br>
 
 <br><form action=""><button>Example Resumes</button></form>
-
+</div>
 </body>
 </html>

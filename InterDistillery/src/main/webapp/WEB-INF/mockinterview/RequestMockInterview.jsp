@@ -9,10 +9,10 @@
 <%@ include file="../nav.jsp"%>
 </head>
 <body>
-
+<div class="container">
 <h1>Schedule a Mock Interview</h1>
 <h5> get confortable in the hot seat be sure the study the interview questions!</h5>
 <input type="text" data-role="calendarpicker" value="1972/12/21" data-format="%d %b %Y">
-
+</div>
 </body>
 </html>

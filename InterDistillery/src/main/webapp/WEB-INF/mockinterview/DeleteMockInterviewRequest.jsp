@@ -9,6 +9,12 @@
 <%@ include file="../nav.jsp"%>
 </head>
 <body>
+<div class="container">
 
+
+
+
+
+</div>
 </body>
 </html>

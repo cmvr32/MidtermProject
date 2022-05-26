@@ -8,6 +8,7 @@
 
 </head>
 <body>
+<div class="container">
 <jsp:include page="../bootstrapHead.jsp"/>
 <%@ include file="../nav.jsp"%>
 <h2>Log In</h2>
@@ -16,11 +17,13 @@
 		<input type="text" name="username">
 	<br><label for="password">Password</label><br>
 		<input type="password" name="password"/><br>
-		<br><input type="submit" value="Log In" > 
-		
-	<h5> Don't have an account? Click the button below!</h5>
-	</form><form action="directToCreateUser.do"> <button>Create An Account</button></form>
-
+		<br><input type="submit" value="Log In" >
+	</form> 
+	<br>
 	
+	<label>Don't have an account? Register!</label>
+	
+
+</div>	
 </body>
 </html>

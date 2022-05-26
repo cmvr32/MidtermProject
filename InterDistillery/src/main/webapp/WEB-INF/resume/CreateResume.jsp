@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="../bootstrapHead.jsp"/>
 <%@ include file="../nav.jsp"%>
-
+<div class="container">
 <h1>Let's Build Your Resume!</h1>
 
 <form action="CreateResume.do" method="post">
@@ -30,6 +30,6 @@
 	<input type="submit"/>
 </form>
 <form action="directToHomePage.do"><button>Return Home</button></form>
-	
+</div>
 </body>
 </html>
