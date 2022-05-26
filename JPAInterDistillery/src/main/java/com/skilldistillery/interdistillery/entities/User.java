@@ -22,7 +22,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -67,7 +67,7 @@ public class User {
 		this.password = password;
 	}
 
-	public User(int id, String firstName, String lastName, String email, String username, String password) {
+	public User(Integer id, String firstName, String lastName, String email, String username, String password) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -89,7 +89,7 @@ public class User {
 		this.dateCreated = dateCreated;
 	}
 
-	public User(int id, String firstName, String lastName, String email, String username, String password,
+	public User(Integer id, String firstName, String lastName, String email, String username, String password,
 			LocalDateTime dateCreated) {
 		super();
 		this.id = id;
@@ -115,7 +115,7 @@ public class User {
 		this.role = role;
 	}
 
-	public User(int id, String firstName, String lastName, String email, String username, String password,
+	public User(Integer id, String firstName, String lastName, String email, String username, String password,
 			LocalDateTime dateCreated, Integer active, String role) {
 		super();
 		this.id = id;
@@ -156,7 +156,7 @@ public class User {
 	}
 
 	// all arg contructor
-	public User(int id, String firstName, String lastName, String email, String username, String password,
+	public User(Integer id, String firstName, String lastName, String email, String username, String password,
 			LocalDateTime dateCreated, Integer active, String role, String profileImageUrl, String bannerImageUrl,
 			String biography, List<MockInterview> userMockInterviews, List<MockInterview> mockInterviewAppointments,
 			List<Resume> userResumes, List<StudyGuide> userStudyGuides, List<StudyGuide> studyguides,
@@ -183,11 +183,11 @@ public class User {
 	}
 
 	// GETTERS AND SETTERS
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -514,7 +514,11 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return id == other.id;
+		return Objects.equals(id, other.id);
 	}
+
+
+	
+
 
 }
