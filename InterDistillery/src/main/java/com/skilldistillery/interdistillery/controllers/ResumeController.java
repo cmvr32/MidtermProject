@@ -27,12 +27,14 @@ public class ResumeController {
 	@Autowired
 	private UserDAO userResumeDao;
 
+	// START: Home Page
 	@RequestMapping(path = { "/", "homePage.do" })
 	public String home(Model model) {
 		model.addAttribute("DEBUG", resumeDao.findResumeById(1)); // DEBUG REMOVE LATER
 		return "homePage";
 	}
 
+	// VIEW RESUME
 	@RequestMapping(path = "ViewResume.do", method = RequestMethod.GET)
 	public String viewUserResumes(Model model, HttpSession session) {
 
@@ -48,6 +50,7 @@ public class ResumeController {
 
 	// CRUD OPERATIONS
 
+	// CREATE RESUME
 	@RequestMapping(path = "CreateResume.do", method = RequestMethod.POST)
 	public String addResume(Model model, @RequestParam String contactInfo, @RequestParam String introduction,
 			@RequestParam String experience, @RequestParam Integer degree, HttpSession session) {
@@ -65,8 +68,15 @@ public class ResumeController {
 		return "Login/account";
 	}
 
+	// UPDATE RESUME
 	@RequestMapping(path = "updateResume.do", method = RequestMethod.GET)
 	public String updateResume(RedirectAttributes redir, Model model, Resume resume, HttpSession session) {
+
+		System.out.println("********************");
+		System.err.println("---DELETERESUME.DO---");
+		System.out.println("Resume Id:  " + resume);
+		System.out.println("ResumeDAO:  " + resumeDao);
+		System.out.println("********************");
 
 		// user in session
 		User user = (User) session.getAttribute("user");
@@ -78,14 +88,10 @@ public class ResumeController {
 
 	}
 
+	// DELETE RESUME
 	@RequestMapping(path = "deleteResume.do", method = RequestMethod.POST)
 	public String deleteResume(RedirectAttributes redir, Model model, Resume resume, Integer resumeId,
 			HttpSession session) {
-		
-		System.out.println("********************");
-		System.out.println("Resume Id:  " + resumeId);
-		System.out.println("ResumeDAO:  " + resumeDao);
-		System.out.println("********************");
 
 		// user in session
 		User user = (User) session.getAttribute("user");
@@ -98,7 +104,6 @@ public class ResumeController {
 	}
 
 	// Redirect Methods:
-
 	@RequestMapping("directToAddResume.do")
 	public String directToAddResume() {
 		return "resume/CreateResume";
@@ -117,6 +122,7 @@ public class ResumeController {
 	@RequestMapping("directToUpdateResume.do")
 	public String directToUpdateResume(Integer resumeId, Model model) {
 		System.out.println("********************");
+		System.err.println("---DIRECT TO UPDATE RESUME.DO---");
 		System.out.println("Resume Id:  " + resumeId);
 		System.out.println("ResumeDAO:  " + resumeDao);
 		System.out.println("********************");
@@ -127,7 +133,6 @@ public class ResumeController {
 
 	@RequestMapping("directToViewResume.do")
 	public String directToViewResume(Integer resumeId, Model model) {
-
 
 		return "resume/DeleteResume";
 	}

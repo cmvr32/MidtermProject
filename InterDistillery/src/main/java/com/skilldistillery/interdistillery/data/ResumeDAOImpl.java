@@ -21,16 +21,15 @@ public class ResumeDAOImpl implements ResumeDAO {
 	private EntityManager em;
 
 	@Override
+	// find resume with resume id
 	public Resume findResumeById(int resumeId) {
 
 		return em.find(Resume.class, resumeId);
 
 	}
 
-
 	// read
-	// ADMIN list all users
-	// TODO create admin permissions
+	// List every user with an account for admin
 	@Override
 	public List<Resume> findAllResumes() {
 		String jpql = "SELECT r FROM resume r";
@@ -39,7 +38,7 @@ public class ResumeDAOImpl implements ResumeDAO {
 
 	@Override
 	// find resume with user ID and resume ID
-	// TODO PASS IN USER ID RESUME IF OR USER
+	// extra method that was written. Not implemneted
 	public Resume findByUserIdAndResumeId(int userId, int resumeId) {
 
 		Resume userFindResumeByUserIdAndResumeId = null;
@@ -94,6 +93,19 @@ public class ResumeDAOImpl implements ResumeDAO {
 
 	}
 
+	@Override
+	// update resume
+	public Resume updateResume(Resume resume) {
+		Resume managedResume = em.find(Resume.class, resume.getId());
+		if (managedResume != null) {
+			managedResume.setContactInfo(resume.getContactInfo());
+			managedResume.setIntroduction(resume.getIntroduction());
+			managedResume.setExperience(resume.getExperience());
+			managedResume.setDegree(resume.getDegree());
+		}
+
+		return managedResume;
+	}
 
 	@Override
 	// delete resume
@@ -217,19 +229,4 @@ public class ResumeDAOImpl implements ResumeDAO {
 
 		return jobListing;
 	}
-
-
-	@Override
-	public Resume updateResume(Resume resume) {
-		Resume managedResume = em.find(Resume.class, resume.getId());
-		if (managedResume != null) {
-			managedResume.setContactInfo(resume.getContactInfo());
-			managedResume.setIntroduction(resume.getIntroduction());
-			managedResume.setExperience(resume.getExperience());
-			managedResume.setDegree(resume.getDegree());
-		}
-		
-		return managedResume;
-	}
-
 }

@@ -23,13 +23,12 @@ public class UserDaoImpl implements UserDAO {
 	public User findById(int id) {
 
 		List<User> userAccountInfo = null;
-		String jpql = "SELECT c FROM user c WHERE c.id = :id";
+		String jpql = "SELECT c FROM User c WHERE c.id=:id";
 
 		userAccountInfo = em.createQuery(jpql, User.class).setParameter("id", id).getResultList();
-		System.err.println("---FINDING USER WITH USERNAME AND PASSWORD---");
+		System.err.println("---FINDING USER BY ID--");
 		if (userAccountInfo != null && !userAccountInfo.isEmpty()) {
 
-			
 			System.err.println("LOOKING FOR: " + id);
 			System.err.println("ACCOUNT FOUND");
 
@@ -135,17 +134,22 @@ public class UserDaoImpl implements UserDAO {
 
 		boolean userUpdated = false;
 
+		System.err.println("---USER UPDATE DAO BEGIN---");
+
 		User userToUpdate = em.find(User.class, user.getId());
 		if (userToUpdate != null) {
+			System.err.println("---USER FOUND NOW UPDATING---");
 			userToUpdate.setFirstName(user.getFirstName());
 			userToUpdate.setLastName(user.getLastName());
+			userToUpdate.setEmail(user.getEmail());
 			userToUpdate.setUsername(user.getUsername());
 			userToUpdate.setPassword(user.getPassword());
 			userToUpdate.setProfileImageUrl(user.getProfileImageUrl());
-			userToUpdate.setBannerImageUrl(user.getBannerImageUrl());
 			userToUpdate.setBiography(user.getBiography());
 
 			userUpdated = true;
+			System.err.println("---USER UPDATED---");
+			return userToUpdate;
 
 		} else if (userToUpdate == null) {
 
@@ -153,9 +157,9 @@ public class UserDaoImpl implements UserDAO {
 			System.out.println("User not found");
 
 			userUpdated = true;
+			return null;
 		}
-
-		return userToUpdate;
+		return null;
 
 	}
 
@@ -187,9 +191,8 @@ public class UserDaoImpl implements UserDAO {
 		return user;
 	}
 
-	@Override
 	// delete user
-	public Boolean deleteUser(int id) {
+	public Boolean deleteUser(Integer id) {
 
 		boolean successfullyDeleted = false;
 		User deleteUser = em.find(User.class, id);

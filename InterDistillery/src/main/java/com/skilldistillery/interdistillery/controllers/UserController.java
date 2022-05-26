@@ -20,32 +20,43 @@ public class UserController {
 	@Autowired
 	private UserDAO userDao;
 
-//	@RequestMapping(path = { "/", "homePage.do" })
-//	public String home(Model model) {
-//		model.addAttribute("DEBUG", userDao.findById(1));
-//		return "homePage";
-//	}
-
+	// START: Home page
 	@RequestMapping(path = { "homePage.do" })
 	public String home1(@RequestParam Integer id, Model model) {
 		model.addAttribute("FINDBYID", userDao.findById(id)); // DEBUG REMOVE LATER
 		return "homePage";
 	}
-	
-	
-	// LOGIN METHODS
 
-	// THIS IS THE START OF THE LOGIN
+	// LOGIN METHOD
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model,
 			HttpSession session) {
+
+		System.err.println("---LOGIN USER---");
 		User user = userDao.findByUserNameAndPassword(username, password);
 
-		System.err.println("---LOGGIN IN USER---");
+		Integer userId = user.getId();
+		User userAccountInfo = userDao.findById(userId);
+
 		
 		
+		System.out.println("********************");
+		System.err.println("---GET USE ACCOUNT INFO---");
+		System.out.println("User Id:  " + userId);
+		System.out.println("UserDAO:  " + userDao);
+		System.out.println("********************");
+		System.out.println(userAccountInfo);
+
+		System.err.println(userAccountInfo);
+
 		if (user != null) {
+			
+			model.addAttribute("userAccountInfo", userAccountInfo);
+			model.addAttribute("user", user);
+			
 			session.setAttribute("user", user);
+			session.setAttribute("userAccountInfo", userAccountInfo);
+
 			return "Login/account";
 
 		} else {
@@ -57,46 +68,43 @@ public class UserController {
 //	logout.do removes the user from session and redirects to index.do.
 	@RequestMapping(path = "logout.do")
 	public String logout(HttpSession session) {
-		session.removeAttribute("loggedInUser");
+		System.err.println("---LOG OUT IN USER---");
+		session.removeAttribute("userAccountInfo");
+		session.removeAttribute("user");
 		return "homePage";
 	}
+
+	
+	// Display Account information
+		@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
+		public String viewAccountInformation(RedirectAttributes redir, Model model,
+				HttpSession session) {
+			
+			// user in session
+			User user = (User) session.getAttribute("user");
+
+			Integer userId = user.getId();
+			User userAccountInfo = userDao.findById(userId);
+
+			model.addAttribute("userAccountInfo", userAccountInfo);
+
+			if (user != null) {
+				session.setAttribute("user", user);
+
+				return "Login/account";
+
+			}else {
+
+				return "Redirect: Login/login";
+			}
+			
+		}
 	
 	
-	@RequestMapping(path="showUser.do", method = RequestMethod.GET)
-	public String showUser( Model model, HttpSession session) {
-		
-		
-		User loggedInUser = (User) session.getAttribute("user");
-		
-		Integer id=loggedInUser.getId();
-		
-		System.out.println("********************");
-		System.out.println("User Id:  " + id);
-		System.out.println("UserDAO:  " + userDao);
-		System.out.println("********************");
-		
-		User accountInfo=userDao.findById(id);
-		
-		model.addAttribute("accountInfo", accountInfo);
-		
-		return "Login/account";
-	}
-
-	@RequestMapping("getUserAccount.do")
-	public String findUserAccountByNameAndEmail(@RequestParam String firstName, String lastName, String email,
-			Model model) {
-		User user = userDao.findUserAccountByNameAndEmail(firstName, lastName, email);
-		model.addAttribute("user", user);
-		return "login/account";
-	}
-
+	// CREATE NEW USER ACCOUNT
 	@RequestMapping(path = "CreateUser.do", method = RequestMethod.POST)
-	public String addNewUser(Model model,
-							@RequestParam String firstName, 
-							@RequestParam String lastName,
-							@RequestParam String email, 
-							@RequestParam String username, 
-							@RequestParam String password) {
+	public String addNewUser(Model model, @RequestParam String firstName, @RequestParam String lastName,
+			@RequestParam String email, @RequestParam String username, @RequestParam String password) {
 		User newUser = new User();
 		newUser.setFirstName(firstName);
 		newUser.setLastName(lastName);
@@ -106,10 +114,10 @@ public class UserController {
 		newUser.setActive(1);
 		newUser.setRole("User");
 		newUser = userDao.createUser(newUser);
-		//boolean addUserFlag = true;
-		//model.addFlashAttribute("addUserFlag", addUserFlag);
+		// boolean addUserFlag = true;
+		// model.addFlashAttribute("addUserFlag", addUserFlag);
 		model.addAttribute("user", newUser);
-		//System.out.println("User added maybe" + newUser);
+		// System.out.println("User added maybe" + newUser);
 		return "homePage";
 	}
 
@@ -118,45 +126,59 @@ public class UserController {
 		return "Login/account";
 	}
 
-//	@RequestMapping(path = "CreateUser.do")
-//	public String addNewUser() {
-//		return "Login/login";
-//	}
-
+	// UPDATE USER
 	@RequestMapping(path = "UpdateUser.do", method = RequestMethod.GET)
 	public String updateUser(RedirectAttributes redir, Model model, User user, HttpSession session) {
 
-	
-				// user in session
-				User userInSession = (User) session.getAttribute("user");
-				int userId = user.getId();
-			
-				User updatedUser=userDao.updateUser(user);
-				model.addAttribute("updatedUser", updatedUser);
+		// user in session
+		User userInSession = (User) session.getAttribute("user");
 
-	
-		return "redirect:Login/account";
+		// start update
+		User updatedUser = userDao.updateUser(user);
+
+		System.err.println("---RETURN TO USER CONTROLLER---");
+		model.addAttribute("updatedUser", updatedUser);
+		System.out.println("UserDAO: " + updatedUser);
+		System.out.println("********************");
+
+		// add updated user to the session
+		session.setAttribute("user", updatedUser);
+
+		// get new user account information
+		Integer updatedUserId = updatedUser.getId();
+		User userAccountInfo = userDao.findById(updatedUserId);
+
+		// add new user to the model
+		model.addAttribute("userAccountInfo", userAccountInfo);
+
+		return "Login/account";
 
 	}
 
+	// DELETE USER
 	@RequestMapping(path = "DeleteUser.do", method = RequestMethod.POST)
-	public String deleteUser(RedirectAttributes redir) {
+	public String deleteUser(RedirectAttributes redir, Model model, User user, Integer userId, HttpSession session) {
 
-		User user = null;
-		Integer userId = user.getId();
-		boolean containsFlag = userDao.deleteUser(userId);
-		boolean deleteUserFlag = true;
-		redir.addFlashAttribute("deleteUserFlag", deleteUserFlag);
-		redir.addFlashAttribute("containsFlag", containsFlag);
-		return "Login/DeleteUser";
+	
+
+		User userInSession = (User) session.getAttribute("user");
+
+		boolean userDeleted = userDao.deleteUser(userId);
+		model.addAttribute("deletedUser", userDeleted);
+		session.removeAttribute("user");
+
+		System.out.println("user was deleted");
+		return "redirect:homepage.do";
+
 	}
 
+	// DEACTIVATE ACCOUNT?
 	@RequestMapping(path = "DeleteUser.do", method = RequestMethod.GET)
 	public String deleteUserGetProcess(User user) {
 		return "Login/DeleteUser";
 	}
 
-
+	// REDIRECT METHODS
 	@RequestMapping("directToLogin.do")
 	public String directToLogin() {
 		return "Login/login";
@@ -166,16 +188,18 @@ public class UserController {
 	public String directToCreateUser() {
 		return "Login/CreateUser";
 	}
-	@RequestMapping("directToCreateUser.do")
+
+	@RequestMapping("directToUpdateUser.do")
 	public String directToUpdateUser(Integer userId, Model model) {
-		
+
 		System.out.println("********************");
+		System.err.println("---DIRECT TO UPDATE USER.DO---");
 		System.out.println("User Id:  " + userId);
 		System.out.println("UserDAO:  " + userDao);
 		System.out.println("********************");
 		User userUpdate = userDao.findById(userId);
 		model.addAttribute("userUpdate", userUpdate);
-		
+
 		return "Login/UpdateUser";
 	}
 
@@ -183,10 +207,10 @@ public class UserController {
 	public String directToHomePage() {
 		return "homePage";
 	}
+
 	@RequestMapping("directToAccount.do")
 	public String directToAccount() {
 		return "Login/account";
 	}
-
 
 }
