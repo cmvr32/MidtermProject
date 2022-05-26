@@ -1,5 +1,7 @@
 package com.skilldistillery.interdistillery.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,35 +36,44 @@ public class UserController {
 		System.err.println("---LOGIN USER---");
 		User user = userDao.findByUserNameAndPassword(username, password);
 
-			Integer userId = user.getId();
-			User userAccountInfo = userDao.findById(userId);
+		Integer userId = user.getId();
+		User userAccountInfo = userDao.findById(userId);
 
-		
-			System.out.println("********************");
-			System.err.println("---GET USE ACCOUNT INFO---");
-			System.out.println("User Id:  " + userId);
-			System.out.println("UserDAO:  " + userDao);
-			System.out.println("********************");
-			System.out.println(userAccountInfo);
+		System.out.println("********************");
+		System.err.println("---GET USE ACCOUNT INFO---");
+		System.out.println("User Id:  " + userId);
+		System.out.println("UserDAO:  " + userDao);
+		System.out.println("********************");
+		System.out.println(userAccountInfo);
 
-			System.err.println(userAccountInfo);
+		System.err.println(userAccountInfo);
 
-			if (user != null) {
-				
-				model.addAttribute("userAccountInfo", userAccountInfo);
-				model.addAttribute("user", user);
-				
-				session.setAttribute("user", user);
-				session.setAttribute("userAccountInfo", userAccountInfo);
+		if (user != null) {
 
-				return "homePage";
+			model.addAttribute("userAccountInfo", userAccountInfo);
+			model.addAttribute("user", user);
+			System.err.println("---USER LOGGED IN---");
+			System.err.println("USER: " + user);
+			if (user.getRole().equalsIgnoreCase("Admin")) {
 
-			} else {
+				User admin = user;
 
-				return "Login/login";
+				System.err.println("---USER IS A ADMIN---");
+				System.err.println("ADMIN: " + admin);
+
+				model.addAttribute("admin", admin);
+				session.setAttribute("admin", admin);
 			}
+			session.setAttribute("user", user);
+			session.setAttribute("userAccountInfo", userAccountInfo);
+
+			return "homePage";
+
+		} else {
+
+			return "Login/login";
 		}
-	
+	}
 
 //	logout.do removes the user from session and redirects to index.do.
 	@RequestMapping(path = "logout.do")
@@ -73,28 +84,48 @@ public class UserController {
 		return "homePage";
 	}
 
-	// Display Account information
-	@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
-	public String viewAccountInformation(RedirectAttributes redir, Model model, HttpSession session) {
+//	// Display Account information
+//	@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
+//	public String viewAccountInformation(RedirectAttributes redir, Model model, HttpSession session) {
+//
+//		// user in session
+//		User user = (User) session.getAttribute("user");
+//
+//		Integer userId = user.getId();
+//		User userAccountInfo = userDao.findById(userId);
+//
+//		model.addAttribute("userAccountInfo", userAccountInfo);
+//
+//		if (user != null) {
+//			session.setAttribute("user", user);
+//
+//			return "Login/account";
+//
+//		} else {
+//
+//			return "Redirect:Login/login";
+//		}
+//
+//	}
+
+	// admin only
+	// display all user accounts
+	@RequestMapping(path = "adminAccountInformation.do", method = RequestMethod.POST)
+	public String adminViewManageAccounts(RedirectAttributes redir, Model model, HttpSession session) {
 
 		// user in session
-		User user = (User) session.getAttribute("user");
+		User admin = (User) session.getAttribute("admin");
 
-		Integer userId = user.getId();
-		User userAccountInfo = userDao.findById(userId);
+		System.out.println(admin.getRole());
 
-		model.addAttribute("userAccountInfo", userAccountInfo);
+		Integer userId = admin.getId();
+		List<User> listUserAccounts = null;
 
-		if (user != null) {
-			session.setAttribute("user", user);
+		listUserAccounts = userDao.findAllUsers();
+		model.addAttribute("listUserAccounts", listUserAccounts);
+		session.setAttribute("listUserAccounts", listUserAccounts);
 
-			return "Login/account";
-
-		} else {
-
-			return "Redirect:Login/login";
-		}
-
+		return "admin";
 	}
 
 	// CREATE NEW USER ACCOUNT
