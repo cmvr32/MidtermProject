@@ -8,9 +8,9 @@
 <title>User Profile</title>
 <jsp:include page="../bootstrapHead.jsp"/>
 <%@ include file="../nav.jsp"%>
-
 </head>
 <body>
+<div class="container">
 	<h2>User Profile</h2>
 	
 <ul>
@@ -89,6 +89,6 @@
 			</c:forEach>
 			</tbody>
 			</table>	
-	
+</div>	
 </body>
 </html>
