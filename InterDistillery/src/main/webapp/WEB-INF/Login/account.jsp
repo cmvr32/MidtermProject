@@ -8,10 +8,11 @@
 <title>User Profile</title>
 <jsp:include page="../bootstrapHead.jsp"/>
 <%@ include file="../nav.jsp"%>
-
 </head>
 <body>
+<div class="container">
 	<h2>Welcome, ${sessionScope.user.firstName}</h2>
+
 	
 <ul>
 <li>${sessionScope.user.firstName}</li>
@@ -67,6 +68,6 @@
 				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
 				<input type="submit" value="delete">
 				</form></td>
-	
+  </div>	
 </body>
 </html>
