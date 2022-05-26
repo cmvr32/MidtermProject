@@ -27,20 +27,28 @@
   </div>
   <div class="carousel-inner">
 <<<<<<< HEAD
+ <div class="carousel-item active" data-bs-interval="2000">
+=======
+<<<<<<< HEAD
  <div class="carousel-item active" data-bs-interval="10000">
       <img src="images/LogoC.png" class="d-sm-block w-100 h-100" alt="...">
 =======
  <div class="carousel-item active" data-bs-interval="1000">
+>>>>>>> d557f83ab4a4ce1f7b74ff722a08bae4c5cbdfeb
       <img src="../images/LogoC.png" class="d-sm-block w-100 h-100" alt="...">
 >>>>>>> a6a7be702e931586908e12aea466ab2dfde33db9
       <div class="carousel-caption d-none d-md-block" style='color:black'>
       </div>
     </div>
 <<<<<<< HEAD
+    <div class="carousel-item active" data-bs-interval="2000">
+=======
+<<<<<<< HEAD
     <div class="carousel-item active" data-bs-interval="10000">
       <img src="images/ResumeC.png" class="d-sm-block w-100 h-100" alt="...">
 =======
     <div class="carousel-item active" data-bs-interval="1000">
+>>>>>>> d557f83ab4a4ce1f7b74ff722a08bae4c5cbdfeb
       <img src="../images/ResumeC.png" class="d-sm-block w-100 h-100" alt="...">
 >>>>>>> a6a7be702e931586908e12aea466ab2dfde33db9
       <div class="carousel-caption d-none d-md-block" style='color:black'>
@@ -49,10 +57,14 @@
       </div>
     </div>
 <<<<<<< HEAD
+    <div class="carousel-item" data-bs-interval="2000">
+=======
+<<<<<<< HEAD
     <div class="carousel-item" data-bs-interval="10000">
       <img src="images/InterviewC.png" class="d-block w-100 h-100" alt="...">
 =======
     <div class="carousel-item" data-bs-interval="1000">
+>>>>>>> d557f83ab4a4ce1f7b74ff722a08bae4c5cbdfeb
       <img src="../images/InterviewC.png" class="d-block w-100 h-100" alt="...">
 >>>>>>> a6a7be702e931586908e12aea466ab2dfde33db9
       <div class="carousel-caption d-none d-md-block" style='color:black'>
@@ -61,10 +73,14 @@
       </div>
     </div>
 <<<<<<< HEAD
+    <div class="carousel-item" data-bs-interval="2000">
+=======
+<<<<<<< HEAD
     <div class="carousel-item" data-bs-interval="10000">
       <img src="images/DiscussionC.png" class="d-block w-100 h-100" alt="...">
 =======
     <div class="carousel-item" data-bs-interval="5000">
+>>>>>>> d557f83ab4a4ce1f7b74ff722a08bae4c5cbdfeb
       <img src="../images/DiscussionC.png" class="d-block w-100 h-100" alt="...">
 >>>>>>> a6a7be702e931586908e12aea466ab2dfde33db9
       <div class="carousel-caption d-none d-md-block" style='color:black'>
@@ -73,10 +89,14 @@
       </div>
     </div>
 <<<<<<< HEAD
+    <div class="carousel-item" data-bs-interval="2000">
+=======
+<<<<<<< HEAD
     <div class="carousel-item" data-bs-interval="10000">
       <img src="images/StudyC.png" class="d-block w-100 h-100" alt="...">
 =======
     <div class="carousel-item" data-bs-interval="5000">
+>>>>>>> d557f83ab4a4ce1f7b74ff722a08bae4c5cbdfeb
       <img src="../images/StudyC.png" class="d-block w-100 h-100" alt="...">
 >>>>>>> a6a7be702e931586908e12aea466ab2dfde33db9
       <div class="carousel-caption d-none d-md-block" style='color:black'>
@@ -86,9 +106,13 @@
     </div>
 <<<<<<< HEAD
     <div class="carousel-item" data-bs-interval="2000">
+=======
+<<<<<<< HEAD
+    <div class="carousel-item" data-bs-interval="2000">
       <img src="images/JobC.png" class="d-block w-100 h-100" alt="...">
 =======
     <div class="carousel-item" data-bs-interval="5000">
+>>>>>>> d557f83ab4a4ce1f7b74ff722a08bae4c5cbdfeb
       <img src="../images/JobC.png" class="d-block w-100 h-100" alt="...">
 >>>>>>> a6a7be702e931586908e12aea466ab2dfde33db9
       <div class="carousel-caption d-none d-md-block" style='color:black'>
@@ -97,10 +121,14 @@
       </div>
     </div>
 <<<<<<< HEAD
+    <div class="carousel-item" data-bs-interval="2000">
+=======
+<<<<<<< HEAD
     <div class="carousel-item">
       <img src="images/SDC.png" class="d-block w-100 h-100" alt="...">
 =======
     <div class="carousel-item" data-bs-interval="5000">
+>>>>>>> d557f83ab4a4ce1f7b74ff722a08bae4c5cbdfeb
       <img src="../images/SDC.png" class="d-block w-100 h-100" alt="...">
 >>>>>>> a6a7be702e931586908e12aea466ab2dfde33db9
       <div class="carousel-caption d-none d-md-block" style='color:black'>

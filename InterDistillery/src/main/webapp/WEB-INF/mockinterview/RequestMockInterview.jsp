@@ -13,7 +13,7 @@
 <h1>Schedule a Mock Interview</h1>
 <h5> get comfortable in the hot seat be sure the study the interview questions!</h5>
 
-<form action="RequestMockInterview.do" method="post">
+<form action="ViewMockInterviewRequest.do" method="post">
 
 	<label for="Appointment Date">Appointment Date</label><br>
 	<input type="text" data-role="calendarpicker" value="2022/05/26" data-format="%d %b %Y">
@@ -41,7 +41,8 @@
 	<br><br>
 	<label for="Submit request">Click Submit to post interview request</label>
 	<input type="submit"/>
-
+</form>
+<br><br>
 </div>
 </body>
 </html>

@@ -52,7 +52,18 @@ public class UserController {
 
 			model.addAttribute("userAccountInfo", userAccountInfo);
 			model.addAttribute("user", user);
+			System.err.println("---USER LOGGED IN---");
+			System.err.println("USER: " + user);
+			if (user.getRole().equalsIgnoreCase("Admin")) {
 
+				User admin = user;
+
+				System.err.println("---USER IS A ADMIN---");
+				System.err.println("ADMIN: " + admin);
+
+				model.addAttribute("admin", admin);
+				session.setAttribute("admin", admin);
+			}
 			session.setAttribute("user", user);
 			session.setAttribute("userAccountInfo", userAccountInfo);
 
@@ -73,29 +84,29 @@ public class UserController {
 		return "homePage";
 	}
 
-	// Display Account information
-	@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
-	public String viewAccountInformation(RedirectAttributes redir, Model model, HttpSession session) {
-
-		// user in session
-		User user = (User) session.getAttribute("user");
-
-		Integer userId = user.getId();
-		User userAccountInfo = userDao.findById(userId);
-
-		model.addAttribute("userAccountInfo", userAccountInfo);
-
-		if (user != null) {
-			session.setAttribute("user", user);
-
-			return "Login/account";
-
-		} else {
-
-			return "Redirect:Login/login";
-		}
-
-	}
+//	// Display Account information
+//	@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
+//	public String viewAccountInformation(RedirectAttributes redir, Model model, HttpSession session) {
+//
+//		// user in session
+//		User user = (User) session.getAttribute("user");
+//
+//		Integer userId = user.getId();
+//		User userAccountInfo = userDao.findById(userId);
+//
+//		model.addAttribute("userAccountInfo", userAccountInfo);
+//
+//		if (user != null) {
+//			session.setAttribute("user", user);
+//
+//			return "Login/account";
+//
+//		} else {
+//
+//			return "Redirect:Login/login";
+//		}
+//
+//	}
 
 	// admin only
 	// display all user accounts
@@ -103,14 +114,17 @@ public class UserController {
 	public String adminViewManageAccounts(RedirectAttributes redir, Model model, HttpSession session) {
 
 		// user in session
-		User user = (User) session.getAttribute("user");
+		User admin = (User) session.getAttribute("admin");
 
-		Integer userId = user.getId();
-		List<User> listUserAccounts=null;
-		
-		listUserAccounts=userDao.findAllUsers();
+		System.out.println(admin.getRole());
+
+		Integer userId = admin.getId();
+		List<User> listUserAccounts = null;
+
+		listUserAccounts = userDao.findAllUsers();
 		model.addAttribute("listUserAccounts", listUserAccounts);
-		
+		session.setAttribute("listUserAccounts", listUserAccounts);
+
 		return "admin";
 	}
 
