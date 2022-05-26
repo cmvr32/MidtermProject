@@ -27,13 +27,17 @@ public class UserController {
 	}
 
 	// LOGIN METHOD
-		@RequestMapping(path = "login.do", method = RequestMethod.POST)
-		public String findByUserNameAndPassword(@RequestParam String username, String password, Model model,
-				HttpSession session) {
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
+	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model,
+			HttpSession session) {
 
-			System.err.println("---LOGIN USER---");
-			User user = userDao.findByUserNameAndPassword(username, password);
+		System.err.println("---LOGIN USER---");
+		User user = userDao.findByUserNameAndPassword(username, password);
 
+		Integer userId = user.getId();
+		User userAccountInfo = userDao.findById(userId);
+
+<<<<<<< HEAD
 			Integer userId = user.getId();
 			User userAccountInfo = userDao.findById(userId);
 
@@ -63,6 +67,32 @@ public class UserController {
 				return "Login/login";
 			}
 		}
+=======
+		System.out.println("********************");
+		System.err.println("---GET USE ACCOUNT INFO---");
+		System.out.println("User Id:  " + userId);
+		System.out.println("UserDAO:  " + userDao);
+		System.out.println("********************");
+		System.out.println(userAccountInfo);
+
+		System.err.println(userAccountInfo);
+
+		if (user != null) {
+
+			model.addAttribute("userAccountInfo", userAccountInfo);
+			model.addAttribute("user", user);
+
+			session.setAttribute("user", user);
+			session.setAttribute("userAccountInfo", userAccountInfo);
+
+			return "Login/account";
+
+		} else {
+
+			return "Login/login";
+		}
+	}
+>>>>>>> 8622bf01d07dc31ae59d45541f4ca998b3e23553
 
 //	logout.do removes the user from session and redirects to index.do.
 	@RequestMapping(path = "logout.do")

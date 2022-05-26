@@ -14,6 +14,56 @@
 <h1>View Scheduled Interview</h1>
 
 
+
+<h3>${sessionScope.user.firstName} ${sessionScope.user.lastName}</h3>
+<div>
+		<h2>Your Interviews</h2>
+		<h5>Select a Interview to edit</h5>
+		<form action="ViewMockInterviewRequest.do" method="GET">
+		</form>
+	
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Interview ID</th>
+				<th scope="col">Interview Date</th>
+				<th scope="col">Interview Time</th>
+				<th scope="col">Topic</th>
+				<th scope="col">Interviewee</th>
+			
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="userInterview" items="${interviews}"> 
+			<tr>
+			
+			<td><a href="ViewMockInterviewRequest.do?id=${userInterview.id}">${userInterview.id}</a></td>
+			<td>${userInterview.id}</td>
+			<td>${userInterview.interviewDate}</td>
+			<td>${userInterview.interviewTime}</td>
+			<td>${userInterview.topic}</td>
+			<td>${userInterview.interviewee}</td>
+			
+			
+				<%-- <td><form action="directToUpdateResume.do" method="GET">
+				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
+				<input type="submit" value="edit">
+				</form>
+				
+				<form action="deleteResume.do" method="POST">
+				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
+				<input type="submit" value="delete">
+				</form></td>
+			 --%>
+			
+			</tr>
+			</c:forEach>
+			</tbody>
+			</table>	
+
+
+
+
 </div>
 </body>
 </html>
