@@ -2,6 +2,7 @@ package com.skilldistillery.interdistillery.data;
 
 import java.util.List;
 
+import com.skilldistillery.interdistillery.entities.MockInterview;
 import com.skilldistillery.interdistillery.entities.Resume;
 import com.skilldistillery.interdistillery.entities.User;
 
@@ -37,7 +38,7 @@ public interface UserDAO {
 
 	// read
 	// find user mock interview
-	public List<User> userFindMockInterview(User user);
+	public List<MockInterview> userFindMockInterview(User user, Integer userId);
 
 	// read
 	// find mock interviewer
@@ -55,5 +56,6 @@ public interface UserDAO {
 
 	// delete
 	public Boolean deleteUser(Integer id);
+
 
 }

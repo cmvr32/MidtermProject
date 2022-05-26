@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.interdistillery.data.MockInterviewDAO;
+import com.skilldistillery.interdistillery.data.UserDAO;
 import com.skilldistillery.interdistillery.entities.MockInterview;
 import com.skilldistillery.interdistillery.entities.User;
 
@@ -21,6 +22,9 @@ public class MockInterviewController {
 
 	@Autowired
 	private MockInterviewDAO mockInterviewDao;
+
+	@Autowired
+	private UserDAO userDao;
 
 //	@RequestMapping(path = {"ViewMockInterview.do" })
 //	public String home(Model model) {
@@ -83,12 +87,20 @@ public class MockInterviewController {
 //	}
 
 	// find all interviews for a user
-	@RequestMapping(path = "ViewAllInterviews.do", method = RequestMethod.GET)
+	@RequestMapping(path = "ViewMockInterviewRequest.do", method = RequestMethod.GET)
 	public String getAllInterview(Model model, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
-		List<MockInterview> interviews = mockInterviewDao.findAllMockInterviewsForUser(user);
+		Integer userId = user.getId();
+
+		System.err.println("USER ID: " + userId);
+		System.err.println("USER DAO: " + userDao);
+		
+		List<MockInterview> interviews = userDao.userFindMockInterview(user, userId);
+		System.out.println("MockInterviews: " + interviews);
+		
 		model.addAttribute("interviews", interviews);
+		session.setAttribute("interviews", interviews);
 		return "mockinterview/MockInterviewResources";
 	}
 
