@@ -16,7 +16,6 @@
 	<h2>User Profile</h2>
 
 
-
 <div class="container">
 
 
@@ -111,6 +110,9 @@
 				<input type="submit" value="delete">
 				</form>
   </div>	
+
+</div>
+
 
 
 </body>

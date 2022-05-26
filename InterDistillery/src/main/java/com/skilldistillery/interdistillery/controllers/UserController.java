@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.interdistillery.data.UserDAO;
-import com.skilldistillery.interdistillery.entities.Resume;
 import com.skilldistillery.interdistillery.entities.User;
 
 @Controller
@@ -56,9 +55,8 @@ public class UserController {
 			
 			session.setAttribute("user", user);
 
+
 			return "homePage";
-
-
 
 		} else {
 
@@ -219,7 +217,6 @@ public class UserController {
 	public String directToStretchGoalMessage() {
 		return "StretchGoal";
 	}
-
 
 
 }
