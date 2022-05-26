@@ -16,6 +16,8 @@
 	<h2>User Profile</h2>
 
 
+<div class="container">
+
 	<h2>Welcome, ${sessionScope.user.firstName}</h2>
 
 	
@@ -88,10 +90,31 @@
 			
 		</c:otherwise>
 	</c:choose>
+
+	
+	<form action="directToUpdateResume.do" method="GET">
+				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
+				<input type="submit" value="edit">
+				</form>
+
+
+				<form action="deleteResume.do" method="POST">
+				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
+				<input type="submit" value="delete">
+				</form>
+
+				
+				<form action="deleteResume.do" method="POST">
+				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
+				<input type="submit" value="delete">
+				</form>
+  </div>	
+
 </div>
 
 				
 		
+
 
 </body>
 </html>

@@ -16,7 +16,7 @@ import com.skilldistillery.interdistillery.entities.User;
 
 @Controller
 public class UserController {
-
+  
 	@Autowired
 	private UserDAO userDao;
 
@@ -55,9 +55,8 @@ public class UserController {
 			model.addAttribute("user", user);
 			
 			session.setAttribute("user", user);
-			session.setAttribute("userAccountInfo", userAccountInfo);
+			return "homePage";
 
-			return "Login/account";
 
 		} else {
 
@@ -212,5 +211,11 @@ public class UserController {
 	public String directToAccount() {
 		return "Login/account";
 	}
+
+	@RequestMapping("directToStretchGoalMessage.do")
+	public String directToStretchGoalMessage() {
+		return "StretchGoal";
+	}
+
 
 }
