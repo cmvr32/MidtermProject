@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.skilldistillery.interdistillery.data.MockInterviewDAO;
 import com.skilldistillery.interdistillery.data.UserDAO;
 import com.skilldistillery.interdistillery.entities.MockInterview;
+import com.skilldistillery.interdistillery.entities.Resume;
 import com.skilldistillery.interdistillery.entities.User;
 
 @Controller
@@ -76,14 +77,24 @@ public class MockInterviewController {
 		return "Login/";
 	}
 
-//	// TODO FINSH UPDATE
-//	@RequestMapping(path = "update.do", method = RequestMethod.POST)
-//	public String updateInterview(RedirectAttributes redir, MockInterview interviews) {
-//		boolean updateInterviewFlag = true;
-//		interviews = mockInterviewDao.updateInterview(interviews);
-//		redir.addFlashAttribute("updateInterviewFlag", updateInterviewFlag);
-//		redir.addFlashAttribute("career", interviews);
-//		return "homepage.do";
+	// UPDATE RESUME
+//	@RequestMapping(path = "EditMockInterview.do", method = RequestMethod.GET)
+//	public String editMockInterview(RedirectAttributes redir, MockInterview interviews, HttpSession session) {
+//
+//		System.out.println("********************");
+//		System.err.println("---DELETERESUME.DO---");
+//		System.out.println("Resume Id:  " + interviews);
+//		System.out.println("ResumeDAO:  " + mockInterviewDao);
+//		System.out.println("********************");
+//
+//		// user in session
+//		User user = (User) session.getAttribute("user");
+//		int userId = user.getId();
+//		MockInterview updatedInterview = mockInterviewDao.
+//		model.addAttribute("editInterview", interviews);
+//
+//		return "mockinterview/ViewMockInterviewRequest";
+//
 //	}
 
 	// find all interviews for a user
