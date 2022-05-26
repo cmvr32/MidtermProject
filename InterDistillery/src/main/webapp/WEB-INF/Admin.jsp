@@ -28,6 +28,8 @@
 				<th scope="col">First Name</th>
 				<th scope="col">Last Name</th>
 				<th scope="col">Email</th>
+				<th scope="col">Username</th>
+				<th scope="col">Password</th>
 				<th scope="col">Active</th>
 				<th scope="col">Role</th>
 			
@@ -41,6 +43,8 @@
 			<td>${user.firstName}</td>
 			<td>${userResume.lastName}</td>
 			<td>${userResume.email}</td>
+			<td>${userResume.username}</td>
+			<td>${userResume.password}</td>
 			<td>${userResume.active}</td>
 			<td>${userResume.role}</td>
 			
