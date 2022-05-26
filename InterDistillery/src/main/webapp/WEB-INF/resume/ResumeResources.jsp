@@ -11,9 +11,42 @@
 </head>
 <body>
 <div class="container">
-<h2>Resume Resources</h2>
+<br><br>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Create a Resume</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="directToAddResume.do" class="btn btn-secondary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">View Resumes</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="ViewResume.do" class="btn btn-secondary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+<div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Resume Examples</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-secondary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
-<br><form action="ViewResume.do"><button>View Resumes</button></form>
+<%-- <br><form action="ViewResume.do"><button>View Resumes</button></form>
 <br><form action="directToAddResume.do"><button>Build a Resume</button></form>
 
 <form action="directToUpdateResume.do" >
@@ -27,7 +60,7 @@
 </form> 
 <br>
 
-<br><form action=""><button>Example Resumes</button></form>
+<br><form action=""><button>Example Resumes</button></form> --%>
 </div>
 </body>
 </html>
