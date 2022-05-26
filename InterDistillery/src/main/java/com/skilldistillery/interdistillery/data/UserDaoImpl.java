@@ -348,4 +348,10 @@ public class UserDaoImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<User> userFindMockInterview(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

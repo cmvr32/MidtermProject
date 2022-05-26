@@ -57,5 +57,7 @@ public interface UserDAO {
 	// delete
 	public Boolean deleteUser(Integer id);
 
+	List<User> userFindMockInterview(User user);
+
 
 }
