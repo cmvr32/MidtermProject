@@ -46,6 +46,7 @@
     Activity Log
   </div>
   <ul class="list-group list-group-flush">
+    <li class="invalid nav-item"><a href="index.html">valid</a></li>
     <li class="list-group-item">View Your Resumes</li>
     <li class="list-group-item">View Your Mock Interviews</li>
     <li class="list-group-item">View Your Posts</li>

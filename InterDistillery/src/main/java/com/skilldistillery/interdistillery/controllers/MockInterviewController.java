@@ -88,20 +88,21 @@ public class MockInterviewController {
 
 	// find all interviews for a user
 	@RequestMapping(path = "ViewMockInterviewRequest.do", method = RequestMethod.GET)
-	public String getAllInterview(Model model, HttpSession session) {
+	public String getAllInterview(RedirectAttributes redir, Model model, User user, HttpSession session) {
 
-		User user = (User) session.getAttribute("user");
-		Integer userId = user.getId();
+		User userInSession = (User) session.getAttribute("user");
+		Integer userInSessionId = userInSession.getId();
 
-		System.err.println("USER ID: " + userId);
+		System.err.println("Interview Controller, Interview Request Method " + userInSessionId);
+		System.err.println("USER ID: " + userInSessionId);
 		System.err.println("USER DAO: " + userDao);
-		
-		List<MockInterview> interviews = userDao.userFindMockInterview(user, userId);
+
+		List<MockInterview> interviews = userDao.userFindMockInterview(userInSession, userInSessionId);
 		System.out.println("MockInterviews: " + interviews);
-		
+
 		model.addAttribute("interviews", interviews);
 		session.setAttribute("interviews", interviews);
-		return "mockinterview/MockInterviewResources";
+		return "mockinterview/ViewMockInterviewRequest";
 	}
 
 	// Redirect Methods:

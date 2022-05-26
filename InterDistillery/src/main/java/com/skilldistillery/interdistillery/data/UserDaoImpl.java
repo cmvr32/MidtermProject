@@ -310,9 +310,12 @@ public class UserDaoImpl implements UserDAO {
 		Boolean hasMockInterview = false;
 		List<MockInterview> userInterviewList = null;
 //		Integer userId = user.getId();
-//		String jpql = "SELECT c.userMockInterviews FROM User c WHERE c.id=: id";
-		String jpql = "SELECT i FROM MockInterview i WHERE i.interviewee=: id";
-		userInterviewList = em.createQuery(jpql, MockInterview.class).setParameter("id", userId).getResultList();
+//		String jpql = "SELECT c.UserInterviews FROM MockInterview c WHERE c.id=: id";
+//		userInterviewList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
+		
+		
+		String jpql = "SELECT i FROM MockInterview i WHERE i.interviewee=: user";
+		userInterviewList = em.createQuery(jpql, MockInterview.class).setParameter("user", user).getResultList();
 
 		System.err.println("---FINDING ALL CURRENT USER MOCK INTERVIEWS---");
 
@@ -351,5 +354,4 @@ public class UserDaoImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
