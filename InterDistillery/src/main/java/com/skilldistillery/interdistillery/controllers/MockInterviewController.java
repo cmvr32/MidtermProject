@@ -23,31 +23,40 @@ public class MockInterviewController {
 	@Autowired
 	private MockInterviewDAO mockInterviewDao;
 
-	@RequestMapping(path = {"ViewMockInterview.do" })
+//	@RequestMapping(path = {"ViewMockInterview.do" })
+//	public String home(Model model) {
+//		model.addAttribute("DEBUG", mockInterviewDao.findByMockIntervieweeId(1)); // DEBUG REMOVE LATER
+//		return "homePage";
+//	}
+
+	@RequestMapping(path = { "ViewMockInterview.do" })
 	public String home(Model model) {
-		model.addAttribute("DEBUG", mockInterviewDao.findByMockIntervieweeId(1)); // DEBUG REMOVE LATER
+		model.addAttribute("VIEWINTERVIEWS", mockInterviewDao.findByMockIntervieweeId(1)); // DEBUG REMOVE LATER
 		return "homePage";
 	}
-	
-	//create interview
+
+	// create interview
 	@RequestMapping(path = "CreateInterview.do", method = RequestMethod.POST)
-	public String addInterview(RedirectAttributes redir,
-							  @RequestParam MockInterview interview, 
-							  @RequestParam Date interviewDate, 
-							  @RequestParam Time interviewTime,
-							  @RequestParam String topic,
-							  HttpSession session) {
-		User user2 = (User)session.getAttribute("user");
-		MockInterview newMockInterview = new MockInterview(interviewDate, interviewTime, topic);
-		interview = mockInterviewDao.createInterview(interview, user2);
+	public String addInterview(Model model, 
+			@RequestParam MockInterview interview,
+			@RequestParam MockInterview interviewDate, 
+			@RequestParam MockInterview interviewTime, 
+			@RequestParam String topic,
+			HttpSession session) {
 		
-		boolean addInterviewFlag = true;
-		redir.addFlashAttribute("addInterviewsFlag", addInterviewFlag);
-		redir.addFlashAttribute("careers", interview);
-		return "resume/ViewResume";
+		User newUser = new User();
+		newUser.addMockInterviewAppointments(interview);
+		newUser.addMockInterview(interviewDate);
+		newUser.addMockInterviewAppointments(interviewTime);
+//		newUser.addJobListing(topic);
+		model.addAttribute("user", newUser);
+		return "mockinterview/MockInterviewResources";
 	}
 
-
+	@RequestMapping(path = "CreateInterview.do", method = RequestMethod.GET)
+	public String addInterviewGetProcess(User user) {
+		return "mockinterview/MockInterviewResources";
+	}
 
 	@RequestMapping(path = "delete.do", method = RequestMethod.POST)
 	public String deleteInterview(RedirectAttributes redir, int id) {
@@ -57,24 +66,13 @@ public class MockInterviewController {
 		redir.addFlashAttribute("containsFlag", containsFlag);
 		return "homepage.do";
 	}
-	
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String addInterviewsGetProcess(MockInterview interviews) {
-//		return "";
-//	}
-
-//	@RequestMapping(path = ".do")
-//	public String addNewInterview() {
-//		return "";
-//	}
 
 //	@RequestMapping(path = ".do", method = RequestMethod.GET)
 //	public String deleteInterviewGetProcess(MockInterview interviews) {
 //		return "";
 //	}
 
-	
-	//TODO FINSH UPDATE
+	// TODO FINSH UPDATE
 //	@RequestMapping(path = "update.do", method = RequestMethod.POST)
 //	public String updateInterview(RedirectAttributes redir, MockInterview interviews) {
 //		boolean updateInterviewFlag = true;
@@ -95,15 +93,7 @@ public class MockInterviewController {
 //		model.addAttribute("interviews", interviews);
 //		return "";
 //	}
-	
-//	@RequestMapping(path = "ViewSingleMockInterview.do", method = RequestMethod.GET)
-//	public String singleInterview(User user, Model model) {
-//		List<MockInterview> interviews = new ArrayList<>();
-//		interviews.add(mockInterviewDao.findByInterviewId(user));
-//		model.addAttribute("interviews", interviews);
-//		return "mockinterview/ViewMockInterview";
-//	}
-//
+
 //	//find all interviews for a user
 //	@RequestMapping(path = "ViewAllInterviews.do", method =RequestMethod.GET)
 //	public String getAllInterview( Model model,
@@ -115,25 +105,28 @@ public class MockInterviewController {
 //		return "mockinterview/ViewMockInterview";
 //	}
 
-	
-	//Redirect Methods:
-	
+	// Redirect Methods:
+
 	@RequestMapping("directToRequestMockInterview.do")
 	public String directToRequestMockInterview() {
 		return "mockinterview/RequestMockInterview";
 	}
+
 	@RequestMapping("directToViewMockInterviewRequest.do")
 	public String directToViewMockInterviewRequest() {
 		return "mockinterview/ViewMockInterviewRequest";
 	}
+
 	@RequestMapping("directToDeleteMockInterview.do")
 	public String directToDeleteMockInterview() {
 		return "mockinterview/DeleteMockInterview";
 	}
+
 	@RequestMapping("directToUpdateMockInterview.do")
 	public String directToUpdateMockInterview() {
 		return "mockinterview/UpdateMockInterview";
 	}
+
 	@RequestMapping("directToMockInterviewResources.do")
 	public String directToMockInterviewResources() {
 		return "mockinterview/MockInterviewResources";
