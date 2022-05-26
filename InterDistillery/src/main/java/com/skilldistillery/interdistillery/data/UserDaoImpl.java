@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.interdistillery.entities.MockInterview;
 import com.skilldistillery.interdistillery.entities.Resume;
 import com.skilldistillery.interdistillery.entities.User;
 
@@ -301,21 +302,29 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	// find the mock interviews a user has
-	public List<User> userFindMockInterview(User user) {
+	public List<MockInterview> userFindMockInterview(User user, Integer userId) {
 
+		System.err.println("---STARTING FIND ALL CURRENT USER MOCK INTERVIEWS---");
+		System.out.println("USER: " + user);
+		System.out.println("USER ID: " + userId);
 		Boolean hasMockInterview = false;
-		List<User> userInterviewList = null;
-		Integer userId = user.getId();
-		String jpql = "SELECT c.userMockInterviews FROM User c WHERE c.id=: id";
-		userInterviewList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
+		List<MockInterview> userInterviewList = null;
+//		Integer userId = user.getId();
+//		String jpql = "SELECT c.userMockInterviews FROM User c WHERE c.id=: id";
+		String jpql = "SELECT i FROM MockInterview i WHERE i.interviewee=: id";
+		userInterviewList = em.createQuery(jpql, MockInterview.class).setParameter("id", userId).getResultList();
 
 		System.err.println("---FINDING ALL CURRENT USER MOCK INTERVIEWS---");
+
+		System.out.println("USER INTERVIEW LIST");
 
 		if (userInterviewList != null) {
 
 			hasMockInterview = true;
 
-			for (User interview : userInterviewList) {
+			System.err.println("---FOUND USER INTERVIEW---");
+
+			for (MockInterview interview : userInterviewList) {
 
 				System.out.println(interview);
 

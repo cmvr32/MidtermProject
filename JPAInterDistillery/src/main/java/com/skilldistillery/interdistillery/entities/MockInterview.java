@@ -23,7 +23,7 @@ public class MockInterview {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(name = "interview_date")
 	private Date interviewDate;
@@ -33,15 +33,14 @@ public class MockInterview {
 
 	private String topic;
 
-	
-	//Constructors
-	
-	//defualt no arg
+	// Constructors
+
+	// defualt no arg
 	public MockInterview() {
 		super();
 	}
 
-	//date, time topic
+	// date, time topic
 	public MockInterview(Date interviewDate, Time interviewTime, String topic) {
 		super();
 		this.interviewDate = interviewDate;
@@ -49,16 +48,15 @@ public class MockInterview {
 		this.topic = topic;
 	}
 
-	public MockInterview(int id, Date interviewDate, Time interviewTime, String topic) {
+	public MockInterview(Integer id, Date interviewDate, Time interviewTime, String topic) {
 		super();
 		this.id = id;
 		this.interviewDate = interviewDate;
 		this.interviewTime = interviewTime;
 		this.topic = topic;
 	}
-	
-	
-	//date, time, topic, and interviewee
+
+	// date, time, topic, and interviewee
 	public MockInterview(Date interviewDate, Time interviewTime, String topic, User interviewee) {
 		super();
 		this.interviewDate = interviewDate;
@@ -92,11 +90,11 @@ public class MockInterview {
 		this.interviewee = interviewee;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -154,17 +152,9 @@ public class MockInterview {
 		}
 	}
 
-	// -----------------------------------------------------------------------
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
-	}
-
-	@Override
-	public String toString() {
-		return "MockInterview [id=" + id + ", interviewDate=" + interviewDate + ", interviewTime=" + interviewTime
-				+ ", topic=" + topic + ", interviewee=" + interviewee + "]";
 	}
 
 	@Override
@@ -176,7 +166,15 @@ public class MockInterview {
 		if (getClass() != obj.getClass())
 			return false;
 		MockInterview other = (MockInterview) obj;
-		return id == other.id;
+		return Objects.equals(id, other.id);
 	}
+
+	@Override
+	public String toString() {
+		return "MockInterview [id=" + id + ", interviewDate=" + interviewDate + ", interviewTime=" + interviewTime
+				+ ", topic=" + topic + ", interviewee=" + interviewee + "]";
+	}
+
+	// -----------------------------------------------------------------------
 
 }

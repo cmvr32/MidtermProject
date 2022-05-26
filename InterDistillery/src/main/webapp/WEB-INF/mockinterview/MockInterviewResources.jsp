@@ -27,7 +27,7 @@
       <div class="card-body">
         <h5 class="card-title">View Mock Interviews</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="ViewMockIntreviewRequest.do" class="btn btn-secondary">Explore</a>
+        <a href="ViewMockInterviewRequest.do" class="btn btn-secondary">Explore</a>
       </div>
     </div>
   </div>
