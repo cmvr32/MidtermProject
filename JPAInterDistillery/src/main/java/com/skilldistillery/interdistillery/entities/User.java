@@ -495,9 +495,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", username=" + username + ", password=" + password + ", dateCreated=" + dateCreated + ", active="
-				+ active + ", role=" + role + ", biography=" + biography + "]";
+		return "User ID: " + id + ", Name: " + firstName + " " + lastName + ", Email: " + email + ", Username: "
+				+ username + ", Password: " + password + ", Date Created: " + dateCreated + ", Active: " + active
+				+ ", Role: " + role;
 	}
 
 	@Override
@@ -516,9 +516,5 @@ public class User {
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
-
-
-	
-
 
 }

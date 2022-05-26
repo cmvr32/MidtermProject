@@ -27,49 +27,49 @@
   </div>
   <div class="carousel-inner">
  <div class="carousel-item active" data-bs-interval="10000">
-      <img src="../images/LogoC.png" class="d-sm-block w-100 h-100" alt="...">
+      <img src="images/LogoC.png" class="d-sm-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5></h5>
         <p></p>
       </div>
     </div>
     <div class="carousel-item active" data-bs-interval="10000">
-      <img src="../images/ResumeC.png" class="d-sm-block w-100 h-100" alt="...">
+      <img src="images/ResumeC.png" class="d-sm-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Resume Support</h5>
         <p>Get access to the resources you need to build a powerful resume.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="10000">
-      <img src="../images/InterviewC.png" class="d-block w-100 h-100" alt="...">
+      <img src="images/InterviewC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Interview Preparation</h5>
         <p>Participate in mock interviews and improve your skills.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="10000">
-      <img src="../images/DiscussionC.png" class="d-block w-100 h-100" alt="...">
+      <img src="images/DiscussionC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Discussion Board</h5>
         <p>Connect with peers, ask questions and seek advice.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="10000">
-      <img src="../images/StudyC.png" class="d-block w-100 h-100" alt="...">
+      <img src="images/StudyC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Study Materials</h5>
         <p>The best way to prepare for an interview is to keep coding!</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="../images/JobC.png" class="d-block w-100 h-100" alt="...">
+      <img src="images/JobC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Job Listings</h5>
         <p>Post and view job listings with the online community.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="../images/SDC.png" class="d-block w-100 h-100" alt="...">
+      <img src="images/SDC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Get Skilled!</h5>
         <p>Checkout Skill Distillery and apply for the next cohort today.</p>
@@ -91,7 +91,7 @@
 <div class="row">
             <div class="col-lg-4 mb-2">
                 <div class="card"style="width: 18rem;">
-                    <img class="card-img-top" src="../images/ResumeStock.png" alt="">
+                    <img class="card-img-top" src="images/ResumeStock.png" alt="">
                    <div class="card-body">
                     <h5 class="card-title">Resume Support</h5>
                     <p class="card-text"> Get access to the resources you need to build a powerful resume.</p>
@@ -101,7 +101,7 @@
             </div>
             <div class="col-lg-4 mb-2">
                 <div class="card"style="width: 18rem;">
-                    <img class="card-img-top" src="../images/InterviewStock.png" alt="">
+                    <img class="card-img-top" src="images/InterviewStock.png" alt="">
                     <div class="card-body">
                      <h5 class="card-title">Interview Support</h5>
                      <p class="card-text">Participate in mock interviews and improve your skills.</p>
@@ -111,7 +111,7 @@
             </div>
                 <div class="col-lg-4 mb-2">
                 <div class="card"style="width: 18rem;">
-                    <img class="card-img-top" src="../images/DiscussionBoardStock.png" alt="">
+                    <img class="card-img-top" src="images/DiscussionBoardStock.png" alt="">
                     <div class="card-body">
                      <h5 class="card-title">Discussion Board</h5>
                      <p class="card-text">Connect with peers, ask questions and seek advice. </p>
@@ -124,7 +124,7 @@
         <div class="row">
             <div class="col-lg-4 mb-2">
                 <div class="card"style="width: 18rem;">
-                    <img class="card-img-top" src="../images/StudyStock.png" alt="">
+                    <img class="card-img-top" src="images/StudyStock.png" alt="">
                    <div class="card-body">
                     <h5 class="card-title">Study Materials</h5>
                     <p class="card-text">The best way to prepare for an interview is to keep coding!</p>
@@ -134,7 +134,7 @@
             </div>
             <div class="col-lg-4 mb-2">
                 <div class="card"style="width: 18rem;">
-                    <img class="card-img-top" src="../images/JobPostStock.png" alt="">
+                    <img class="card-img-top" src="images/JobPostStock.png" alt="">
                     <div class="card-body">
                      <h5 class="card-title">Job Listings</h5>
                      <p class="card-text">Post and view job listings with the online community.</p>
@@ -144,7 +144,7 @@
             </div>
                         <div class="col-lg-4 mb-2">
                 <div class="card"style="width: 18rem;">
-                    <img class="card-img-top" src="../images/SDStock.png" alt="">
+                    <img class="card-img-top" src="images/SDStock.png" alt="">
                     <div class="card-body">
                      <h5 class="card-title">Get Skilled!</h5>
                      <p class="card-text"> Checkout Skill Distillery and apply for the next cohort today.</p>
