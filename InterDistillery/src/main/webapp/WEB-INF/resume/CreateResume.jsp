@@ -28,17 +28,20 @@
 	<label for="experience">Experience</label><br>
 	<input type="text" name="experience" placeholder="Relevent work experience"></input> 
 	<br><br>
-	<input type="text" name="city" list="cityname">
-    <datalist id="cityname">
-      <option value="Boston">
-      <option value="Cambridge">
+	<input type="text" name="degree" list="degreeoptions">
+    <datalist id="degree">
+      <option value="Assosiates">
+      <option value="Bachelors">
+      <option value="Masters">
+      <option value="Doctorate">
+      <option value="Certificate">
     </datalist>
 
 
-	<label for="degree">Degree</label><br>
+<!-- 	<label for="degree">Degree</label><br>
 	<input type="text" name="degree" placeholder="Degree"></input> 
 	<br><br>
-	<input type="submit"/>
+	<input type="submit"/> -->
 </form>
 <br><br>
 </div>
