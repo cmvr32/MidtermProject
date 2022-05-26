@@ -55,7 +55,7 @@ public class UserController {
 				session.setAttribute("user", user);
 				session.setAttribute("userAccountInfo", userAccountInfo);
 
-				return "Login/account";
+				return "homePage";
 
 			} else {
 
