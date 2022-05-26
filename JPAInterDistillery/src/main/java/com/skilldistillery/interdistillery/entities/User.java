@@ -215,11 +215,11 @@ public class User {
 		this.email = email;
 	}
 
-	public String getUserName() {
+	public String getUsername() {
 		return username;
 	}
 
-	public void setUserName(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 
@@ -497,8 +497,7 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", username=" + username + ", password=" + password + ", dateCreated=" + dateCreated + ", active="
-				+ active + ", role=" + role + ", profileImageUrl=" + profileImageUrl + ", bannerImageUrl="
-				+ bannerImageUrl + ", biography=" + biography + "]";
+				+ active + ", role=" + role + ", biography=" + biography + "]";
 	}
 
 	@Override

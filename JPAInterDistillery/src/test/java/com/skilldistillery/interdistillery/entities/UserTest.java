@@ -59,7 +59,7 @@ class UserTest {
 		assertEquals("Nathan", user.getFirstName());
 		assertEquals("Hafley", user.getLastName());
 		assertEquals("nhafley@interDistillery.com", user.getEmail());
-		assertEquals("nhadmin", user.getUserName());
+		assertEquals("nhadmin", user.getUsername());
 		assertEquals("admin", user.getPassword());
 	}
 
