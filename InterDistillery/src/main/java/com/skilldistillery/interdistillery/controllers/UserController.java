@@ -99,7 +99,7 @@ public class UserController {
 
 	// admin only
 	// display all user accounts
-	@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
+	@RequestMapping(path = "adminAccountInformation.do", method = RequestMethod.POST)
 	public String adminViewManageAccounts(RedirectAttributes redir, Model model, HttpSession session) {
 
 		// user in session
