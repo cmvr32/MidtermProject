@@ -30,6 +30,56 @@ public class UserController {
 		model.addAttribute("FINDBYID", userDao.findById(id)); // DEBUG REMOVE LATER
 		return "homePage";
 	}
+	
+	
+	// LOGIN METHODS
+
+	// THIS IS THE START OF THE LOGIN
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
+	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model,
+			HttpSession session) {
+		User user = userDao.findByUserNameAndPassword(username, password);
+
+		System.err.println("---LOGGIN IN USER---");
+		
+		
+		if (user != null) {
+			session.setAttribute("user", user);
+			return "Login/account";
+
+		} else {
+
+			return "Login/login";
+		}
+	}
+
+//	logout.do removes the user from session and redirects to index.do.
+	@RequestMapping(path = "logout.do")
+	public String logout(HttpSession session) {
+		session.removeAttribute("loggedInUser");
+		return "homePage";
+	}
+	
+	
+	@RequestMapping(path="showUser.do", method = RequestMethod.GET)
+	public String showUser( Model model, HttpSession session) {
+		
+		
+		User loggedInUser = (User) session.getAttribute("user");
+		
+		Integer id=loggedInUser.getId();
+		
+		System.out.println("********************");
+		System.out.println("User Id:  " + id);
+		System.out.println("UserDAO:  " + userDao);
+		System.out.println("********************");
+		
+		User accountInfo=userDao.findById(id);
+		
+		model.addAttribute("accountInfo", accountInfo);
+		
+		return "Login/login";
+	}
 
 	@RequestMapping("getUserAccount.do")
 	public String findUserAccountByNameAndEmail(@RequestParam String firstName, String lastName, String email,
@@ -107,48 +157,6 @@ public class UserController {
 		return "Login/DeleteUser";
 	}
 
-	// LOGIN METHODS
-
-	// THIS IS THE START OF THE LOGIN
-	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model,
-			HttpSession session) {
-		User user = userDao.findByUserNameAndPassword(username, password);
-
-		if (user != null) {
-			session.setAttribute("user", user);
-			return "Login/account";
-
-		} else {
-
-			return "Login/login";
-		}
-	}
-
-//	logout.do removes the user from session and redirects to index.do.
-	@RequestMapping(path = "logout.do")
-	public String logout(HttpSession session) {
-		session.removeAttribute("loggedInUser");
-		return "homePage";
-	}
-
-//	@RequestMapping(path="logout.do")
-//	public ModelAndView logout(HttpSession session) {
-//		session.removeAttribute("loggedInUser");
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("redirect:index.do");
-//		return mv;
-//	}
-
-//	public boolean sessionTimedOut(HttpSession session) {
-//		LocalDateTime loginTime = (LocalDateTime) session.getAttribute("loginTime");
-//		if (java.time.Duration.between(loginTime, LocalDateTime.now()).getSeconds() > 60 * 30) {
-//			return true;
-//		}
-//		return false;
-//	}
-
-	// Redirect Methods:
 
 	@RequestMapping("directToLogin.do")
 	public String directToLogin() {

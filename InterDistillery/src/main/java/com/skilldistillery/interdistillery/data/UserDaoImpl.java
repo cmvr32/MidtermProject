@@ -20,8 +20,24 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	// find user by Id
-	public User findById(int userId) {
-		return em.find(User.class, userId);
+	public User findById(int id) {
+
+		List<User> userAccountInfo = null;
+		String jpql = "SELECT c FROM user c WHERE c.id = :id";
+
+		userAccountInfo = em.createQuery(jpql, User.class).setParameter("id", id).getResultList();
+		System.err.println("---FINDING USER WITH USERNAME AND PASSWORD---");
+		if (userAccountInfo != null && !userAccountInfo.isEmpty()) {
+
+			
+			System.err.println("LOOKING FOR: " + id);
+			System.err.println("ACCOUNT FOUND");
+
+			return userAccountInfo.get(0);
+		}
+
+		System.err.println("---USER NOT FOUND---");
+		return null;
 	}
 
 	@Override
@@ -39,24 +55,22 @@ public class UserDaoImpl implements UserDAO {
 	// TODO user login
 	public User findByUserNameAndPassword(String username, String password) {
 
-	List<User> userFindUsernameAndPassword = null;
+		List<User> userFindUsernameAndPassword = null;
 		String jpql = "SELECT c FROM User c WHERE c.username = :un AND c.password=:pw";
 
 		userFindUsernameAndPassword = em.createQuery(jpql, User.class).setParameter("un", username)
 				.setParameter("pw", password).getResultList();
-		if(userFindUsernameAndPassword!=null && !userFindUsernameAndPassword.isEmpty()) {
-			
+		if (userFindUsernameAndPassword != null && !userFindUsernameAndPassword.isEmpty()) {
+
 			System.out.println("---FINDING USER WITH USERNAME AND PASSWORD---");
 			System.err.println("LOOKING FOR: " + username + ", " + password);
 			System.err.println("NAME FOUND: " + userFindUsernameAndPassword);
-			
+
 			return userFindUsernameAndPassword.get(0);
-			
+
 		}
-	
-		
+
 		return null;
-		
 
 	}
 
@@ -110,7 +124,7 @@ public class UserDaoImpl implements UserDAO {
 			newUserCreated = false;
 
 		}
-		
+
 		return newUser;
 
 	}
@@ -140,7 +154,7 @@ public class UserDaoImpl implements UserDAO {
 
 			userUpdated = true;
 		}
-		
+
 		return userToUpdate;
 
 	}
@@ -169,7 +183,7 @@ public class UserDaoImpl implements UserDAO {
 
 			userUpdated = false;
 		}
-		
+
 		return user;
 	}
 
@@ -182,7 +196,7 @@ public class UserDaoImpl implements UserDAO {
 
 		if (deleteUser != null) {
 			System.err.println("deleteUser not null");
-			
+
 			em.remove(deleteUser);
 
 			successfullyDeleted = !em.contains(deleteUser);
@@ -190,7 +204,6 @@ public class UserDaoImpl implements UserDAO {
 			System.err.println("Character Deleted ID: " + id);
 		}
 
-		
 		return successfullyDeleted;
 
 	}
@@ -211,7 +224,6 @@ public class UserDaoImpl implements UserDAO {
 
 			resumeListFound = true;
 
-
 		} else if (completeResumeList == null) {
 
 			resumeListFound = false;
@@ -223,7 +235,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	//find all study guides a user has
+	// find all study guides a user has
 	public List<User> findAllCurrentUserStudyGuides(User user) {
 
 		Boolean studyGuideListFound = false;
@@ -254,7 +266,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	//find every job listing a user has checked
+	// find every job listing a user has checked
 	public List<User> findAllCurrentUserJobListings(User user) {
 
 		Boolean jobListFound = false;
@@ -285,7 +297,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	//find the mock interviews a user has
+	// find the mock interviews a user has
 	public List<User> userFindMockInterview(User user) {
 
 		Boolean hasMockInterview = false;
