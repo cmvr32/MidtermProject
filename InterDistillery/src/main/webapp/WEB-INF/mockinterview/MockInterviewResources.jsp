@@ -11,22 +11,48 @@
 </head>
 <body>
 <div class="container">
-<h1>Interview Resources</h1>
-
-<br><form action="directToRequestMockInterview.do"><button>Schedule A Mock Interview</button></form>
-
-<form action="directToEditMockInterview.do" >
-	<input type="hidden" name="id" value="${mockinterview.id}"/>
-	<button> Edit Interview appointment </button>
-</form>
-<br>
-<form action="directToDeleteMockInterview.do" >
-	<input type="hidden" name="id" value="${mockinterview.id}"/>
-	<button> Delete Interview appointment </button>
-</form> 
-<br>
-
-<br><form action=""><button>Example Interview Questions</button></form>
+<br><br>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Schedule a Mock Interview</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="directToRequestMockInterview.do" class="btn btn-secondary">Explore</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">View Mock Interviews</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="ViewMockIntreviewRequest.do" class="btn btn-secondary">Explore</a>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Edit Mock Interview</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="EditMockInterviewRequest" class="btn btn-secondary">Explore</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+         <h5 class="card-title"> Delete Mock Interview</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="DeleteMockInterviewRequest" class="btn btn-secondary">Explore</a>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 </body>
 </html>

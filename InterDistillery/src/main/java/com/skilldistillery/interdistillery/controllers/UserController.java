@@ -27,43 +27,42 @@ public class UserController {
 	}
 
 	// LOGIN METHOD
-	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public String findByUserNameAndPassword(@RequestParam String username, String password, Model model,
-			HttpSession session) {
+		@RequestMapping(path = "login.do", method = RequestMethod.POST)
+		public String findByUserNameAndPassword(@RequestParam String username, String password, Model model,
+				HttpSession session) {
 
-		System.err.println("---LOGIN USER---");
-		User user = userDao.findByUserNameAndPassword(username, password);
+			System.err.println("---LOGIN USER---");
+			User user = userDao.findByUserNameAndPassword(username, password);
 
-		Integer userId = user.getId();
-		User userAccountInfo = userDao.findById(userId);
+			Integer userId = user.getId();
+			User userAccountInfo = userDao.findById(userId);
 
-		
-		
-		System.out.println("********************");
-		System.err.println("---GET USE ACCOUNT INFO---");
-		System.out.println("User Id:  " + userId);
-		System.out.println("UserDAO:  " + userDao);
-		System.out.println("********************");
-		System.out.println(userAccountInfo);
-
-		System.err.println(userAccountInfo);
-
-		if (user != null) {
 			
-			model.addAttribute("userAccountInfo", userAccountInfo);
-			model.addAttribute("user", user);
 			
-			session.setAttribute("user", user);
+			System.out.println("********************");
+			System.err.println("---GET USE ACCOUNT INFO---");
+			System.out.println("User Id:  " + userId);
+			System.out.println("UserDAO:  " + userDao);
+			System.out.println("********************");
+			System.out.println(userAccountInfo);
 
+			System.err.println(userAccountInfo);
 
-			return "homePage";
+			if (user != null) {
+				
+				model.addAttribute("userAccountInfo", userAccountInfo);
+				model.addAttribute("user", user);
+				
+				session.setAttribute("user", user);
+				session.setAttribute("userAccountInfo", userAccountInfo);
 
-		} else {
+				return "homePage";
 
-			return "Login/login";
+			} else {
+
+				return "Login/login";
 			}
-		
-	}
+		}
 
 //	logout.do removes the user from session and redirects to index.do.
 	@RequestMapping(path = "logout.do")
@@ -217,6 +216,6 @@ public class UserController {
 	public String directToStretchGoalMessage() {
 		return "StretchGoal";
 	}
-
+  
 
 }
