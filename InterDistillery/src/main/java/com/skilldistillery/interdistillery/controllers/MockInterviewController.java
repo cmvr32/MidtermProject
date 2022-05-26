@@ -1,7 +1,6 @@
 package com.skilldistillery.interdistillery.controllers;
 
-import java.sql.Time;
-import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -36,20 +35,17 @@ public class MockInterviewController {
 	}
 
 	// create interview
-	@RequestMapping(path = "CreateInterview.do", method = RequestMethod.POST)
-	public String addInterview(Model model, 
-			@RequestParam MockInterview interview,
-			@RequestParam MockInterview interviewDate, 
-			@RequestParam MockInterview interviewTime, 
-			@RequestParam String topic,
-			HttpSession session) {
-		
-		User newUser = new User();
-		newUser.addMockInterviewAppointments(interview);
-		newUser.addMockInterview(interviewDate);
-		newUser.addMockInterviewAppointments(interviewTime);
-//		newUser.addJobListing(topic);
-		model.addAttribute("user", newUser);
+	@RequestMapping(path = "RequestMockInterview.do", method = RequestMethod.POST)
+	public String addInterview(Model model, @RequestParam MockInterview interview,
+			@RequestParam MockInterview interviewDate, @RequestParam MockInterview interviewTime,
+			@RequestParam String topic, HttpSession session) {
+
+		User user = (User) session.getAttribute("user");
+		MockInterview newInterview = new MockInterview();
+		newInterview = mockInterviewDao.createInterview(newInterview, user);
+
+		model.addAttribute("mockInterview", newInterview);
+		session.setAttribute("mockInterview", newInterview);
 		return "mockinterview/MockInterviewResources";
 	}
 
@@ -58,21 +54,25 @@ public class MockInterviewController {
 		return "mockinterview/MockInterviewResources";
 	}
 
-	@RequestMapping(path = "delete.do", method = RequestMethod.POST)
-	public String deleteInterview(RedirectAttributes redir, int id) {
-		boolean containsFlag = mockInterviewDao.deleteInterview(id);
-		boolean deleteInterviewFlag = true;
-		redir.addFlashAttribute("deleteInterviewFlag", deleteInterviewFlag);
-		redir.addFlashAttribute("containsFlag", containsFlag);
-		return "homepage.do";
+	@RequestMapping(path = "DeleteMockInterview.do", method = RequestMethod.POST)
+	public String deleteInterview(RedirectAttributes redir, MockInterview mockInterview, int id, Model model,
+			HttpSession session) {
+		User userInSession = (User) session.getAttribute("user");
+
+		boolean interDeleted = mockInterviewDao.deleteInterview(id);
+		model.addAttribute("deletedUser", interDeleted);
+		userInSession.removeMockInterview(mockInterview);
+
+		System.out.println("Interview was deleted!");
+		return "redirect:homepage.do";
 	}
 
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String deleteInterviewGetProcess(MockInterview interviews) {
-//		return "";
-//	}
+	@RequestMapping(path = "DeleteMockInterview.do", method = RequestMethod.GET)
+	public String deleteInterviewGetProcess(MockInterview interviews) {
+		return "Login/";
+	}
 
-	// TODO FINSH UPDATE
+//	// TODO FINSH UPDATE
 //	@RequestMapping(path = "update.do", method = RequestMethod.POST)
 //	public String updateInterview(RedirectAttributes redir, MockInterview interviews) {
 //		boolean updateInterviewFlag = true;
@@ -82,28 +82,15 @@ public class MockInterviewController {
 //		return "homepage.do";
 //	}
 
-//	@RequestMapping(path = ".do", method = RequestMethod.GET)
-//	public String updateInterviewGetProcess(MockInterview interviews) {
-//		return "";
-//	}
-//
-//	@RequestMapping(path = ".do")
-//	public String Interview(Model model, int id) {
-//		MockInterview interviews = mockInterviewDao.findById(id);
-//		model.addAttribute("interviews", interviews);
-//		return "";
-//	}
+	// find all interviews for a user
+	@RequestMapping(path = "ViewAllInterviews.do", method = RequestMethod.GET)
+	public String getAllInterview(Model model, HttpSession session) {
 
-//	//find all interviews for a user
-//	@RequestMapping(path = "ViewAllInterviews.do", method =RequestMethod.GET)
-//	public String getAllInterview( Model model,
-//								@RequestParam int userId) {
-//		
-//		
-//		List<MockInterview> interviews = mockInterviewDao.findAllMockInterviewsForUser();
-//		model.addAttribute("interviews", interviews);
-//		return "mockinterview/ViewMockInterview";
-//	}
+		User user = (User) session.getAttribute("user");
+		List<MockInterview> interviews = mockInterviewDao.findAllMockInterviewsForUser(user);
+		model.addAttribute("interviews", interviews);
+		return "mockinterview/MockInterviewResources";
+	}
 
 	// Redirect Methods:
 
