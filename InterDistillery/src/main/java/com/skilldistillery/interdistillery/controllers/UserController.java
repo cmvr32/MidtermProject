@@ -62,6 +62,7 @@ public class UserController {
 		}
 	}
 
+
 //	logout.do removes the user from session and redirects to index.do.
 	@RequestMapping(path = "logout.do")
 	public String logout(HttpSession session) {
