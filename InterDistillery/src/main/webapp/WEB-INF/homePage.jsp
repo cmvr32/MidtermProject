@@ -37,42 +37,42 @@
       <img src="../images/ResumeC.png" class="d-sm-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Resume Support</h5>
-        <p>Some representative placeholder content for the first slide.</p>
+        <p>Get access to the resources you need to build a powerful resume.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="10000">
       <img src="../images/InterviewC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Interview Preparation</h5>
-        <p>Some representative placeholder content for the second slide.</p>
+        <p>Participate in mock interviews and improve your skills.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="10000">
       <img src="../images/DiscussionC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Discussion Board</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+        <p>Connect with peers, ask questions and seek advice.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="10000">
       <img src="../images/StudyC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Study Materials</h5>
-        <p>Some representative placeholder content for the fourth slide.</p>
+        <p>The best way to prepare for an interview is to keep coding!</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
       <img src="../images/JobC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
         <h5>Job Listings</h5>
-        <p>Some representative placeholder content for the fifth slide.</p>
+        <p>Post and view job listings with the online community.</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="../images/SDC.png" class="d-block w-100 h-100" alt="...">
       <div class="carousel-caption d-none d-md-block" style='color:black'>
-        <h5>Skill Distillery</h5>
-        <p>Some representative placeholder content for the sixth slide.</p>
+        <h5>Get Skilled!</h5>
+        <p>Checkout Skill Distillery and apply for the next cohort today.</p>
       </div>
     </div>
   </div>
@@ -94,7 +94,7 @@
                     <img class="card-img-top" src="../images/ResumeStock.png" alt="">
                    <div class="card-body">
                     <h5 class="card-title">Resume Support</h5>
-                    <p class="card-text"> Get help building a strong resume that is sure to WOW!</p>
+                    <p class="card-text"> Get access to the resources you need to build a powerful resume.</p>
                     <a href="directToResumeResources.do" class="btn btn-secondary">Explore</a>
                    </div>
                 </div>
@@ -104,7 +104,7 @@
                     <img class="card-img-top" src="../images/InterviewStock.png" alt="">
                     <div class="card-body">
                      <h5 class="card-title">Interview Support</h5>
-                     <p class="card-text">Feel confident stepping into your interview.</p>
+                     <p class="card-text">Participate in mock interviews and improve your skills.</p>
  					 <a href="directToMockInterviewResources.do" class="btn btn-secondary">Explore</a>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                     <img class="card-img-top" src="../images/JobPostStock.png" alt="">
                     <div class="card-body">
                      <h5 class="card-title">Job Listings</h5>
-                     <p class="card-text">Post and view job listings with the online community</p>
+                     <p class="card-text">Post and view job listings with the online community.</p>
  					 <a href="directToStretchGoalMessage.do" class="btn btn-secondary">Explore</a>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                     <img class="card-img-top" src="../images/SDStock.png" alt="">
                     <div class="card-body">
                      <h5 class="card-title">Get Skilled!</h5>
-                     <p class="card-text"> Haven't gotten skilled yet? Check out SkillDistillery and apply today!</p>
+                     <p class="card-text"> Checkout Skill Distillery and apply for the next cohort today.</p>
  					 <a href="https://skilldistillery.com/" class="btn btn-secondary">Explore</a>
                     </div>
                 </div>

@@ -11,30 +11,38 @@
 </head>
 <body>
 
-
-
-	<h2>User Profile</h2>
-
-
 <div class="container">
+<br>
+	<h3>Account Information</h3>
+	<br>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="${sessionScope.user.profileImageUrl}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">${sessionScope.user.firstName} ${sessionScope.user.lastName}</h5>
+    <p class="card-text">${sessionScope.user.biography}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${sessionScope.user.email}</li>
+    <li class="list-group-item">${sessionScope.user.role}</li>
+    <li class="list-group-item">${sessionScope.user.active}</li>
+  </ul>
+  <div class="card-body">
+  
+  <p><form action="directToUpdateUser.do" method="GET">
+				<input type="number" hidden="true" value="${userAccountInfo.id}" name="userId" id="id" /> 
+				<input type="submit" value="Edit">
+				</form><p>
+				<p>	<form action="DeleteUser.do" method="POST">
+				<input type="text" hidden="true" value="${userAccountInfo.id}" name="userId" id="id" /> 
+				<input type="submit" value="Deactivate">
 
-
-	<h2>Welcome, ${sessionScope.user.firstName}</h2>
-
-	
-<ul>
-<li>${sessionScope.user.firstName}</li>
-<li>${sessionScope.user.lastName}</li>
-<li>${sessionScope.user.email}</li>
-<li>${sessionScope.user.biography}</li>
-<li>${sessionScope.user.dateCreated}</li>
-
-
-
-</ul>
-
-	<%-- Output user details --%>
-	
+			</form>
+			<p>
+  </div>
+</div>
+			<br><br><br>
+</div>
+<%-- 
 	
 	<form action="showUser.do" method="GET"></form>
 	
@@ -47,8 +55,8 @@
 	
 	
 		<c:when test="${not empty sessionScope.user}">
-			<%-- <h6>Account ID: ${sessionScope.user.id}</h6>
-			<h5>Username: ${sessionScope.user.username}</h5> --%>
+			<h6>Account ID: ${sessionScope.user.id}</h6>
+			<h5>Username: ${sessionScope.user.username}</h5>
 			<p>
 				<c:out value="${sessionScope.user.firstName }" />
 				<c:out value="${sessionScope.user.lastName }" />
@@ -65,8 +73,8 @@
 	
 	<form action="showUser.do" method="GET"></form>
 	
-	
-	<h3>User Account Info</h3>
+	 --%>
+	<%-- <h3>User Account Info</h3>
 	${userAccountInfo}
 	
 	<h5>Update your account information</h5>
@@ -92,7 +100,7 @@
 		</c:otherwise>
 	</c:choose>
 
-  </div>	
+  </div>	 --%>
 
 
 
