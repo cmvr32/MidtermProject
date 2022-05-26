@@ -9,9 +9,12 @@
 <body>
 <jsp:include page="../bootstrapHead.jsp"/>
 <%@ include file="../nav.jsp"%>
-<div class="container">
 <br>
-<H2>Create an Account</H2>
+<br>
+<div class="col d-flex justify-content-center">
+<div class="card text-center text-black bg-light mb-3" style="width: 18rem;">
+<br><br>
+<H5>Create an Account</H5>
 
 <form action="CreateUser.do" method="post">
 
@@ -31,9 +34,11 @@
 	<input type="text" name="password" placeholder="password"></input> 
 	<br><br>
 	<input type="submit"/>
+	<br>
 </form>
+<br><br>
 
 </div>
-
+</div>
 </body>
 </html>

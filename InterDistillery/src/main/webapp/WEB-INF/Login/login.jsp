@@ -8,9 +8,12 @@
 
 </head>
 <body>
-<div class="container">
 <jsp:include page="../bootstrapHead.jsp"/>
 <%@ include file="../nav.jsp"%>
+<br><br><br>
+<div class="col d-flex justify-content-center">
+<div class="card text-center text-black bg-light mb-3" style="width: 18rem;">
+<br>
 <h2>Log In</h2>
 	<form action="login.do" method="POST">
 	<label for="username">Username</label><br>
@@ -20,10 +23,7 @@
 		<br><input type="submit" value="Log In" >
 	</form> 
 	<br>
-	
-	<label>Don't have an account? Register!</label>
-	
-
+	</div>
 </div>	
 </body>
 </html>
