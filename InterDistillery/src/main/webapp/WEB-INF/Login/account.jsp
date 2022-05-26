@@ -11,11 +11,14 @@
 </head>
 <body>
 
-<div class="container">
+
+
 	<h2>User Profile</h2>
 
 
+
 <div class="container">
+
 
 	<h2>Welcome, ${sessionScope.user.firstName}</h2>
 
@@ -26,6 +29,7 @@
 <li>${sessionScope.user.email}</li>
 <li>${sessionScope.user.biography}</li>
 <li>${sessionScope.user.dateCreated}</li>
+
 
 
 </ul>
@@ -57,6 +61,30 @@
 				<c:out value="${sessionScope.user.username}"/>
 				<c:out value="${sessionScope.user.password}"/>
 				<c:out value="${sessionScope.user.profileImageUrl}"/>		
+		
+	${sessionScope.user.id}
+	
+	<form action="showUser.do" method="GET"></form>
+	
+	
+	<h3>User Account Info</h3>
+	${userAccountInfo}
+	
+	<h5>Update your account information</h5>
+	<p><form action="directToUpdateUser.do" method="GET">
+				<input type="number" hidden="true" value="${userAccountInfo.id}" name="userId" id="id" /> 
+				<input type="submit" value="Edit Account">
+				</form><p>
+
+<h5>Delete your Account</h5>
+			<p>	<form action="DeleteUser.do" method="POST">
+				<input type="text" hidden="true" value="${userAccountInfo.id}" name="userId" id="id" /> 
+				<input type="submit" value="Delete Account">
+
+			</form>
+			<p>
+			
+			
 			</p>
 				
 		</c:when>
@@ -64,6 +92,7 @@
 			
 		</c:otherwise>
 	</c:choose>
+
 	
 	<form action="directToUpdateResume.do" method="GET">
 				<input type="text" hidden="true" value="${user.id}" name="userId" /> 
@@ -82,5 +111,7 @@
 				<input type="submit" value="delete">
 				</form>
   </div>	
+
+
 </body>
 </html>

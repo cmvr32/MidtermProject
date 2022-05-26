@@ -20,7 +20,7 @@
 	  <c:otherwise>
 	    <a class="navbar-brand" style='color:grey' href="directToLogin.do">Log In</a>
 	    <a class="navbar-brand" style='color:grey' href="directToCreateUser.do">Register</a>
-	<form class="d-flex">
+	<form class="d-flex" action="directToStretchGoalMessage.do" >
       <input class="form-control me-2" type="search" placeholder="Don't even try!" aria-label="Search">
       <button class="btn btn-outline-secondary" type="submit">Search</button>
     </form>
