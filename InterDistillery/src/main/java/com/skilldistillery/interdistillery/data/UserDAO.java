@@ -53,6 +53,7 @@ public interface UserDAO {
 	// update user as admin
 	public User updateUserAsAdmin(User user);
 
-	public Boolean deleteUser(int id);
+	// delete
+	public Boolean deleteUser(Integer id);
 
 }
