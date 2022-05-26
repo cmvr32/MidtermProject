@@ -15,7 +15,7 @@ import com.skilldistillery.interdistillery.entities.User;
 
 @Controller
 public class UserController {
-  
+
 	@Autowired
 	private UserDAO userDao;
 
@@ -34,6 +34,23 @@ public class UserController {
 			System.err.println("---LOGIN USER---");
 			User user = userDao.findByUserNameAndPassword(username, password);
 
+<<<<<<< HEAD
+		System.out.println("********************");
+		System.err.println("---GET USE ACCOUNT INFO---");
+		System.out.println("User Id:  " + userId);
+		System.out.println("UserDAO:  " + userDao);
+		System.out.println("********************");
+		System.out.println(userAccountInfo);
+
+		System.err.println(userAccountInfo);
+
+		if (user != null) {
+
+			model.addAttribute("userAccountInfo", userAccountInfo);
+			model.addAttribute("user", user);
+
+			session.setAttribute("user", user);
+=======
 			Integer userId = user.getId();
 			User userAccountInfo = userDao.findById(userId);
 
@@ -55,14 +72,22 @@ public class UserController {
 				
 				session.setAttribute("user", user);
 				session.setAttribute("userAccountInfo", userAccountInfo);
+>>>>>>> 619753fbec6a3583361e0f76468701d047860293
 
 				return "homePage";
 
 			} else {
 
+<<<<<<< HEAD
+			return "Login/login";
+		}
+
+	}
+=======
 				return "Login/login";
 			}
 		}
+>>>>>>> 619753fbec6a3583361e0f76468701d047860293
 
 //	logout.do removes the user from session and redirects to index.do.
 	@RequestMapping(path = "logout.do")
@@ -73,33 +98,30 @@ public class UserController {
 		return "homePage";
 	}
 
-	
 	// Display Account information
-		@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
-		public String viewAccountInformation(RedirectAttributes redir, Model model,
-				HttpSession session) {
-			
-			// user in session
-			User user = (User) session.getAttribute("user");
+	@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
+	public String viewAccountInformation(RedirectAttributes redir, Model model, HttpSession session) {
 
-			Integer userId = user.getId();
-			User userAccountInfo = userDao.findById(userId);
+		// user in session
+		User user = (User) session.getAttribute("user");
 
-			model.addAttribute("userAccountInfo", userAccountInfo);
+		Integer userId = user.getId();
+		User userAccountInfo = userDao.findById(userId);
 
-			if (user != null) {
-				session.setAttribute("user", user);
+		model.addAttribute("userAccountInfo", userAccountInfo);
 
-				return "Login/account";
+		if (user != null) {
+			session.setAttribute("user", user);
 
-			}else {
+			return "Login/account";
 
-				return "Redirect:Login/login";
-			}
-			
+		} else {
+
+			return "Redirect:Login/login";
 		}
-	
-	
+
+	}
+
 	// CREATE NEW USER ACCOUNT
 	@RequestMapping(path = "CreateUser.do", method = RequestMethod.POST)
 	public String addNewUser(Model model, @RequestParam String firstName, @RequestParam String lastName,
@@ -113,8 +135,6 @@ public class UserController {
 		newUser.setActive(1);
 		newUser.setRole("User");
 		newUser = userDao.createUser(newUser);
-		// boolean addUserFlag = true;
-		// model.addFlashAttribute("addUserFlag", addUserFlag);
 		model.addAttribute("user", newUser);
 		// System.out.println("User added maybe" + newUser);
 		return "homePage";
@@ -157,8 +177,6 @@ public class UserController {
 	// DELETE USER
 	@RequestMapping(path = "DeleteUser.do", method = RequestMethod.POST)
 	public String deleteUser(RedirectAttributes redir, Model model, User user, Integer userId, HttpSession session) {
-
-	
 
 		User userInSession = (User) session.getAttribute("user");
 
@@ -216,6 +234,9 @@ public class UserController {
 	public String directToStretchGoalMessage() {
 		return "StretchGoal";
 	}
+<<<<<<< HEAD
+=======
   
+>>>>>>> 619753fbec6a3583361e0f76468701d047860293
 
 }
