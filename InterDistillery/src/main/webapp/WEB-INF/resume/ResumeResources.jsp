@@ -45,22 +45,5 @@
   </div>
 </div>
 </div>
-
-<%-- <br><form action="ViewResume.do"><button>View Resumes</button></form>
-<br><form action="directToAddResume.do"><button>Build a Resume</button></form>
-
-<form action="directToUpdateResume.do" >
-	<input type="hidden" name="id" value="${resume.id}"/>
-	<button> Edit Resume </button>
-</form>
-<br>
-<form action="directToDeleteResume.do" >
-	<input type="hidden" name="id" value="${resume.id}"/>
-	<button> Delete Resume </button>
-</form> 
-<br>
-
-<br><form action=""><button>Example Resumes</button></form> --%>
-</div>
 </body>
 </html>
