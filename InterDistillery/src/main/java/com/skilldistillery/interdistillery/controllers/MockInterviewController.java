@@ -68,6 +68,7 @@ public class MockInterviewController {
 		System.err.println("interviewId");
 		
 		User userInSession = (User) session.getAttribute("user");
+	
 		int userId = userInSession.getId();
 
 		boolean interDeleted = mockInterviewDao.deleteInterview(interviewId);

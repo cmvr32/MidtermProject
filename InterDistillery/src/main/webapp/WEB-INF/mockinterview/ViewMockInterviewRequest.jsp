@@ -31,6 +31,7 @@
 				<th scope="col">Topic</th>
 				<th scope="col">First Name</th>
 				<th scope="col">Last Name</th>
+				<th scope="col">Interview Status</th>
 			
 			</tr>
 		</thead>
@@ -40,7 +41,7 @@
 			
 			<td>${userInterview.id}</td>
 			<td>${userInterview.interviewDate}</td>
-			<td>${11:00 AM}</td>
+			<td>11:00 AM</td>
 			<td>${userInterview.topic}</td>
 			<td>${userInterview.interviewee.firstName}</td>
 			<td>${userInterview.interviewee.lastName}</td>
