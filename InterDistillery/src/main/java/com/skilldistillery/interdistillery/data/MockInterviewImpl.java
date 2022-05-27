@@ -90,6 +90,10 @@ public class MockInterviewImpl implements MockInterviewDAO {
 		boolean mockInterviewCreated = false;
 		User user1 = em.find(User.class, user.getId());
 		
+		System.out.println("********************");
+		System.err.println("---CREATING INTERVIEW IN DAO---");
+		System.out.println("********************");
+		
 		if (mockInterview != null) {
 			mockInterview.setInterviewee(user1);
 			System.out.println("Before persist " + mockInterview);

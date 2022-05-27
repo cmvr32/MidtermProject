@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 </head>
 <body>
 
-<h4>Admin:${sessionScope.user.firstName} ${sessionScope.user.lastName} </h4>
+<h4>Admin:${sessionScope.admin.firstName} ${sessionScope.admin.lastName} </h4>
 			
 			
 			
@@ -36,20 +37,20 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="User" items="${User}"> 
+			<c:forEach var="user" items="${listUserAccounts}"> 
 			<tr>
 			
 			<td><a href="ViewResume.do?id=${user.id}">${user.id}</a></td>
 			<td>${user.firstName}</td>
-			<td>${userResume.lastName}</td>
-			<td>${userResume.email}</td>
-			<td>${userResume.username}</td>
-			<td>${userResume.password}</td>
-			<td>${userResume.active}</td>
-			<td>${userResume.role}</td>
+			<td>${user.lastName}</td>
+			<td>${user.email}</td>
+			<td>${user.username}</td>
+			<td>${user.password}</td>
+			<td>${user.active}</td>
+			<td>${user.role}</td>
 			
 			
-				<td><form action="directToUpdateResume.do" method="GET">
+		<%-- 		<td><form action="directToUpdateResume.do" method="GET">
 				<input type="text" hidden="true" value="${user.id}" name="resumeId" /> 
 				<input type="submit" value="edit">
 				</form>
@@ -57,7 +58,7 @@
 				<form action="deleteResume.do" method="POST">
 				<input type="text" hidden="true" value="${user.id}" name="resumeId" /> 
 				<input type="submit" value="delete">
-				</form></td>
+				</form></td> --%>
 			
 			
 			</tr>
