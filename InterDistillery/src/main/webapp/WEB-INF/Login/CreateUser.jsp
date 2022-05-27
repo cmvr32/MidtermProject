@@ -31,14 +31,15 @@
 	<input type="text" name="username" placeholder="user name"></input> 
 	<br>
 	<label for="degree">Create a password</label><br>
-	<input type="text" name="password" placeholder="password"></input> 
+	<input type="password" name="password" placeholder="password"></input> 
 	<br><br>
 	<input type="submit"/>
-	<br>
+	<br><br><br>
 </form>
-<br><br>
+<br><br><br>
 
 </div>
+<br><br>
 </div>
 </body>
 </html>

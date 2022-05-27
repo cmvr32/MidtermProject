@@ -6,8 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>User Profile</title>
-<jsp:include page="../bootstrapHead.jsp"/>
+<jsp:include page="../bootstrapHead.jsp"/>>
 <%@ include file="../nav.jsp"%>
+
+
 </head>
 <body>
 
@@ -42,7 +44,7 @@
 			<p>
   </div>
 </div>
-  </div>
+  
   <c:choose>
 	  <c:when test="${not empty sessionScope.admin}">
 	  
@@ -59,7 +61,7 @@
 	</c:choose>  
 			<br><br><br>
 </div>
-
+</div>
 
 </body>
 </html>
