@@ -11,14 +11,10 @@
 </head>
 <body>
 <div class="container">
-<h1>View Scheduled Interview</h1>
 
-
-
-<h3>${sessionScope.user.firstName} ${sessionScope.user.lastName}</h3>
+<h3>${sessionScope.user.firstName} ${sessionScope.user.lastName}'s Interviews</h3>
 <div>
-		<h2>Your Interviews</h2>
-		<h5>Select a Interview to edit</h5>
+
 		<form action="ViewMockInterviewRequest.do" method="GET">
 		</form>
 	

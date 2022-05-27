@@ -13,7 +13,7 @@
 <h1>Schedule a Mock Interview</h1>
 <h5> get comfortable in the hot seat be sure the study the interview questions!</h5>
 
-${sessionScope.user}
+<%-- ${sessionScope.user} --%>
 
 <form action="RequestMockInterview.do" method="GET">
 
@@ -38,7 +38,7 @@ ${sessionScope.user}
 	<label for="interviewLevel">How do you feel about interviews, interview skills, and presentation?</label><br>
 	<input type="text"  id="interviewLevel" name="interviewLevel" placeholder="Interview level"></input> 
 	<br><br>
-	<label for="other">"Enter any information you think pertains to your interview request</label><br>
+	<label for="other">Enter any information you think pertains to your interview request</label><br>
 	<input type="text"  id="other" name="other" placeholder="Other Info"></input> 
 	<br><br>
 	<label for="Submit request">Click Submit to post interview request</label>
