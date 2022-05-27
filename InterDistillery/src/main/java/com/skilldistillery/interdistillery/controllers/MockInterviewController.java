@@ -62,21 +62,25 @@ public class MockInterviewController {
 
 	//DELETE
 	@RequestMapping(path = "DeleteMockInterview.do", method = RequestMethod.POST)
-	public String deleteInterview(RedirectAttributes redir, Model model ,MockInterview mockInterview, Integer interviewId, 
+	public String deleteInterview(RedirectAttributes redir, Model model, Integer interviewId, 
 			HttpSession session) {
 		
-		System.err.println("interviewId");
-		
+		System.err.println("DELETE INTERVIEW");
+	
+	
 		User userInSession = (User) session.getAttribute("user");
 	
 		int userId = userInSession.getId();
-
-		boolean interDeleted = mockInterviewDao.deleteInterview(interviewId);
-		model.addAttribute("deletedUser", interDeleted);
-		userInSession.removeMockInterview(mockInterview);
+		
+		System.out.println("userId: " + userId);
+		System.out.println("interview id: " + interviewId);
+		
+		
+		boolean interviewDeleted = mockInterviewDao.deleteInterview(interviewId);
+		model.addAttribute("interviewDeleted", interviewDeleted);
 
 		System.out.println("Interview was deleted!");
-		return "redirect:ViewResume.do";
+		return "redirect:ViewMockInterviewRequest.do";
 	}
 
 

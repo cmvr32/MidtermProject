@@ -120,13 +120,14 @@ public class MockInterviewImpl implements MockInterviewDAO {
 
 		if (deleteInterview != null) {
 
-			System.out.println("deleteUser not null");
-
+			System.err.println("interview found");
+			System.err.println("DELETING INTERVIEW");
+			
 			em.remove(deleteInterview);
 
 			successfullyDeleted = !em.contains(deleteInterview);
 
-			System.out.println("Character Deleted ID: " + interviewId);
+			System.out.println("Interview Deleted: " + interviewId);
 		} else if (deleteInterview == null) {
 
 			System.out.println("INTERVIEW DELETION FAILED");
