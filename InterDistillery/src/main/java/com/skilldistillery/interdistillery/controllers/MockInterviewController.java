@@ -1,5 +1,7 @@
 package com.skilldistillery.interdistillery.controllers;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -41,19 +43,46 @@ public class MockInterviewController {
 
 	// create interview
 	@RequestMapping(path = "RequestMockInterview.do", method = RequestMethod.GET)
-	public String addInterview(RedirectAttributes redir, Model model,
-			@RequestParam MockInterview interviewDate, @RequestParam MockInterview interviewTime,
-			@RequestParam String topic, HttpSession session) {
+	public String addInterview(RedirectAttributes redir, Model model, User user1,
+			@RequestParam Date interviewDate, @RequestParam Time interviewTime, @RequestParam String name,
+			@RequestParam String topic, @RequestParam String interviewType, @RequestParam String level, @RequestParam String other, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
-		
+	
 		MockInterview newInterview = new MockInterview();
+		
+		System.err.println("REQUEST MOCK INTERVIEW CONTROLLER");
+		
+		
+		newInterview.setInterviewDate(interviewDate);
+		newInterview.setInterviewTime(interviewTime);
+		String interviewee=name;
+		newInterview.setTopic(topic);
+		String interviewLevel=level;
+		String otherInfo=other;
+		System.out.println("********************");
+		System.err.println("---MOCK INTERVIEW FIELDS---");
+		System.out.println("********************");
+		System.out.println(interviewDate);
+		System.out.println(interviewTime);
+		System.out.println(name+ " " + interviewee);
+		System.out.println(topic);
+		System.out.println(level+ " " + interviewLevel);
+		System.out.println(other+ " " + otherInfo);
 		
 		
 		newInterview = mockInterviewDao.createInterview(newInterview, user);
-
+		
+		System.out.println(newInterview);
+		System.out.println("********************");
 		model.addAttribute("mockInterview", newInterview);
 		session.setAttribute("mockInterview", newInterview);
+		model.addAttribute("interviewee", interviewee);
+		session.setAttribute("interviewee", interviewee);
+		model.addAttribute("interviewLevel", interviewLevel);
+		session.setAttribute("interviewLevel", interviewLevel);
+		model.addAttribute("otherInfo", otherInfo);
+		session.setAttribute("otherInfo", otherInfo);
 		
 		return "mockinterview/MockInterviewResources";
 	}
