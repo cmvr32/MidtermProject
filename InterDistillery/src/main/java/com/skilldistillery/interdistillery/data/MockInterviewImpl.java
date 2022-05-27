@@ -113,7 +113,7 @@ public class MockInterviewImpl implements MockInterviewDAO {
 	}
 
 	@Override
-	public boolean deleteInterview(int interviewId) {
+	public boolean deleteInterview(Integer interviewId) {
 
 		boolean successfullyDeleted = false;
 		MockInterview deleteInterview = em.find(MockInterview.class, interviewId);
