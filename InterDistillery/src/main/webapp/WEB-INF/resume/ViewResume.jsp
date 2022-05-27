@@ -16,44 +16,50 @@
 <div>
 		<h2>Your Resumes</h2>
 		<h5>Select a resume to edit.</h5>
-		<form action="ViewResume.do" method="GET">
-	
-		</form>
-	
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Resume ID</th>
-				<th scope="col">Contact Information</th>
-				<th scope="col">Introduction</th>
-				<th scope="col">Experience</th>
-				<th scope="col">Degree</th>
-				<th scope="col">User</th>
+		<form action="ViewResume.do" method="GET"></form>
+</div>	
+
+<div>
+	<table bgolor="black" width="700">
+    	
+      <thead>
+        	<tr bgcolor="lightgrey">
+				<th colspan="1" width="100">Resume ID</th>
+				<th  colspan="2" width="100">Name</th>
+				<th  colspan="1" width="100">Contact Information</th>
+				<th  colspan="1" width="100">Introduction</th>
+				<th  colspan="1" width="100">Experience</th>
+				<th  colspan="1" width="100">Education</th>
+				<th  colspan="1" width="100">Skills</th>
+				<th  colspan="1" width="100">Edit</th>
+				<th  colspan="1" width="100">Delete</th>
+				
 			
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="userResume" items="${userResumes}"> 
-			<tr>
-			
-			<td><a href="ViewResume.do?id=${userResume.id}">${userResume.id}</a></td>
+		
+			<tr bgcolor="lightgrey" align="center">
+			<td>${userResume.id}</td>
+			<td>${sessionScope.user.firstName}</td>
+			<td>${sessionScope.user.lastName}</td>
 			<td>${userResume.contactInfo}</td>
 			<td>${userResume.introduction}</td>
 			<td>${userResume.experience}</td>
-			<td>${userResume.degree}</td>
-			<td>${userResume.user}</td>
+			<td>Bachelors, Coding Bootcamp Certificate</td>
+			<td>Java SQL Spring JPA Bootstrap Git</td>
 			
 			
 				<td><form action="directToUpdateResume.do" method="GET">
 				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
 				<input type="submit" value="Edit">
-				</form>
+				</form></td>
 				
-				<form action="deleteResume.do" method="POST">
+				<td><form action="deleteResume.do" method="POST">
 				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
 				<input type="submit" value="Delete">
 				</form></td>
-			
 			
 			</tr>
 			</c:forEach>

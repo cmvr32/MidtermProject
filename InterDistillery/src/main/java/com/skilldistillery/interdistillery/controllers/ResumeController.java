@@ -65,7 +65,7 @@ public class ResumeController {
 		// boolean addResumeFlag = true;
 		// redir.addFlashAttribute("addResumeFlag", addResumeFlag);
 		model.addAttribute("resume", newResume);
-		return "Login/account";
+		return "resume/ResumeResources";
 	}
 
 	// UPDATE RESUME
