@@ -46,12 +46,12 @@
 			
 				<td><form action="directToUpdateResume.do" method="GET">
 				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
-				<input type="submit" value="edit">
+				<input type="submit" value="Edit">
 				</form>
 				
 				<form action="deleteResume.do" method="POST">
 				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
-				<input type="submit" value="delete">
+				<input type="submit" value="Delete">
 				</form></td>
 			
 			

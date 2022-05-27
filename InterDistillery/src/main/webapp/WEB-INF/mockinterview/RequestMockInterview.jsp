@@ -15,13 +15,13 @@
 
 ${sessionScope.user}
 
-<form action="RequestMockInterview.do" method="post">
+<form action="RequestMockInterview.do" method="GET">
 
 	<label for="interviewDate">Appointment Date</label><br>
 	<input type="date" id="interviewDate" name="interviewDate" id=data-role="calendarpicker" value="2022/05/26" data-format="%d %b %Y">
 	<br><br>
-	<label for="interviewDate">Appointment Time </label><br>
-	<input type="time"  id="interviewTime"  name="Appointment Time"></input> 
+	<label for="interviewTime">Appointment Time </label><br>
+	<input type="time"  id="interviewTime"  name="interviewTime"></input> 
 	<br><br>
 	<label for="name">Name</label><br>
 	<input type="text" id="name"  name="name" placeholder="Enter your name"></input> 

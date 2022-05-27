@@ -29,7 +29,8 @@
 				<th scope="col">Interview Date</th>
 				<th scope="col">Interview Time</th>
 				<th scope="col">Topic</th>
-				<th scope="col">Interviewee</th>
+				<th scope="col">First Name</th>
+				<th scope="col">Last Name</th>
 			
 			</tr>
 		</thead>
@@ -37,24 +38,18 @@
 			<c:forEach var="userInterview" items="${interviews}"> 
 			<tr>
 			
-			<td><a href="ViewMockInterviewRequest.do?id=${userInterview.id}">${userInterview.id}</a></td>
 			<td>${userInterview.id}</td>
 			<td>${userInterview.interviewDate}</td>
-			<td>${userInterview.interviewTime}</td>
+			<td>${11:00 AM}</td>
 			<td>${userInterview.topic}</td>
-			<td>${userInterview.interviewee}</td>
+			<td>${userInterview.interviewee.firstName}</td>
+			<td>${userInterview.interviewee.lastName}</td>
+			<td>Request Pending</td>
 			
-			
-				<%-- <td><form action="directToUpdateResume.do" method="GET">
-				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
-				<input type="submit" value="edit">
-				</form>
-				
-				<form action="deleteResume.do" method="POST">
-				<input type="text" hidden="true" value="${userResume.id}" name="resumeId" /> 
+			<td><form action="DeleteMockInterview.do" method="POST">
+				<input type="text" hidden="true" value="${userInterview.id}" name="interviewId" /> 
 				<input type="submit" value="delete">
 				</form></td>
-			 --%>
 			
 			</tr>
 			</c:forEach>

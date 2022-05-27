@@ -84,30 +84,6 @@ public class UserController {
 		return "homePage";
 	}
 
-//	// Display Account information
-//	@RequestMapping(path = "accountInformation.do", method = RequestMethod.POST)
-//	public String viewAccountInformation(RedirectAttributes redir, Model model, HttpSession session) {
-//
-//		// user in session
-//		User user = (User) session.getAttribute("user");
-//
-//		Integer userId = user.getId();
-//		User userAccountInfo = userDao.findById(userId);
-//
-//		model.addAttribute("userAccountInfo", userAccountInfo);
-//
-//		if (user != null) {
-//			session.setAttribute("user", user);
-//
-//			return "Login/account";
-//
-//		} else {
-//
-//			return "Redirect:Login/login";
-//		}
-//
-//	}
-
 	// admin only
 	// display all user accounts
 	@RequestMapping(path = "adminAccountInformation.do", method = RequestMethod.POST)
@@ -142,7 +118,6 @@ public class UserController {
 		newUser.setRole("User");
 		newUser = userDao.createUser(newUser);
 		model.addAttribute("user", newUser);
-		// System.out.println("User added maybe" + newUser);
 		return "homePage";
 	}
 
