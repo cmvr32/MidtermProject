@@ -37,12 +37,11 @@
 		<label for="biography"> Bio </label>
 		<br>
 		<input type="text" name="profileImageUrl" value="${userUpdate.profileImageUrl}" /> 
-		<label for="profileImageUrl"> Profile Image UURL</label>
+		<label for="profileImageUrl"> Profile Image URL</label>
 		<br> 
 		<input type="hidden" name="username" value="${userUpdate.username}" /> 
 		<input type="hidden" name="password" value="${userUpdate.password}" /> 
-	<%-- 	<input type="hidden" name="role" value="${userUpdate.role}" /> 
-		<input type="hidden" name="active" value="${userUpdate.active}" /> --%>
+
 		<br> <br> <br>
 		<input type="submit" />
 

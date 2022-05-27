@@ -26,6 +26,7 @@
     <p class="card-text">${sessionScope.user.biography}</p>
   </div>
   <ul class="list-group list-group-flush">
+     <li class="list-group-item">${sessionScope.user.username}</li>
     <li class="list-group-item">${sessionScope.user.email}</li>
     <li class="list-group-item">Permissions: ${sessionScope.user.role}</li>
     <li class="list-group-item">Status: Active</li>

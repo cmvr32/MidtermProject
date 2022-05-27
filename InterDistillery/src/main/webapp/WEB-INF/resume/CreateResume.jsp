@@ -28,9 +28,20 @@
 	<label for="experience">Experience</label><br>
 	<input type="text" name="experience" placeholder="Relevent work experience"></input> 
 	<br><br>
-	<label for="degree">Degree</label><br>
-	<input type="text" name="degree" placeholder="1 - Bachelors 2 - other"></input> 
+	<label for="education">Education</label><br>
+	<input type="text" name="degree" placeholder="Enter education"></input> 
 	<br><br>
+	<label for="skills">Professional Skills</label><br>
+	<input type="text" name="skills" placeholder="Enter skills"></input> 
+	<br><br>
+	<label for="certs">Certificates/Awards</label><br>
+	<input type="text" name="certs" placeholder="Enter Certifications/Awards"></input> 
+	<br><br>
+	<label for="certs">Want to add more?</label><br>
+	<label for="certs">Enter it here</label><br>
+	<input type="text" name="certs" placeholder="Enter Stuff"></input> 
+	<br><br>
+	<input type="hidden" name="degree" value="1"></input> 
 	<input type="submit"/> 
 </form>
 <br><br>
