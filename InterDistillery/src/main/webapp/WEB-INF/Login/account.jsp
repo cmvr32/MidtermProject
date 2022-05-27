@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>User Profile</title>
-<jsp:include page="../bootstrapHead.jsp"/>>
+<jsp:include page="../bootstrapHead.jsp"/>
 <%@ include file="../nav.jsp"%>
 
 
@@ -27,8 +27,8 @@
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${sessionScope.user.email}</li>
-    <li class="list-group-item">${sessionScope.user.role}</li>
-    <li class="list-group-item">${sessionScope.user.active}</li>
+    <li class="list-group-item">Permissions: ${sessionScope.user.role}</li>
+    <li class="list-group-item">Status: Active</li>
   </ul>
   <div class="card-body">
   
