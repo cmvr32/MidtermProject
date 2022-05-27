@@ -47,24 +47,21 @@ public class UserDaoImpl implements UserDAO {
 	public List<User> findAllUsers() {
 
 		List<User> listUserAccounts = null;
-		
-		
-		
-		
-		String jpql = "SELECT c FROM user c";
+
+		String jpql = "SELECT c FROM User c";
 		System.err.println("---ADMIN--_");
 		System.err.println("---DAO FINDING ALL USERS---");
-		
+
 		listUserAccounts = em.createQuery(jpql, User.class).getResultList();
 
 		em.createQuery(jpql, User.class).getResultList();
 		System.err.println("---FINDING ALL USERS WITH ACCOUNTS--");
 		if (listUserAccounts != null && !listUserAccounts.isEmpty()) {
-			
+
 			System.err.println("---QUERY SUCCESFUL---");
 			System.err.println("---PRINTING USER LIST---");
 			for (User user : listUserAccounts) {
-				
+
 				System.out.println(user);
 			}
 			return listUserAccounts;
@@ -96,35 +93,6 @@ public class UserDaoImpl implements UserDAO {
 
 		return null;
 
-	}
-
-	@Override
-	// find user with fname, lname, and email
-	public User findUserAccountByNameAndEmail(String firstName, String lastName, String email) {
-
-		User userFindByNameAndEmailResult = null;
-		String jpql = "SELECT c FROM user c WHERE c.fname = :fn AND c.lname=:fn AND c.email=: em";
-
-		userFindByNameAndEmailResult = em.createQuery(jpql, User.class).setParameter("fn", firstName)
-				.setParameter("ln", lastName).setParameter("em", email).getSingleResult();
-		System.out.println("---PRINTING FIND USER BY FNAME LNAME EMAIL---");
-		System.err.println("LOOKING FOR: " + firstName + ", " + lastName + ", " + email);
-		System.err.println("NAME FOUND: " + userFindByNameAndEmailResult);
-
-		boolean userFound = false;
-
-		if (userFindByNameAndEmailResult != null) {
-			System.err.println("FOUND USER");
-			System.out.println("USER ID: " + userFindByNameAndEmailResult.getId());
-			userFound = true;
-
-		} else if (userFindByNameAndEmailResult == null) {
-			System.out.println("User not found");
-			System.out.println("PARAMETERS: " + firstName + " " + lastName + " " + email);
-			userFound = false;
-
-		}
-		return userFindByNameAndEmailResult;
 	}
 
 	@Override
@@ -190,30 +158,88 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	// user update as admin
-	public User updateUserAsAdmin(User user) {
+	public User activateUserStatus(User user, Integer userId) {
 
-		User userToUpdate = em.find(User.class, user.getId());
-		boolean userUpdated = false;
+		User userDeactivate = em.find(User.class, user.getId());
+		boolean userDeactivated = false;
 
-		if (userToUpdate != null) {
+		System.err.println("USER FROM DAO");
+		System.out.println("userDeactivate: " + userDeactivate);
 
-			userToUpdate = em.find(User.class, user.getId());
-			userToUpdate.setActive(user.getActive());
-			userToUpdate.setRole(user.getRole());
-			userToUpdate.setUsername(user.getUsername());
-			userToUpdate.setPassword(user.getPassword());
+		System.err.println("USER FROM PARAM");
+		System.out.println("USER: " + user);
+		System.out.println("USER ID: " + userId);
 
-			userUpdated = true;
+		if (userDeactivate != null) {
 
-		} else if (userToUpdate == null) {
+			if (userDeactivate.getActive() == 1) {
 
-			System.out.println("User update failed");
+				userDeactivate.setActive(0);
+				user.setActive(0);
+
+				userDeactivated = true;
+				return userDeactivate;
+			} else if (userDeactivate.getActive() == 0) {
+
+				userDeactivate.setActive(1);
+				user.setActive(1);
+
+				userDeactivated = false;
+				return userDeactivate;
+			}
+		} else if (userDeactivate == null) {
+
+			System.out.println("User activte status update failed");
 			System.out.println("User not found");
 
-			userUpdated = false;
+			userDeactivated = false;
+			return userDeactivate;
+
+		}
+		return userDeactivate;
+	}
+
+	public User changeRole(User user, Integer userId) {
+
+		boolean roleUpdated = false;
+		User userRoleToUpdate = em.find(User.class, user.getId());
+
+		System.err.println("USER FROM DAO");
+		System.out.println("userRoleToUpdate: " + userRoleToUpdate);
+
+		System.err.println("USER FROM PARAM");
+		System.out.println("USER: " + user);
+		System.out.println("USER ID: " + userId);
+
+		if (userRoleToUpdate != null) {
+
+			userRoleToUpdate = em.find(User.class, user.getId());
+			if (user.getRole().equalsIgnoreCase("User")) {
+
+				userRoleToUpdate.setRole("Admin");
+				user.setRole("Admin");
+			} else if (user.getRole().equalsIgnoreCase("Admin")) {
+
+				userRoleToUpdate.setRole("User");
+				user.setRole("User");
+			}
+
+			roleUpdated = true;
+
+			return userRoleToUpdate;
+
+		} else if (user == null) {
+
+			System.out.println("User roll update failed");
+			System.out.println("User not found");
+
+			roleUpdated = false;
+
+			return null;
+
 		}
 
-		return user;
+		return null;
 	}
 
 	// delete user
@@ -263,68 +289,6 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	// find all study guides a user has
-	public List<User> findAllCurrentUserStudyGuides(User user) {
-
-		Boolean studyGuideListFound = false;
-		List<User> completeStudyGuideList = null;
-		Integer userId = user.getId();
-		String jpql = "SELECT c.studyGuidesThatThisUserHas FROM User c WHERE c.id=: id";
-		completeStudyGuideList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
-
-		System.err.println("---FINDING ALL CURRENT USER STUDYGUIDES---");
-
-		if (completeStudyGuideList != null) {
-
-			studyGuideListFound = true;
-
-			for (User studyguide : completeStudyGuideList) {
-
-				System.out.println(studyguide);
-
-			}
-
-		} else if (completeStudyGuideList == null) {
-
-			studyGuideListFound = false;
-			System.err.println("USER STUDYGUIDE LIST NOT FOUND");
-			System.out.println("USER ID: " + userId);
-		}
-		return completeStudyGuideList;
-	}
-
-	@Override
-	// find every job listing a user has checked
-	public List<User> findAllCurrentUserJobListings(User user) {
-
-		Boolean jobListFound = false;
-		List<User> userJobList = null;
-		Integer userId = user.getId();
-		String jpql = "SELECT c.jobListings FROM User c WHERE c.id=: id";
-		userJobList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
-
-		System.err.println("---FINDING ALL CURRENT USER JOBLISTINGS---");
-
-		if (userJobList != null) {
-
-			jobListFound = true;
-
-			for (User jobList : userJobList) {
-
-				System.out.println(jobList);
-
-			}
-
-		} else if (userJobList == null) {
-
-			jobListFound = false;
-			System.err.println("USER jobList LIST NOT FOUND");
-			System.out.println("USER ID: " + userId);
-		}
-		return userJobList;
-	}
-
-	@Override
 	// find the mock interviews a user has
 	public List<MockInterview> userFindMockInterview(User user, Integer userId) {
 
@@ -333,9 +297,6 @@ public class UserDaoImpl implements UserDAO {
 		System.out.println("USER ID: " + userId);
 		Boolean hasMockInterview = false;
 		List<MockInterview> userInterviewList = null;
-//		Integer userId = user.getId();
-//		String jpql = "SELECT c.UserInterviews FROM MockInterview c WHERE c.id=: id";
-//		userInterviewList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
 
 		String jpql = "SELECT i FROM MockInterview i WHERE i.interviewee=: user";
 		userInterviewList = em.createQuery(jpql, MockInterview.class).setParameter("user", user).getResultList();
@@ -366,15 +327,101 @@ public class UserDaoImpl implements UserDAO {
 
 	}
 
-	@Override
-	public User userFindInterviewer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	// UNIMPLEMENTEDMETHODS
+	// STRETCH GOALS/IDEAS
+	// WILL BE IMPLMENETED ON OUR OWN TIME
+	// REOMVED FROM DAO INTERFACE
 
-	@Override
-	public List<User> userFindMockInterview(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	// find user with fname, lname, and email
+//	public User findUserAccountByNameAndEmail(String firstName, String lastName, String email) {
+//
+//		User userFindByNameAndEmailResult = null;
+//		String jpql = "SELECT c FROM user c WHERE c.fname = :fn AND c.lname=:fn AND c.email=: em";
+//
+//		userFindByNameAndEmailResult = em.createQuery(jpql, User.class).setParameter("fn", firstName)
+//				.setParameter("ln", lastName).setParameter("em", email).getSingleResult();
+//		System.out.println("---PRINTING FIND USER BY FNAME LNAME EMAIL---");
+//		System.err.println("LOOKING FOR: " + firstName + ", " + lastName + ", " + email);
+//		System.err.println("NAME FOUND: " + userFindByNameAndEmailResult);
+//
+//		boolean userFound = false;
+//
+//		if (userFindByNameAndEmailResult != null) {
+//			System.err.println("FOUND USER");
+//			System.out.println("USER ID: " + userFindByNameAndEmailResult.getId());
+//			userFound = true;
+//
+//		} else if (userFindByNameAndEmailResult == null) {
+//			System.out.println("User not found");
+//			System.out.println("PARAMETERS: " + firstName + " " + lastName + " " + email);
+//			userFound = false;
+//
+//		}
+//		return userFindByNameAndEmailResult;
+//	}
+//
+//
+//	@Override
+//	// find all study guides a user has
+//	public List<User> findAllCurrentUserStudyGuides(User user) {
+//
+//		Boolean studyGuideListFound = false;
+//		List<User> completeStudyGuideList = null;
+//		Integer userId = user.getId();
+//		String jpql = "SELECT c.studyGuidesThatThisUserHas FROM User c WHERE c.id=: id";
+//		completeStudyGuideList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
+//
+//		System.err.println("---FINDING ALL CURRENT USER STUDYGUIDES---");
+//
+//		if (completeStudyGuideList != null) {
+//
+//			studyGuideListFound = true;
+//
+//			for (User studyguide : completeStudyGuideList) {
+//
+//				System.out.println(studyguide);
+//
+//			}
+//
+//		} else if (completeStudyGuideList == null) {
+//
+//			studyGuideListFound = false;
+//			System.err.println("USER STUDYGUIDE LIST NOT FOUND");
+//			System.out.println("USER ID: " + userId);
+//		}
+//		return completeStudyGuideList;
+//	}
+//
+//	@Override
+//	// find every job listing a user has checked
+//	public List<User> findAllCurrentUserJobListings(User user) {
+//
+//		Boolean jobListFound = false;
+//		List<User> userJobList = null;
+//		Integer userId = user.getId();
+//		String jpql = "SELECT c.jobListings FROM User c WHERE c.id=: id";
+//		userJobList = em.createQuery(jpql, User.class).setParameter("id", userId).getResultList();
+//
+//		System.err.println("---FINDING ALL CURRENT USER JOBLISTINGS---");
+//
+//		if (userJobList != null) {
+//
+//			jobListFound = true;
+//
+//			for (User jobList : userJobList) {
+//
+//				System.out.println(jobList);
+//
+//			}
+//
+//		} else if (userJobList == null) {
+//
+//			jobListFound = false;
+//			System.err.println("USER jobList LIST NOT FOUND");
+//			System.out.println("USER ID: " + userId);
+//		}
+//		return userJobList;
+//	}
+
 }

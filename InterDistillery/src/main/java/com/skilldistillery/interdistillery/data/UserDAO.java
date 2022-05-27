@@ -17,10 +17,6 @@ public interface UserDAO {
 	public List<User> findAllUsers();
 
 	// read
-	// user can find their account with name and email
-	public User findUserAccountByNameAndEmail(String firstName, String lastName, String email);
-
-	// read
 	// log into user account
 	public User findByUserNameAndPassword(String username, String password);
 
@@ -28,21 +24,10 @@ public interface UserDAO {
 	// Find all users resumes
 	public List<Resume> findAllCurrentUserResumes(User user);
 
-	// read
-	// Find all user study guides
-	public List<User> findAllCurrentUserStudyGuides(User user);
-
-	// read
-	// Find all user job listings*
-	public List<User> findAllCurrentUserJobListings(User user);
 
 	// read
 	// find user mock interview
 	public List<MockInterview> userFindMockInterview(User user, Integer userId);
-
-	// read
-	// find mock interviewer
-	public User userFindInterviewer();
 
 	// create
 	// new user
@@ -51,13 +36,21 @@ public interface UserDAO {
 	// update user
 	public User updateUser(User user);
 
-	// update user as admin
-	public User updateUserAsAdmin(User user);
-
 	// delete
 	public Boolean deleteUser(Integer id);
 
-	List<User> userFindMockInterview(User user);
+	//deactivate user
+	public User activateUserStatus(User user, Integer userId);	
+	
+	//change account role
+	//user or admin
+	public User changeRole(User user, Integer userId);
+
+	
+
+
+
+	
 
 
 }

@@ -11,6 +11,7 @@
 </head>
 <body>
 
+
 <div class="container">
 <br>
 	<h3>Account Information</h3>
@@ -33,7 +34,7 @@
 				<input type="number" hidden="true" value="${userAccountInfo.id}" name="userId" id="id" /> 
 				<input type="submit" value="Edit">
 				</form><p>
-				<p>	<form action="DeleteUser.do" method="POST">
+				<p>	<form action="deactivateUser.do" method="POST">
 				<input type="text" hidden="true" value="${userAccountInfo.id}" name="userId" id="id" /> 
 				<input type="submit" value="Deactivate">
 
@@ -43,20 +44,18 @@
 </div>
   </div>
   <c:choose>
-	  <c:when test="${sessionScope.user.role.equals(1)}">
+	  <c:when test="${not empty sessionScope.admin}">
 	  
 	    <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Manage Users</h5>
         <p class="card-text">View all active users.</p>
-        <a href="directToAdmin.do" class="btn btn-secondary">Explore</a>
+        <a href="adminAccountInformation.do" class="btn btn-secondary">Explore</a>
       </div>
     </div>
   </div>
 	</c:when>
-	  <c:otherwise>
-	    </c:otherwise>
 	</c:choose>  
 			<br><br><br>
 </div>
