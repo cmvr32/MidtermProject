@@ -42,10 +42,10 @@ public class MockInterviewController {
 	}
 
 	// create interview
-	@RequestMapping(path = "RequestMockInterview.do", method = RequestMethod.GET)
-	public String addInterview(RedirectAttributes redir, Model model, User user1,
-			@RequestParam Date interviewDate, @RequestParam Time interviewTime, @RequestParam String name,
-			@RequestParam String topic, @RequestParam String interviewType, @RequestParam String level, @RequestParam String other, HttpSession session) {
+	@RequestMapping(path = "RequestMockInterview.do", method = RequestMethod.POST)
+	public String addInterview( RedirectAttributes redir, Model model,
+			 Date interviewDate, Time interviewTime, String name,
+			String topic, String interviewType, String level, String other, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
 	
@@ -58,7 +58,7 @@ public class MockInterviewController {
 		newInterview.setInterviewTime(interviewTime);
 		String interviewee=name;
 		newInterview.setTopic(topic);
-		String interviewLevel=level;
+		String interviewLevel=level;	
 		String otherInfo=other;
 		System.out.println("********************");
 		System.err.println("---MOCK INTERVIEW FIELDS---");
@@ -95,7 +95,7 @@ public class MockInterviewController {
 	@RequestMapping(path = "DeleteMockInterview.do", method = RequestMethod.POST)
 	public String deleteInterview(RedirectAttributes redir, MockInterview mockInterview, int id, Model model,
 			HttpSession session) {
-		User userInSession = (User) session.getAttribute("user");
+		User userInSession = 	(User) session.getAttribute("user");
 
 		boolean interDeleted = mockInterviewDao.deleteInterview(id);
 		model.addAttribute("deletedUser", interDeleted);
