@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `date_created` DATETIME NULL,
-  `active` TINYINT NULL,
-  `role` VARCHAR(45) NULL,
+  `active` TINYINT NOT NULL DEFAULT 1,
+  `role` VARCHAR(45) NOT NULL DEFAULT 'User',
   `profile_image_url` VARCHAR(2000) NULL,
   `banner_image_url` VARCHAR(2000) NULL,
   `biography` TEXT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `mock_interview` (
   `interview_date` DATE NULL,
   `interview_time` TIME NULL,
   `topic` TEXT NULL,
-  `interviewee_id` INT NOT NULL,
+  `interviewee_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_mock_interview_user1_idx` (`interviewee_id` ASC),
   CONSTRAINT `fk_mock_interview_user1`
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `career` (
   `image_url` VARCHAR(2000) NULL,
   `low_salary` DECIMAL(10,2) NULL,
   `high_salary` DECIMAL(10,2) NULL,
-  `career_category_id` INT NOT NULL,
+  `career_category_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_career_career_catogory1_idx` (`career_category_id` ASC),
   CONSTRAINT `fk_career_career_catogory1`
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `job_listing` (
   `benefits` TEXT NULL,
   `job_posting_url` VARCHAR(2000) NULL,
   `job_post_date` DATETIME NULL,
-  `user_id` INT NOT NULL,
+  `user_id` INT NULL,
   `pay_scale_type` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_job_listing_user1_idx` (`user_id` ASC),
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `project_name` VARCHAR(200) NULL,
   `description` TEXT NULL,
   `created_date` DATETIME NULL,
-  `user_id` INT NOT NULL,
+  `user_id` INT NULL,
   `image_url` VARCHAR(2000) NULL,
   `career_id` INT NULL,
   PRIMARY KEY (`id`),
@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `resume` (
   `introduction` TEXT NULL,
   `experience` TEXT NULL,
   `degreed` TINYINT NULL,
-  `user_id` INT NOT NULL,
+  `user_id` INT NULL,
   `job_listing_id` INT NULL,
   `education_level_id` INT NULL,
   PRIMARY KEY (`id`),
@@ -222,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `user_comment` (
   `title` VARCHAR(200) NULL,
   `content` TEXT NULL,
   `comment_date` DATETIME NULL,
-  `user_id` INT NOT NULL,
+  `user_id` INT NULL,
   `in_reply_to_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_comment_user1_idx` (`user_id` ASC),
@@ -251,9 +251,9 @@ CREATE TABLE IF NOT EXISTS `study_guide` (
   `learning_objectives` TEXT NULL,
   `content` TEXT NULL,
   `review` TEXT NULL,
-  `career_id` INT NOT NULL,
+  `career_id` INT NULL,
   `resource_url` VARCHAR(2000) NULL,
-  `user_id` INT NOT NULL,
+  `user_id` INT NULL,
   `image_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_study_guide_career1_idx` (`career_id` ASC),
@@ -373,7 +373,7 @@ CREATE TABLE IF NOT EXISTS `study_guide_comment` (
   `title` VARCHAR(200) NULL,
   `content` TEXT NULL,
   `comment_date` DATETIME NULL,
-  `user_id` INT NOT NULL,
+  `user_id` INT NULL,
   `in_reply_to_id` INT NULL,
   `study_guide_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -432,9 +432,9 @@ CREATE TABLE IF NOT EXISTS `project_comment` (
   `title` VARCHAR(200) NULL,
   `content` TEXT NULL,
   `comment_date` DATETIME NULL,
-  `user_id` INT NOT NULL,
+  `user_id` INT NULL,
   `in_reply_to_id` INT NULL,
-  `project_id` INT NOT NULL,
+  `project_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_comment_user1_idx` (`user_id` ASC),
   INDEX `fk_user_comment_user_comment1_idx` (`in_reply_to_id` ASC),
@@ -534,9 +534,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interdistillerydb`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `date_created`, `active`, `role`, `profile_image_url`, `banner_image_url`, `biography`) VALUES (1, 'Nathan', 'Hafley', 'nhafley@interDistillery.com', 'nhadmin', 'admin', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `date_created`, `active`, `role`, `profile_image_url`, `banner_image_url`, `biography`) VALUES (2, 'Charley', 'Brown', 'cbrown@interDistillery.com', 'cbadmin', 'admin', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `date_created`, `active`, `role`, `profile_image_url`, `banner_image_url`, `biography`) VALUES (3, 'Angel', 'Casillas', 'aCasillas@interDistillery.com', 'acadmin', 'admin', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `date_created`, `active`, `role`, `profile_image_url`, `banner_image_url`, `biography`) VALUES (1, 'Nathan', 'Hafley', 'nhafley@interDistillery.com', 'nhadmin', 'admin', NULL, 1, 'admin', NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `date_created`, `active`, `role`, `profile_image_url`, `banner_image_url`, `biography`) VALUES (2, 'Charley', 'Brown', 'cbrown@interDistillery.com', 'cbadmin', 'admin', NULL, 1, 'admin', NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `date_created`, `active`, `role`, `profile_image_url`, `banner_image_url`, `biography`) VALUES (3, 'Angel', 'Casillas', 'aCasillas@interDistillery.com', 'acadmin', 'admin', NULL, 1, 'admin', NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `date_created`, `active`, `role`, `profile_image_url`, `banner_image_url`, `biography`) VALUES (4, 'John', 'Doe', 'jDoe@google.com', 'jDoe', 'user', NULL, 1, 'user', NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `date_created`, `active`, `role`, `profile_image_url`, `banner_image_url`, `biography`) VALUES (5, 'Sandy', 'Seashells', 'sShells@yahoo.com', 'sShells', 'user', NULL, 1, 'user', NULL, NULL, NULL);
 
 COMMIT;
 
@@ -582,6 +584,11 @@ COMMIT;
 START TRANSACTION;
 USE `interdistillerydb`;
 INSERT INTO `job_listing` (`id`, `title`, `description`, `requirements`, `company`, `pay_range_min`, `pay_range_max`, `benefits`, `job_posting_url`, `job_post_date`, `user_id`, `pay_scale_type`) VALUES (1, 'Java Developer', 'Write Java Code', 'Know Java', 'Java Inc', NULL, NULL, NULL, NULL, NULL, 1, NULL);
+INSERT INTO `job_listing` (`id`, `title`, `description`, `requirements`, `company`, `pay_range_min`, `pay_range_max`, `benefits`, `job_posting_url`, `job_post_date`, `user_id`, `pay_scale_type`) VALUES (2, 'Accountant ', 'Accounting Stuff', 'Know accounting', 'Account Inc', NULL, NULL, NULL, NULL, NULL, 4, NULL);
+INSERT INTO `job_listing` (`id`, `title`, `description`, `requirements`, `company`, `pay_range_min`, `pay_range_max`, `benefits`, `job_posting_url`, `job_post_date`, `user_id`, `pay_scale_type`) VALUES (3, 'Python Developer', 'Write Python code', 'Know Python', 'Python inc', NULL, NULL, NULL, NULL, NULL, 2, NULL);
+INSERT INTO `job_listing` (`id`, `title`, `description`, `requirements`, `company`, `pay_range_min`, `pay_range_max`, `benefits`, `job_posting_url`, `job_post_date`, `user_id`, `pay_scale_type`) VALUES (4, 'Web Dev', 'Develope Web Applications', 'Know Java, Sprint Boot', 'Web Dev Inc', NULL, NULL, NULL, NULL, NULL, 3, NULL);
+INSERT INTO `job_listing` (`id`, `title`, `description`, `requirements`, `company`, `pay_range_min`, `pay_range_max`, `benefits`, `job_posting_url`, `job_post_date`, `user_id`, `pay_scale_type`) VALUES (5, 'Database Administration', 'Manage and create DB', 'Know SQL', 'DBA Inc', NULL, NULL, NULL, NULL, NULL, 5, NULL);
+INSERT INTO `job_listing` (`id`, `title`, `description`, `requirements`, `company`, `pay_range_min`, `pay_range_max`, `benefits`, `job_posting_url`, `job_post_date`, `user_id`, `pay_scale_type`) VALUES (DEFAULT, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;
 
@@ -601,7 +608,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interdistillerydb`;
-INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (1, 'Nathan, Email, Phone', 'This is an introduction', '5  years experience with java', 1, 1, 1, 1);
+INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (1, 'Nathan, Email, Phone', 'This is an introduction', '5  years experience with java', NULL, 1, 1, NULL);
+INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (2, 'Charli, Email, Phone', 'This is an introduction', '10 years experience with Python', NULL, 2, 1, NULL);
+INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (3, 'John, Email, Phone', 'This is an introduction', '2 Years experience', NULL, 4, 2, NULL);
+INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (4, 'Angel, Email, Phone', 'This is an introduction', '20 years experience', NULL, 3, 4, NULL);
+INSERT INTO `resume` (`id`, `contact_info`, `introduction`, `experience`, `degreed`, `user_id`, `job_listing_id`, `education_level_id`) VALUES (5, 'Nathan, Email, Phone DBA', 'DBA INTRODUCTION', '1 year', NULL, 1, 5, NULL);
 
 COMMIT;
 
@@ -612,6 +623,7 @@ COMMIT;
 START TRANSACTION;
 USE `interdistillerydb`;
 INSERT INTO `study_guide` (`id`, `topic`, `learning_objectives`, `content`, `review`, `career_id`, `resource_url`, `user_id`, `image_url`) VALUES (1, 'Java Study Guide', 'Learn Java', 'Everything about java', 'Java Review', 1, NULL, 1, NULL);
+INSERT INTO `study_guide` (`id`, `topic`, `learning_objectives`, `content`, `review`, `career_id`, `resource_url`, `user_id`, `image_url`) VALUES (2, 'Accounting Study Guide', 'Learn Accounting', 'Everything about accounting', 'Accounting Review', 4, NULL, 4, NULL);
 
 COMMIT;
 
@@ -643,6 +655,8 @@ START TRANSACTION;
 USE `interdistillerydb`;
 INSERT INTO `skill` (`id`, `name`, `description`) VALUES (1, 'Java', 'Write Java Applications');
 INSERT INTO `skill` (`id`, `name`, `description`) VALUES (2, 'Accounting', 'Recording financial transactions pertaining to a business.');
+INSERT INTO `skill` (`id`, `name`, `description`) VALUES (3, 'Python', 'Write Python Applications');
+INSERT INTO `skill` (`id`, `name`, `description`) VALUES (4, 'SQL', 'Database Administration');
 
 COMMIT;
 
@@ -653,6 +667,8 @@ COMMIT;
 START TRANSACTION;
 USE `interdistillerydb`;
 INSERT INTO `job_skill` (`skill_id`, `resume_id`, `years_experience`) VALUES (1, 1, 5);
+INSERT INTO `job_skill` (`skill_id`, `resume_id`, `years_experience`) VALUES (1, 2, 10);
+INSERT INTO `job_skill` (`skill_id`, `resume_id`, `years_experience`) VALUES (2, 3, 2);
 
 COMMIT;
 
