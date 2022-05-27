@@ -40,17 +40,21 @@ public class MockInterviewController {
 	}
 
 	// create interview
-	@RequestMapping(path = "RequestMockInterview.do", method = RequestMethod.POST)
-	public String addInterview(Model model, @RequestParam MockInterview interview,
+	@RequestMapping(path = "RequestMockInterview.do", method = RequestMethod.GET)
+	public String addInterview(RedirectAttributes redir, Model model,
 			@RequestParam MockInterview interviewDate, @RequestParam MockInterview interviewTime,
 			@RequestParam String topic, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
+		
 		MockInterview newInterview = new MockInterview();
+		
+		
 		newInterview = mockInterviewDao.createInterview(newInterview, user);
 
 		model.addAttribute("mockInterview", newInterview);
 		session.setAttribute("mockInterview", newInterview);
+		
 		return "mockinterview/MockInterviewResources";
 	}
 
@@ -77,7 +81,7 @@ public class MockInterviewController {
 		return "Login/";
 	}
 
-	// UPDATE RESUME
+	// UPDATE INTERVIEW
 //	@RequestMapping(path = "EditMockInterview.do", method = RequestMethod.GET)
 //	public String editMockInterview(RedirectAttributes redir, MockInterview interviews, HttpSession session) {
 //
