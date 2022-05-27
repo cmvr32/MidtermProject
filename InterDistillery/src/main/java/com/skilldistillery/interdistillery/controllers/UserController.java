@@ -86,7 +86,7 @@ public class UserController {
 
 	// admin only
 	// display all user accounts
-	@RequestMapping(path = "adminAccountInformation.do", method = RequestMethod.POST)
+	@RequestMapping(path = "adminAccountInformation.do", method = RequestMethod.GET)
 	public String adminViewManageAccounts(RedirectAttributes redir, Model model, HttpSession session) {
 
 		// user in session
@@ -101,7 +101,7 @@ public class UserController {
 		model.addAttribute("listUserAccounts", listUserAccounts);
 		session.setAttribute("listUserAccounts", listUserAccounts);
 
-		return "admin";
+		return "Admin";
 	}
 
 	// CREATE NEW USER ACCOUNT
@@ -136,11 +136,6 @@ public class UserController {
 		// start update
 		User updatedUser = userDao.updateUser(user);
 
-		System.err.println("---RETURN TO USER CONTROLLER---");
-		model.addAttribute("updatedUser", updatedUser);
-		System.out.println("UserDAO: " + updatedUser);
-		System.out.println("********************");
-
 		// add updated user to the session
 		session.setAttribute("user", updatedUser);
 
@@ -153,6 +148,78 @@ public class UserController {
 
 		return "Login/account";
 
+	}
+
+	// UPDATE USER
+	@RequestMapping(path = "changeUserRole.do", method = RequestMethod.GET)
+	public String changeUserRole(RedirectAttributes redir, Model model, Integer userId, HttpSession session) {
+
+		// user in session
+		User userInSession = (User) session.getAttribute("user");
+		
+		
+		System.err.println("USER FROM SESSION");
+		System.out.println ("USER: "+userInSession);
+		
+		System.err.println("USER FROM PARAM");
+		System.out.println("USER ID: "+ userId);
+		
+		User userRoleToChange=userDao.findById(userId);
+		
+		// start update
+		User userRoleChanged = userDao.changeRole(userRoleToChange, userId);
+
+		// add updated user to the session
+		session.setAttribute("user", userRoleChanged);
+
+		// get new user account information
+		Integer updatedUserId = userRoleChanged.getId();
+		User userAccountInfo = userDao.findById(updatedUserId);
+
+		// add new user to the model
+		model.addAttribute("userAccountInfo", userAccountInfo);
+		session.setAttribute("userAccountInfo", userAccountInfo);
+		return "redirect:adminAccountInformation.do";
+
+	}
+
+	// Deactivate User
+	@RequestMapping(path = "deactivateUser.do", method = RequestMethod.GET)
+	public String deactivateUser(RedirectAttributes redir, Model model, Integer userId, HttpSession session) {
+
+		// user in session
+		User userInSession = (User) session.getAttribute("user");
+		
+		
+
+		System.err.println("USER FROM SESSION");
+		System.out.println ("USER: "+userInSession);
+		
+		System.err.println("USER FROM PARAM");
+		System.out.println("USER ID: "+ userId);
+		
+		User userToDeactivate=userDao.findById(userId);
+
+		// start deactivation
+		User deactivatedUser = userDao.activateUserStatus(userToDeactivate, userId);
+
+		System.err.println("---Deactivate User---");
+		System.out.println("WAS DEACTIVATED?" + deactivatedUser);
+
+		// add updated user to the session
+		model.addAttribute(deactivatedUser);
+		session.setAttribute("deactivatedUser", deactivatedUser);
+
+		if (userInSession.getRole().equalsIgnoreCase("Admin")) {
+
+			return "redirect:adminAccountInformation.do";
+
+		} else if (userInSession.getRole().equalsIgnoreCase("User")) {
+
+			return "redirect:logout.do";
+
+		}
+		return null;
 	}
 
 	// DELETE USER
