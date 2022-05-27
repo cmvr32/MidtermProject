@@ -11,6 +11,7 @@
 <%@ include file="nav.jsp"%>
 </head>
 <body>
+<div class="container">
 	<hr>
 	<h4>Admin:${sessionScope.admin.firstName}
 		${sessionScope.admin.lastName}</h4>
@@ -79,6 +80,6 @@
 	
 	</div>
 	<hr>
-
+</div>
 </body>
 </html>

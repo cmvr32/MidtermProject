@@ -53,7 +53,7 @@
       <div class="card-body">
         <h5 class="card-title">Manage Users</h5>
         <p class="card-text">View all active users.</p>
-        <a href="adminAccountInformation.do" class="btn btn-secondary">Explore</a>
+        <a href="adminAccountInformation.do" class="btn btn-secondary">Admin Panel</a>
       </div>
     </div>
   </div>

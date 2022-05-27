@@ -45,7 +45,7 @@
 			
 			<td><form action="DeleteMockInterview.do" method="POST">
 				<input type="text" hidden="true" value="${userInterview.id}" name="interviewId" /> 
-				<input type="submit" value="delete">
+				<input type="submit" value="Cancel">
 				</form></td>
 			
 			</tr>
