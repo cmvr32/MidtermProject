@@ -13,13 +13,13 @@
 <body>
 <div class="container">
 	<hr>
-	<h4>Admin:${sessionScope.admin.firstName}
+	<h4>Admin: ${sessionScope.admin.firstName}
 		${sessionScope.admin.lastName}</h4>
 	<hr>
 
 
 	<div>
-		<h2>User Accounts</h2>
+		<h4>User Accounts</h4>
 
 		<form action="adminAccountInformation.do" method="GET"></form>
 

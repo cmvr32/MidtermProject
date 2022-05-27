@@ -17,8 +17,8 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Create a Resume</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="directToAddResume.do" class="btn btn-secondary">Go somewhere</a>
+        <p class="card-text">Begin with the basics. Pull together your relevant work experience to build a strong Resume.</p>
+        <a href="directToAddResume.do" class="btn btn-secondary">Create</a>
       </div>
     </div>
   </div>
@@ -26,8 +26,8 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">View Resumes</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="ViewResume.do" class="btn btn-secondary">Go somewhere</a>
+        <p class="card-text">View all your resume drafts, edit and delete as needed.</p>
+        <a href="ViewResume.do" class="btn btn-secondary">View</a>
       </div>
     </div>
   </div>
@@ -38,8 +38,8 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Resume Examples</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-secondary">Go somewhere</a>
+        <p class="card-text">Check out some additional resources to get you started.</p>
+        <a href="#" class="btn btn-secondary">Explore</a>
       </div>
     </div>
   </div>

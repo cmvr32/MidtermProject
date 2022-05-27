@@ -17,8 +17,8 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Schedule a Mock Interview</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="directToRequestMockInterview.do" class="btn btn-secondary">Explore</a>
+        <p class="card-text">Request a Mock Interview to strengthen your skills and receive feedback from peers.</p>
+        <a href="directToRequestMockInterview.do" class="btn btn-secondary">Schedule</a>
       </div>
     </div>
   </div>
@@ -26,8 +26,8 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">View Mock Interviews</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="ViewMockInterviewRequest.do" class="btn btn-secondary">Explore</a>
+        <p class="card-text">View your scheduled interviews and cancel if necessary, to reschedule simply submit a new request.</p>
+        <a href="ViewMockInterviewRequest.do" class="btn btn-secondary">View</a>
       </div>
     </div>
   </div>

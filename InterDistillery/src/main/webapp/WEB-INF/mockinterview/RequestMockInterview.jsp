@@ -10,11 +10,12 @@
 </head>
 <body>
 <div class="container">
-<h1>Schedule a Mock Interview</h1>
-<h5> get comfortable in the hot seat be sure the study the interview questions!</h5>
-
-<%-- ${sessionScope.user} --%>
-
+<br>
+<div class="col d-flex justify-content-center">
+<div class="card text-center text-black bg-light mb-3" style="width: 18rem;">
+<br>
+<h2>Schedule a Mock Interview</h2>
+<br>
 <form action="RequestMockInterview.do" method="GET">
 
 	<label for="interviewDate">Appointment Date</label><br>
@@ -23,28 +24,31 @@
 	<label for="interviewTime">Appointment Time </label><br>
 	<input type="time"  id="interviewTime"  name="interviewTime"></input> 
 	<br><br>
-	<label for="name">Name</label><br>
+	<label for="name">Full Name</label><br>
 	<input type="text" id="name"  name="name" placeholder="Enter your name"></input> 
 	<br><br>
-	<label for="topic">Enter career and job title</label><br>
-	<label for="topic">Software Development, Java Programmer</label><br>
+	<label for="topic">Career Field and Job Title</label><br>
+	<!-- <label for="topic">Software Development, Java Programmer</label><br> -->
 	<input type="text" id="topic"  name="topic" placeholder="Software Development, Java Programmer"></input> 
 	<br><br>
-	<label for="interviewType">What kind of interview are you looking for?</label><br>
-	<label for="interviewType">Professional, Technical, Lunch, Phone, etc</label><br>
-	<input type="text"  id="interviewType" name="interviewType" placeholder="Enter Topic"></input> 
+	<label for="interviewType">Interview Focus</label><br>
+	<!-- <label for="interviewType">Professional, Technical, Lunch, Phone, etc</label><br> -->
+	<input type="text"  id="interviewType" name="interviewType" placeholder="General, Technical, etc."></input> 
 	<br><br>
-	<label for="interviewLevel">Interview level</label><br>
-	<label for="interviewLevel">How do you feel about interviews, interview skills, and presentation?</label><br>
-	<input type="text"  id="interviewLevel" name="interviewLevel" placeholder="Interview level"></input> 
+	<label for="interviewLevel">Interview Level</label><br>
+<!-- 	<label for="interviewLevel">How do you feel about interviews, interview skills, and presentation?</label><br> -->
+	<input type="text"  id="interviewLevel" name="interviewLevel" placeholder="entry-level, mid-level, late-career"></input> 
 	<br><br>
-	<label for="other">Enter any information you think pertains to your interview request</label><br>
+	<label for="other">Additional Information</label><br>
 	<input type="text"  id="other" name="other" placeholder="Other Info"></input> 
 	<br><br>
-	<label for="Submit request">Click Submit to post interview request</label>
+	<label for="Submit request"></label>
 	<input type="submit"/>
 	</form>
+	<br><br>
 
+</div>
+</div>
 </div>
 <br><br>
 </body>

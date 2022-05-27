@@ -12,9 +12,9 @@
 </head>
 <body>
 <div class="container">
-<h3>${sessionScope.user.firstName} ${sessionScope.user.lastName}</h3>
+<h3>${sessionScope.user.firstName}'s Resumes</h3>
 <div>
-		<h2>Your Resumes</h2>
+		
 		<h5>Select a resume to edit.</h5>
 		<form action="ViewResume.do" method="GET"></form>
 </div>	

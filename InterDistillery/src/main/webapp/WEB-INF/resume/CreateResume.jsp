@@ -22,7 +22,7 @@
 	<label for="contactInfo">Contact Information</label><br>
 	<input type="text" name="contactInfo" placeholder="Name, Email, Phone"></input> 
 	<br><br>
-	<label for="introduction">Bio</label><br>
+	<label for="introduction">Introduction</label><br>
 	<input type="text" name="introduction" placeholder="Get to know you"></input> 
 	<br><br>
 	<label for="experience">Experience</label><br>
@@ -37,9 +37,9 @@
 	<label for="certs">Certificates/Awards</label><br>
 	<input type="text" name="certs" placeholder="Enter Certifications/Awards"></input> 
 	<br><br>
-	<label for="certs">Want to add more?</label><br>
-	<label for="certs">Enter it here</label><br>
-	<input type="text" name="certs" placeholder="Enter Stuff"></input> 
+	<label for="certs">Additional Information</label><br>
+	<!-- <label for="certs">Enter it here</label><br> -->
+	<input type="text" name="certs" placeholder="Share here"></input> 
 	<br><br>
 	<input type="hidden" name="degree" value="1"></input> 
 	<input type="submit"/> 
