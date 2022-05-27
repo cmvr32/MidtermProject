@@ -52,9 +52,11 @@ public class ResumeController {
 
 	// CREATE RESUME
 	@RequestMapping(path = "CreateResume.do", method = RequestMethod.POST)
-	public String addResume(Model model, @RequestParam String contactInfo, @RequestParam String introduction,
-			@RequestParam String experience, @RequestParam Integer degree, HttpSession session) {
-
+	public String addResume(RedirectAttributes redir, Model model, @RequestParam String contactInfo, @RequestParam String introduction,
+			@RequestParam String experience, String education, String skills, String certs, String other, HttpSession session) {
+		
+		Integer degree =1;
+		
 		User user = (User) session.getAttribute("user");
 		Resume newResume = new Resume();
 		newResume.setContactInfo(contactInfo);
